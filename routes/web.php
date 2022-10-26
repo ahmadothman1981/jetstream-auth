@@ -23,13 +23,10 @@ Route::middleware('admin:admin')->group(function(){
 });
 
 
-Route::middleware([
-    'auth:sanctum,admin',
-    config('jetstream.auth_session'),
-    'verified'
+Route::middleware([ 'auth:sanctum,admin',config('jetstream.auth_session'),'verified'
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('dashboard');
+        return view('admin.index');
     })->name('dashboard')->middleware('auth:admin');
 });
 
@@ -37,10 +34,7 @@ Route::middleware([
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
