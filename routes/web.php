@@ -32,6 +32,9 @@ Route::middleware([ 'auth:sanctum,admin',config('jetstream.auth_session'),'verif
 
 
 
+///////Admin All Routes////////////
+
+Route::get('admin/logout',[AdminController::class,'destroy'])->name('admin.logout');
 
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'
