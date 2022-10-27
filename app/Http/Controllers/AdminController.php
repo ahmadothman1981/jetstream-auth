@@ -39,7 +39,7 @@ class AdminController extends Controller
 
     public function LoginForm()
     {
-        return view('auth.login',['guard'=>'admin']);
+        return view('auth.admin_login',['guard'=>'admin']);
     }
 
     /**
