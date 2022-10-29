@@ -21,4 +21,24 @@ class AdminProfileController extends Controller
          $editeData = Admin::find(1);
          return view('admin.admin_profile_edite',compact('editeData'));
     }//End Method 
+
+    public function AdminProfileStore(Request $request)
+    {
+        $data = Admin::find(1);
+        $data->name = $request->name;
+        $data->email = $request->email;
+
+        if($request->file('profile_photo_path'))
+        {
+            $file = $request->file('profile_photo_path');
+            @unlink(public_path('upload/admin_images/'.$data->profile_photo_path));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'),$filename);
+            $data['profile_photo_path'] = $filename;
+        }
+        $data->save();
+
+        return redirect()->route('admin.profile');
+
+    }//End Method
 }

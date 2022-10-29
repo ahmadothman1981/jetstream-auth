@@ -38,6 +38,7 @@ Route::middleware([ 'auth:sanctum,admin',config('jetstream.auth_session'),'verif
 Route::get('admin/logout',[AdminController::class,'destroy'])->name('admin.logout');
 Route::get('admin/profile',[AdminProfileController::class,'AdminProfile'])->name('admin.profile');
 Route::get('admin/profile/edite',[AdminProfileController::class,'AdminProfileEdite'])->name('admin.profile.edite');
+Route::post('admin/profile/store',[AdminProfileController::class,'AdminProfileStore'])->name('admin.profile.store');
 
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'
