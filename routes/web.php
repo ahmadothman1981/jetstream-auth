@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,8 @@ Route::middleware([ 'auth:sanctum,admin',config('jetstream.auth_session'),'verif
 ///////Admin All Routes////////////
 
 Route::get('admin/logout',[AdminController::class,'destroy'])->name('admin.logout');
+Route::get('admin/profile',[AdminProfileController::class,'AdminProfile'])->name('admin.profile');
+Route::get('admin/profile/edite',[AdminProfileController::class,'AdminProfileEdite'])->name('admin.profile.edite');
 
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'
