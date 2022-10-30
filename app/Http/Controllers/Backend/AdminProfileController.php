@@ -38,7 +38,22 @@ class AdminProfileController extends Controller
         }
         $data->save();
 
-        return redirect()->route('admin.profile');
+        $notification = array(
+            'message'=> 'Admin Profile Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('admin.profile')->with( $notification);
+
+    }//End Method
+
+    public function AdminChangePassword()
+    {
+        return view('admin.admin_change_password');
+    }//End Method
+
+    public function AdminUpdateChangePassword(Request $request)
+    {
 
     }//End Method
 }
