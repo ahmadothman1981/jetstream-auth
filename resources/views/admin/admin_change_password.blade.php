@@ -24,7 +24,7 @@
 								<div class="form-group">
 								<h5>Current Password <span class="text-danger">*</span></h5>
 								<div class="controls">
-				<input type="password" id="current_password" name="old password" class="form-control" required=""  >
+				<input type="password" id="current_password" name="oldpassword" class="form-control" required=""  >
 							</div>
 							</div>
 							
@@ -33,7 +33,7 @@
 								<div class="form-group">
 								<h5>New Password <span class="text-danger">*</span></h5>
 								<div class="controls">
-				<input type="password" id="password" name="old password" class="form-control" required=""  >
+				<input type="password" id="password" name="password" class="form-control" required=""  >
 							</div>
 							</div>
 							
