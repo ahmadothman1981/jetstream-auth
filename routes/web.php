@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Frontend\IndexController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +13,11 @@ use App\Http\Controllers\Backend\AdminProfileController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::middleware('admin:admin')->group(function(){
     Route::get('admin/login',[AdminController::class,'LoginForm']);
@@ -41,11 +42,22 @@ Route::get('admin/profile/edite',[AdminProfileController::class,'AdminProfileEdi
 Route::post('admin/profile/store',[AdminProfileController::class,'AdminProfileStore'])->name('admin.profile.store');
 Route::get('admin/change/password',[AdminProfileController::class,'AdminChangePassword'])->name('admin.change.password');
 Route::post('update/change/password',[AdminProfileController::class,'AdminUpdateChangePassword'])->name('update.change.password');
+////////////////////////////////////////////////////////////
+/////////User All Routes//////////
 
 
+
+
+
+
+
+
+///////////////////////////////////////////////////////////
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/',[IndexController::class,'Index']);
