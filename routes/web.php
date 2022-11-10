@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Models\User;
 
 /*
@@ -85,3 +86,14 @@ Route::prefix('brand')->group(function(){
 
 });
 
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////Admin Category All Routes//////////////////////////////
+Route::prefix('category')->group(function(){
+     Route::get('/view',[CategoryController::class,'CategoryView'])->name('all_category');
+     Route::post('/store',[CategoryController::class,'CategoryStore'])->name('category.store');
+     Route::get('/edit/{id}',[BrandController::class,'BrandEdit'])->name('brand.edit');
+     Route::post('/update',[BrandController::class,'BrandUpdate'])->name('brand.update');
+     Route::get('/delete/{id}',[BrandController::class,'BrandDelete'])->name('brand.delete');
+
+});
