@@ -104,4 +104,12 @@ Route::prefix('category')->group(function(){
      Route::post('/sub/update',[SubCategoryController::class,'SubCategoryUpdate'])->name('subcategory.update');
      Route::get('/sub/delete/{id}',[SubCategoryController::class,'SubCategoryDelete'])->name('subcategory.delete');
 
+
+
+     ///////////////////////////////////////////////////////////////
+     /////////////////Admin Sub-SubCategory All Routes/////////////
+      Route::get('/sub/sub/view',[SubCategoryController::class,'SubSubCategoryView'])->name('all_subsubcategory');
+       Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'GetSubCategory']);
+
+
 });
