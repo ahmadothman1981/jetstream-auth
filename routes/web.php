@@ -99,9 +99,9 @@ Route::prefix('category')->group(function(){
 
      /////////////////Admin SubCategory All Routes/////////////
       Route::get('/sub/view',[SubCategoryController::class,'SubCategoryView'])->name('all_subcategory');
-     Route::post('/store',[CategoryController::class,'CategoryStore'])->name('category.store');
-     Route::get('/edit/{id}',[CategoryController::class,'CategoryEdit'])->name('category.edit');
-     Route::post('/update',[CategoryController::class,'CategoryUpdate'])->name('category.update');
-     Route::get('/delete/{id}',[CategoryController::class,'CategoryDelete'])->name('category.delete');
+     Route::post('/sub/store',[SubCategoryController::class,'SubCategoryStore'])->name('subcategory.store');
+     Route::get('/sub/edit/{id}',[SubCategoryController::class,'SubCategoryEdit'])->name('subcategory.edit');
+     Route::post('/sub/update',[SubCategoryController::class,'SubCategoryUpdate'])->name('subcategory.update');
+     Route::get('/sub/delete/{id}',[SubCategoryController::class,'SubCategoryDelete'])->name('subcategory.delete');
 
 });

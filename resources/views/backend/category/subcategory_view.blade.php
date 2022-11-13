@@ -38,12 +38,12 @@
 						<tbody>
 							@foreach($subcategory as $item)
 							<tr>
-								<td>{{ $item->category_id  }}</td>
+								<td>{{ $item['category']['category_name_en']}}</td>
 								<td>{{ $item->subcategory_name_en  }}</td>
 								<td>{{ $item->subcategory_name_ar }}</td>
 								
-									<td><a href="{{ route('category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-									<a href="{{ route('category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+									<td><a href="{{ route('subcategory.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<a href="{{ route('subcategory.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
 								
 							</tr>
@@ -73,21 +73,22 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('category.store') }}" >
+ <form method="post" action="{{ route('subcategory.store') }}" >
 	 	@csrf
 		
 
 	<div class="form-group">
 				<h5>Category Select <span class="text-danger">*</span></h5>
 				<div class="controls">
-					<select name="select" id="select" required class="form-control">
-						<option value="">Select Your City</option>
-						<option value="1">India</option>
-						<option value="2">USA</option>
-						<option value="3">UK</option>
-						<option value="4">Canada</option>
-						<option value="5">Dubai</option>
+				<select name="category_id"   class="form-control">
+				<option value="" selected="" disabled="">Select Category</option>
+					@foreach($categories as $category)
+						<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>
+					@endforeach	
 					</select>
+					@error('category_id') 
+	 				<span class="text-danger">{{ $message }}</span>
+	 				@enderror 
 				</div>
 			</div>	   
 
