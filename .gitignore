@@ -16,3 +16,4 @@ yarn-error.log
 /.vscode
 /public/backend/images
 /public/frontend/assets/images
+/public/upload

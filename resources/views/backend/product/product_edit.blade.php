@@ -11,7 +11,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add Product</h4>
+			  <h4 class="box-title">Edit Product</h4>
 			  
 			</div>
 			<!-- /.box-header -->
@@ -30,7 +30,7 @@
 				<select name="brand_id"   class="form-control" required="">
 				<option value="" selected="" disabled="" >Select Category</option>
 					@foreach($brands as $brand)
-		<option value="{{ $brand->id }}">{{ $brand->brand_name_en }}</option>
+		<option value="{{ $brand->id }}" {{ $brand->id ==  $products->brand_id ? 'selected' : '' }}>{{ $brand->brand_name_en }}</option>
 					@endforeach	
 					</select>
 					@error('brand_id') 
@@ -47,7 +47,7 @@
 				<select name="category_id"   class="form-control" required="">
 				<option value="" selected="" disabled="" >Select Category</option>
 					@foreach($categories as $category)
-		<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>
+		<option value="{{ $category->id }}" {{ $category->id ==  $products->category_id ? 'selected' : '' }}>{{ $category->category_name_en }}</option>
 					@endforeach	
 					</select>
 					@error('category_id') 
@@ -62,7 +62,9 @@
 				<div class="controls">
 				<select name="subcategory_id"   class="form-control" required="">
 				<option value="" selected="" disabled="" >Select SubCategory</option>
-					
+					@foreach($subcategories as $subcategory)
+		<option value="{{ $subcategory->id }}" {{ $subcategory->id ==  $products->subcategory_id ? 'selected' : '' }}>{{ $subcategory->subcategory_name_en }}</option>
+					@endforeach	
 					</select>
 					@error('subcategory_id') 
 	 				<span class="text-danger">{{ $message }}</span>
@@ -82,8 +84,12 @@
 	<h5>SubSubCategory Select <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="subsubcategory_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select SubSubCategory</option>
-		 
+			 <option value="" selected="" disabled="">Select SubSubCategory</option>
+		
+		 @foreach($subsubcategories as $subsubcategory)
+		<option value="{{ $subsubcategory->id }}" {{ $subsubcategory->id ==  $products->subsubcategory_id ? 'selected' : '' }}>{{ $subsubcategory->subsubcategory_name_en }}</option>
+					@endforeach	
+
 		</select>
 		@error('subsubcategory_id') 
 	 <span class="text-danger">{{ $message }}</span>

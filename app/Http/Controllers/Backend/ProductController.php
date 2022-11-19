@@ -93,8 +93,27 @@ $notification = array(
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage-product')->with($notification);
 
+    }//End Method
+
+
+    public function ManageProduct()
+    {
+        $products = Product::latest()->get();
+
+        return view('backend.product.product_view',compact('products'));
+    }//End Method
+
+    public function EditProduct($id)
+    {
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $subcategories = SubCategory::latest()->get();
+        $subsubcategories = SubSubCategory::latest()->get();
+        $products = Product::findOrFail($id);
+
+        return view('backend.product.product_edit',compact('categories','brands','subcategories','subsubcategories','products'));
     }//End Method
 }
 
