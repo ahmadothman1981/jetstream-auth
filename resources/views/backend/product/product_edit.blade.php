@@ -380,6 +380,53 @@
 
 		</section>
 		<!-- /.content -->
+
+		<!-- ///////////////////multi image update area/////////////////////// -->
+		<section class="content">
+			<div class="row">
+				
+				<div class="col-md-12">
+				<div class="box bt-3 border-info">
+				  <div class="box-header">
+					<h4 class="box-title">Product Multiple Image  <strong>Update</strong></h4>
+				  </div>
+                     <form method="post" action="{{ route('update-product-image') }}" enctype="multipart/form-data">
+                     	@csrf
+                     	<div class="row row-sm">
+                     		@foreach($multiImages as $img)
+                     		<div class="col-md-3">
+                     			<div class="card" >
+  <img class="card-img-top" src="{{asset($img->photo_name) }}" style="width: 280px; height: 130px; ">
+  <div class="card-body">
+    <h5 class="card-title"><a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a></h5>
+    <p class="card-text">
+    	<div class="form-group">
+    		<label class="form-control-label">Change Image<span class="tx-danger">*</span></label>
+    		<input type="file" class="form-control" name="multi_image[{{ $img->id }}]">
+    		
+    	</div>
+    </p>
+  
+  </div>
+</div>
+                     		</div><!--// end -col-md-3 -->
+                     		@endforeach
+                     	</div>
+                     	<div class="text-xs-right">
+							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+						</div>
+						<br><br>
+                     </form>
+				 
+				</div>
+			  </div>
+
+			</div>//end row
+			
+
+		</section>
+<!-- /////////////////// END section multi image update area/////////////////////// -->
+
 	  </div>
   
 

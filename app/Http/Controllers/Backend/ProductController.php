@@ -112,8 +112,8 @@ $notification = array(
         $subcategories = SubCategory::latest()->get();
         $subsubcategories = SubSubCategory::latest()->get();
         $products = Product::findOrFail($id);
-
-        return view('backend.product.product_edit',compact('categories','brands','subcategories','subsubcategories','products'));
+        $multiImages = MultiImg::where('product_id', $id)->get();
+        return view('backend.product.product_edit',compact('categories','brands','subcategories','subsubcategories','products','multiImages'));
     }//End Method
 
     public function ProductDataUpdate(Request $request)
@@ -159,6 +159,35 @@ $notification = array(
         return redirect()->route('manage-product')->with($notification);
 
 
+
+    }//End Method
+
+/////////Multiple image update//////////
+    public function MultiImageUpdate(Request $request)
+    {
+        $imgs = $request->multi_image;
+
+        foreach($imgs as $id => $img)
+        {
+        $imgDelete = MultiImg::findOrFail($id);
+        unlink($imgDelete->photo_name);
+        $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+        Image::make($img)->resize(917,1000)->save('upload/products/multi-images/'.$make_name);
+      $upload_path = 'upload/products/multi-images/'.$make_name;
+      MultiImg::where('id',$id)->update([
+        'photo_name'=> $upload_path,
+        'updated_at'=>Carbon::now(),
+
+
+      ]);
+     }//end foreach
+
+      $notification = array(
+            'message' => 'Product Image Updated  Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
 
     }//End Method
 }
