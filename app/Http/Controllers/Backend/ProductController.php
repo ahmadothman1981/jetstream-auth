@@ -220,6 +220,53 @@ $notification = array(
 
 
     }//End Method
+
+
+    public function MultiImageDelete($id)
+    {
+       $oldImg = MultiImg::findOrFail($id);
+       
+       unlink($oldImg->photo_name);
+       MultiImg::findOrFail($id)->delete();
+
+       $notification = array(
+            'message' => 'Product  Image Deleted  Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    }//End Method
+
+
+    public function ProductInactive($id)
+    {
+        Product::findOrFail($id)->update([
+            'status'=> 0,
+        ]);
+     $notification = array(
+            'message' => 'Product Inactive',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+    }//End Method
+
+
+     public function ProductActive($id)
+    {
+
+      Product::findOrFail($id)->update([
+            'status'=> 1,
+        ]);
+     $notification = array(
+            'message' => 'Product activated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+        
+    }//End Method
 }
 
 

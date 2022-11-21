@@ -398,7 +398,7 @@
                      			<div class="card" >
   <img class="card-img-top" src="{{asset($img->photo_name) }}" style="width: 280px; height: 130px; ">
   <div class="card-body">
-    <h5 class="card-title"><a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a></h5>
+    <h5 class="card-title"><a href="{{ route('product.multiimag.delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a></h5>
     <p class="card-text">
     	<div class="form-group">
     		<label class="form-control-label">Change Image<span class="tx-danger">*</span></label>
