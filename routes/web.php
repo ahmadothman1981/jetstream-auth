@@ -8,6 +8,8 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
+
 use App\Models\User;
 
 /*
@@ -134,7 +136,22 @@ Route::prefix('product')->group(function(){
      Route::get('/multiimag/delete/{id}',[ProductController::class,'MultiImageDelete'])->name('product.multiimag.delete');
      Route::get('/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
      Route::get('/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
+     Route::get('/delete/{id}',[ProductController::class,'ProductDelete'])->name('product.delete');
      
 
 
 });
+/////////////////////////////////////////////////////////////////
+/////////////////////////// Admin Manage Slider  Routes//////////////////
+
+
+
+Route::prefix('slider')->group(function(){
+     Route::get('/view',[SliderController::class,'SliderView'])->name('manage-slider');
+     Route::post('/store',[SliderController::class,'SliderStore'])->name('slider.store');
+     Route::get('/edit/{id}',[BrandController::class,'BrandEdit'])->name('brand.edit');
+     Route::post('/update',[BrandController::class,'BrandUpdate'])->name('brand.update');
+     Route::get('/delete/{id}',[BrandController::class,'BrandDelete'])->name('brand.delete');
+
+});
+

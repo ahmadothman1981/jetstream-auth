@@ -54,10 +54,10 @@
 						@else
 						@php
 						$amount = $item->selling_price - $item->discount_price;
-						$discount = ($amount / $item->selling_price) * 100;
+						$discount = ($amount/$item->selling_price) * 100;
 						@endphp
 
-						<span class="badge badge-pill badge-danger">{{ round($discount)}}%</span>
+						<span class="badge badge-pill badge-danger">{{round($discount)}}%</span>
 
 						@endif
 
@@ -75,12 +75,13 @@
 								
 	<td width="40%"><a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i></a>
 		<a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-	<a href="{{ route('category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+	<a href="{{ route('product.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 
 @if($item->status == 1)
 <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-danger" title="InActive Now"><i class="fa fa-arrow-down"></i></a>
 @else
-<a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i></a>@endif
+<a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i></a>
+@endif
 								</td>
 								
 							</tr>

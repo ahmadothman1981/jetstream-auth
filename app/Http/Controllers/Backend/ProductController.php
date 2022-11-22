@@ -267,6 +267,28 @@ $notification = array(
         return redirect()->back()->with($notification);
         
     }//End Method
+
+    public function ProductDelete($id)
+    {
+        $product = Product::findOrFail($id);
+        unlink($product->product_thambnail);
+        Product::findOrFail($id)->delete();
+
+        $images = MultiImg::where('product_id',$id)->get();
+
+        foreach($images as $image)
+        {
+            unlink($image->photo_name);
+            MultiImg::where('product_id',$id)->delete();
+        }
+
+        $notification = array(
+            'message' => 'Product Deleted Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    }//End Method
 }
 
 
