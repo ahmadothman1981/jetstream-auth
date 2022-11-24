@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Frontend\LanguageController;
 
 use App\Models\User;
 
@@ -171,3 +172,15 @@ Route::prefix('slider')->group(function(){
 
 });
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////Front End All Routes---------------------------------
+
+
+//////////////////////////////////Multi Language All Routes///////////////////////////
+
+Route::get('/language/english',[LanguageController::class,'English'])->name('english.language');
+
+Route::get('/language/arabic',[LanguageController::class,'Arabic'])->name('arabic.language');
