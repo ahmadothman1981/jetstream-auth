@@ -184,3 +184,7 @@ Route::prefix('slider')->group(function(){
 Route::get('/language/english',[LanguageController::class,'English'])->name('english.language');
 
 Route::get('/language/arabic',[LanguageController::class,'Arabic'])->name('arabic.language');
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////Product Details Page URL 
+
+Route::get('product/details/{id}/{slug}',[IndexController::class,'ProdcutDetail']);

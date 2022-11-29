@@ -89,4 +89,12 @@ class IndexController extends Controller
     }//End Method
 
 
+    public function ProdcutDetail($id,$slug)
+    {
+      $product = Product::findOrFail($id);  
+
+      return view('frontend.product.product_details',compact('product'));
+    }//End Method
+
+
 }
