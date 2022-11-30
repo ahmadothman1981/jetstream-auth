@@ -19,7 +19,11 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name_en','ASC')->get();
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where('status',1)->orderBy('id','DESC')->get();
-        return view('frontend.index',compact('categories','sliders','products'));
+        $feature = Product::where('featured',1)->orderBy('id','DESC')->limit(4)->get();
+        $hot_deals = Product::where('hot_deals',1)->orderBy('id','DESC')->limit(4)->get();
+        $special_offer = Product::where('spacial_offer',1)->orderBy('id','DESC')->limit(6)->get();
+        
+        return view('frontend.index',compact('categories','sliders','products','feature','hot_deals','special_offer'));
     }//end method
 
     public function UserLogout()
