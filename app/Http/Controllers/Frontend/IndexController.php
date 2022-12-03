@@ -21,7 +21,7 @@ class IndexController extends Controller
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where('status',1)->orderBy('id','DESC')->get();
         $feature = Product::where('featured',1)->orderBy('id','DESC')->limit(4)->get();
-        $hot_deals = Product::where('hot_deals',1)->orderBy('id','DESC')->limit(4)->get();
+        $hot_deals = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(4)->get();
         $special_offer = Product::where('spacial_offer',1)->orderBy('id','DESC')->limit(6)->get();
         $special_deals = Product::where('spacial_deals',1)->orderBy('id','DESC')->limit(5)->get();
         $skip_category_0 = Category::skip(0)->first();
@@ -112,6 +112,14 @@ class IndexController extends Controller
       $multiImage = MultiImg::where('product_id',$id)->get(); 
 
       return view('frontend.product.product_details',compact('product','multiImage'));
+    }//End Method
+
+    public function TagWiseProduct($tag)
+    {
+        $product = Product::where('status',1)->where('product_tags_en',$tag)->where('product_tags_ar',$tag)->orderBy('id','DESC')->get();
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+
+        return view('frontend.tags.tags_view',compact('product','categories'));
     }//End Method
 
 

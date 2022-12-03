@@ -188,3 +188,6 @@ Route::get('/language/arabic',[LanguageController::class,'Arabic'])->name('arabi
 /////////////////////////////Product Details Page URL 
 
 Route::get('product/details/{id}/{slug}',[IndexController::class,'ProdcutDetail']);
+/////////////////////////////Product Details Page TAG
+
+Route::get('product/tag/{tag}',[IndexController::class,'TagWiseProduct']);
