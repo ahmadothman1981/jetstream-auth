@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-Tag Wise Product
+Sub-Category Product
 @endsection
 
 
@@ -54,7 +54,7 @@ Tag Wise Product
 
 					@foreach($subcategories as $subcategory)
                         <ul>
-                          <li><a href="#">
+                          <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">
 @if(session()->get('Language') == 'Arabic' )  {{ $subcategory->subcategory_name_ar }}  
 @else {{ $subcategory->subcategory_name_en }} 
 @endif
