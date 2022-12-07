@@ -110,9 +110,26 @@ class IndexController extends Controller
     public function ProdcutDetail($id,$slug)
     {
       $product = Product::findOrFail($id);
+
+      $color_en = $product->product_color_en;
+      $product_color_en = explode(',',$color_en);
+
+       $color_ar = $product->product_color_ar;
+      $product_color_ar = explode(',',$color_ar);
+
+       $size_en = $product->product_size_en;
+      $product_size_en = explode(',',$size_en);
+
+       $size_ar = $product->product_size_ar;
+      $product_size_ar = explode(',',$size_ar);
+
+
       $multiImage = MultiImg::where('product_id',$id)->get(); 
 
-      return view('frontend.product.product_details',compact('product','multiImage'));
+      $cat_id = $product->category_id;
+      $relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->get();
+
+      return view('frontend.product.product_details',compact('product','multiImage','product_color_en','product_color_ar','product_size_en','product_size_ar','relatedProduct'));
     }//End Method
 
     public function TagWiseProduct($tag)
