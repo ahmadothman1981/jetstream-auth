@@ -103,7 +103,7 @@
        <div class="row">
          <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="..." style="height: 200px; width: 200px;">
+  <img id="pimage" src="" class="card-img-top" alt="..." style="height: 200px; width: 180px;">
   
             </div>
          </div><!-- END  col-md -->
@@ -121,22 +121,16 @@
          <div class="col-md-4">
                  <div class="form-group">
     <label for="exampleFormControlSelect1">Choose Color</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <select class="form-control" id="exampleFormControlSelect1" name="color">
+      
+      
     </select>
                   </div><!-- END  Form Group -->
-                  <div class="form-group">
+                  <div class="form-group" id="sizeArea">
     <label for="exampleFormControlSelect1">Choose Size</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <select class="form-control" id="exampleFormControlSelect1" name="size">
+     
+      
     </select>
                   </div><!-- END  Form Group -->
 
@@ -175,8 +169,30 @@
             $('#price').text(data.product.selling_price);
             $('#pcode').text(data.product.product_code);
             $('#pstock').text(data.product.product_qty);
-            $('#pcategory').text(data.product.category_id);
-             $('#pbrand').text(data.product.brand_id);
+            $('#pcategory').text(data.product.category.category_name_en);
+            $('#pbrand').text(data.product.brand.brand_name_en);
+            $('#pimage').attr('src','/'+data.product.product_thambnail);
+            //color
+
+            $('select[name="color"]').empty();
+            $.each(data.color,function(key,value){
+               $('select[name="color"]').append('<option value="'+value+'">'+value+' </option>')
+            })
+
+            //size 
+            $('select[name="size"]').empty();
+            $.each(data.size,function(key,value){
+               $('select[name="size"]').append('<option value="'+value+'">'+value+' </option>')
+
+               if(data.size == "")
+               {
+                  $('#sizeArea').hide();
+               }else{
+                  $('#sizeArea').show();
+               }
+            })
+
+
          },
       })
    }
