@@ -95,7 +95,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><strong><span id="pname"></span></strong></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModel">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -103,7 +103,7 @@
        <div class="row">
          <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-  <img id="pimage" src="" class="card-img-top" alt="..." style="height: 200px; width: 180px;">
+  <img id="pimage" src="" class="card-img-top" alt="..." style="height: 200px; width: 200px;">
   
             </div>
          </div><!-- END  col-md -->
@@ -122,25 +122,27 @@
 
          <div class="col-md-4">
                  <div class="form-group">
-    <label for="exampleFormControlSelect1">Choose Color</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="color">
+    <label for="color">Choose Color</label>
+    <select class="form-control" id="color" name="color">
       
       
     </select>
                   </div><!-- END  Form Group -->
                   <div class="form-group" id="sizeArea">
-    <label for="exampleFormControlSelect1">Choose Size</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="size">
+    <label for="size">Choose Size</label>
+    <select class="form-control" id="size" name="size">
      
       
     </select>
                   </div><!-- END  Form Group -->
 
        <div class="form-group">
-    <label for="exampleFormControlInput1">Quantity</label>
-    <input type="number" class="form-control" id="exampleFormControlInput1" value="1" min="1">
+    <label for="qty">Quantity</label>
+    <input type="number" class="form-control" id="qty" value="1" min="1">
       </div><!-- END  Form Group -->
-  <button type="submit" class="btn btn-primary mb-2">Add To Cart</button>
+
+      <input type="hidden" id="product_id">
+  <button type="submit" class="btn btn-primary mb-2" onclick="addToCart()" >Add To Cart</button>
          </div><!-- END  col-md -->
 
        </div><!-- END  row -->
@@ -174,7 +176,8 @@
             $('#pcategory').text(data.product.category.category_name_en);
             $('#pbrand').text(data.product.brand.brand_name_en);
             $('#pimage').attr('src','/'+data.product.product_thambnail);
-
+            $('#product_id').val(id);
+            $('#qty').val(1);
             //Product Price
             if(data.product.discount_price == null)
             {
@@ -224,7 +227,38 @@
 
          },
       })
+
+   }//END   Product VIEW WITH Modal 
+
+
+   //START ADD TO CART
+   function addToCart()
+   {
+      var product_name = $('#pname').text();
+      var id = $('#product_id').val();
+      var color =$('#color option:selected').text();
+      var size =$('#size option:selected').text();
+      var quantity = $('#qty').val(); 
+
+      $.ajax({
+         type:"POST",
+         dataType:'json',
+         data:{
+            color:color,
+            size:size,
+            quantity:quantity,
+            product_name:product_name
+         },
+         url:"cart/data/store/"+id,
+         success:function(data){
+            $('#closeModel').click();
+            console.log(data);
+         },
+      })
    }
+
+
+   //END ADD TO CART
 </script>
 </body>
 </html>
