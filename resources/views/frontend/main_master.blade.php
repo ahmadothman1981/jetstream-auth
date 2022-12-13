@@ -234,6 +234,7 @@
 
 
    //START ADD TO CART
+
    function addToCart()
    {
       var product_name = $('#pname').text();
@@ -251,7 +252,7 @@
             quantity:quantity,
             product_name:product_name
          },
-         url:"cart/data/store/"+id,
+         url:"{{url('cart/data/store')}}"+'/'+id ,
          success:function(data){
             $('#closeModel').click();
             console.log(data);
