@@ -375,7 +375,7 @@ function AddToWishList(product_id)
    $.ajax({
       type:'POST',
       dataType:'json',
-      url:"/add-to-wishlist/"+product_id,
+      url:"/user/add-to-wishlist/"+product_id,
       success:function(data){
          //start message
             const Toast = Swal.mixin({
@@ -423,7 +423,7 @@ function AddToWishList(product_id)
 
             $.each(response,function(key,value){
                rows += `<tr>
-               <td class="col-md-2"><img src="${value.product.product_thambnail}" alt="imga"></td>
+               <td class="col-md-2"><img src="${'/'+value.product.product_thambnail}" alt="imga"></td>
                <td class="col-md-7">
                   <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
                   
