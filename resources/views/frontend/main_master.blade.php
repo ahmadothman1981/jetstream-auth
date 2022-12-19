@@ -495,7 +495,104 @@ function AddToWishList(product_id)
   /////////Wish List remove end//////////
 </script>
 
+<script type="text/javascript">
+   ///////// START Load MY-CART DATA //////////
+   function cart()
+   {
+      $.ajax({
+         type:'GET',
+         url:'/user/get-cart-product',
+         dataType:'json',
+         success:function(response){
+           // console.log(response);
 
+            var rows = "";
+
+            $.each(response.carts,function(key,value){
+               rows += `<tr>
+               <td class="col-md-2"><img src="/${value.options.image}" alt="imga" style="width:60px; height="60px;></td>
+               <td class="col-md-2">
+                  <div class="product-name"><a href="#">${value.name}</a></div>
+                  
+                  <div class="price">
+                 ${value.price}
+
+
+
+
+                  </div>
+               </td>
+               <td class="col-md-2">
+                 <strong>${value.options.color}</strong>
+               </td>
+               <td class="col-md-2">
+               ${value.options.size == null ? `<span>----</span>`
+               :`<strong>${value.options.size}</strong>`}
+                 
+               </td>
+                <td class="col-md-3">
+                 <button type="submit" class="btn btn-success btn-sm" >+</button>
+            <input type="text" value="${value.qty}" min="1" max="10" disabled="" style="width:25px;">
+            <button type="submit" class="btn btn-danger btn-sm" >-</button>
+               </td>
+               <td class="col-md-2">
+                 <strong>${value.subtotal}</strong>
+               </td>
+               
+               <td class="col-md-1 close-btn">
+                  <button type="submit" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
+               </td>
+            </tr> `
+            });
+
+            $('#cartPage').html(rows);
+         }
+      })
+   }
+
+    cart();
+     ///////// END Load MY-CART DATA //////////
+
+    /////////MY-CART remove start//////////
+
+    function wishlistRemove(id)
+    {
+      $.ajax({
+         type:'GET',
+         url:'/user/wishlist-remove/'+id,
+         dataType:'json',
+         success:function(data){
+            wishlist();
+
+            //start message
+            const Toast = Swal.mixin({
+                                    toast:true,
+                                   position: 'top-end',
+                                   
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                 })
+            if($.isEmptyObject(data.error))
+            {
+               Toast.fire({
+                  type: 'success',
+                  icon: 'success',
+                  title:data.success
+               })
+            }else{
+               Toast.fire({
+                  type: 'error',
+                  icon: 'error',
+                  title:data.error
+               })
+            }
+            //end message
+         }
+
+      })
+    }
+  /////////MY-CART remove end//////////
+</script>
 
 </body>
 </html>
