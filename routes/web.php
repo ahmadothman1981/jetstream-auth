@@ -235,6 +235,7 @@ Route::get('/wishlist-remove/{id}',[WishlistController::class,'RemoveWishlistPro
 Route::get('/mycart',[CartPageController::class,'MyCart'])->name('mycart');
 
 Route::get('/get-cart-product',[CartPageController::class,'GetCartProduct']);
+Route::get('/cart-remove/{rowId}',[CartPageController::class,'RemoveCartProduct']);
 
 });
 
