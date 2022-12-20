@@ -237,6 +237,9 @@ Route::get('/mycart',[CartPageController::class,'MyCart'])->name('mycart');
 Route::get('/get-cart-product',[CartPageController::class,'GetCartProduct']);
 Route::get('/cart-remove/{rowId}',[CartPageController::class,'RemoveCartProduct']);
 
+Route::get('/cart-increment/{rowId}',[CartPageController::class,'CartIncrement']);
+Route::get('/cart-decrement/{rowId}',[CartPageController::class,'CartDecrement']);
+
 });
 
 
