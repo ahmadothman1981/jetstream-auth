@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
+use App\Http\Controllers\Backend\CouponController;
 
 
 use App\Models\User;
@@ -239,6 +240,20 @@ Route::get('/cart-remove/{rowId}',[CartPageController::class,'RemoveCartProduct'
 
 Route::get('/cart-increment/{rowId}',[CartPageController::class,'CartIncrement']);
 Route::get('/cart-decrement/{rowId}',[CartPageController::class,'CartDecrement']);
+
+});
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// Admin Coupons  Routes//////////////////
+
+
+
+Route::prefix('coupons')->group(function(){
+     Route::get('/view',[CouponController::class,'CouponView'])->name('manage-coupon');
+     Route::post('/store',[CouponController::class,'CouponStore'])->name('coupon.store');
+     
 
 });
 
