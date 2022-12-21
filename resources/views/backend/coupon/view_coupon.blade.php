@@ -52,8 +52,8 @@
 									<span class="badge badge-pill badge-danger">Invalid</span>
 									@endif
 								</td>
-								<td width="35%"><a href="{{ route('category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-									<a href="{{ route('category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+								<td width="35%"><a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<a href="{{ route('coupon.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
 								
 							</tr>
