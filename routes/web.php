@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 
 
 use App\Models\User;
@@ -256,6 +257,23 @@ Route::prefix('coupons')->group(function(){
      Route::get('/edit/{id}',[CouponController::class,'CouponEdit'])->name('coupon.edit');
      Route::post('/update/{id}',[CouponController::class,'CouponUpdate'])->name('coupon.update');
      Route::get('/delete/{id}',[CouponController::class,'CouponDelete'])->name('coupon.delete');
+     
+
+});
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// Admin Shipping   Routes//////////////////
+
+
+
+Route::prefix('shipping')->group(function(){
+     Route::get('/division/view',[ShippingAreaController::class,'DivisionView'])->name('manage-division');
+     Route::post('/division/store',[ShippingAreaController::class,'DivisionStore'])->name('division.store');
+     Route::get('/division/edit/{id}',[ShippingAreaController::class,'DivisionEdit'])->name('division.edit');
+     Route::post('/division/update/{id}',[ShippingAreaController::class,'DivisionUpdate'])->name('division.update');
+     Route::get('/division/delete/{id}',[ShippingAreaController::class,'DivisionDelete'])->name('division.delete');
      
 
 });
