@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ShipDivision;
 use App\Models\ShipDistrict;
+use App\Models\ShipState;
 use Carbon\Carbon;
 
 class ShippingAreaController extends Controller
@@ -156,5 +157,57 @@ class ShippingAreaController extends Controller
         );
 
         return redirect()->route('manage-district')->with($notification);
+   }//End Method
+
+   ///////end shipping district methods
+
+   /////start shipping state methods
+
+
+   public function StateView()
+   {
+    $divisions = ShipDivision::orderBy('division_name','ASC')->get();
+    $district = ShipDistrict::orderBy('district_name','ASC')->get();
+    $state = ShipState::with('division','district')->orderBy('id','DESC')->get();
+
+    return view('backend.ship.state.view_state',compact('district','divisions','state'));
+   }//End Method
+
+   public function StateStore(Request $request)
+   {
+    $request->validate([
+            'district_id' => 'required',
+            'division_id' => 'required',
+            'state_name' => 'required',
+        
+        ]);
+
+         
+
+    ShipState::insert([
+        'division_id' => $request->division_id,
+        'district_id' => $request->district_id,
+        'state_name' => $request->state_name,
+        'created_at'=>Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'State Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+
+   }//End Method 
+
+   public function StateEdit($id)
+   {
+    $divisions = ShipDivision::orderBy('division_name','ASC')->get();
+    $district = ShipDistrict::orderBy('district_name','ASC')->get();
+    $state = ShipState::findOrFail($id);
+
+    return view('backend.ship.state.edit_state',compact('district','divisions','state'));
    }//End Method
 }
