@@ -636,5 +636,28 @@ function AddToWishList(product_id)
     ////////Cart Decrement End/////////
 </script>
 
+
+////////COUPON APPLY START///////////
+
+<script type="text/javascript">
+function applycoupon()
+{
+   var coupon_name = $('#coupon_name').val();
+   $.ajax({
+      type:'POST',
+      datatype:'json',
+      data:{coupon_name:coupon_name},
+      url:"{{ url('/coupon-apply') }}",
+      success:function(data){
+
+      },
+   })
+}   
+
+</script>
+
+////////COUPON APPLY END///////////
+
+
 </body>
 </html>

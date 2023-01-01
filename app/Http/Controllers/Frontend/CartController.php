@@ -103,4 +103,9 @@ class CartController extends Controller
              return response()->json(['error'=>'LogIn To Add WishList']);
         }
     }//End Method
+
+    public function CouponApply(Request $request)
+    {
+        
+    }//End Method
 }
