@@ -684,11 +684,47 @@ function couponCalculation()
       url:"{{ url('/coupon-calculation') }}",
       datatype:'json',
       success:function(data){
-         
-      }
-   })
-} 
+         if(data.total){
+            $('#couponCalField').html(`
+               <tr>
+            <th>
+               <div class="cart-sub-total">
+                  Subtotal<span class="inner-left-md">$${data.total}</span>
+               </div>
+               <div class="cart-grand-total">
+                  Grand Total<span class="inner-left-md">$${data.total}</span>
+               </div>
+            </th>
+         </tr>
+               `)
+         }else{
+               $('#couponCalField').html(`
+               <tr>
+            <th>
+               <div class="cart-sub-total">
+                  Subtotal<span class="inner-left-md">$${data.subtotal}</span>
+               </div>
 
+               <div class="cart-sub-total">
+                  Coupon Name<span class="inner-left-md">$${data.coupon_name}</span>
+                  <button type="submit"><i class="fa fa-times"></i></button>
+               </div>
+
+                <div class="cart-sub-total">
+                  Discount Amount<span class="inner-left-md">$${data.discount_amount}</span>
+               </div>
+
+               <div class="cart-grand-total">
+                  Grand Total<span class="inner-left-md">$${data.total_amount}</span>
+               </div>
+            </th>
+         </tr>
+               `)
+         }
+      }
+   });
+} 
+couponCalculation();
 </script>
 
 ////////COUPON APPLY END///////////
