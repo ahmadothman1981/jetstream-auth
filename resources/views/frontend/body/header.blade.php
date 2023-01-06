@@ -10,7 +10,7 @@
               @if(session()->get('Language') == 'Arabic' ) حسابى  @else  My Account @endif</a></li>
             <li><a href="{{ route('whishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
             <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
+            <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
           <li>
     @auth
    <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>User Profile</a>

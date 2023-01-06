@@ -87,4 +87,7 @@ class CartPageController extends Controller
 
          return response()->json(['Decrement']);
     }//End Method
+
+
+    
 }

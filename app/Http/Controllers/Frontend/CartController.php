@@ -9,6 +9,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use App\Models\Wishlist;
 use App\Models\Coupon;
+use App\Models\ShipDivision;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
@@ -160,5 +161,38 @@ class CartController extends Controller
       Session::forget('coupon');
       
       return response()->json(['success'=>'Coupon Remove Successfully']);  
+    }//End Method
+
+    public function CheckoutCreate()
+    {
+       if(Auth::check())
+       {
+        if(Cart::total() > 0)
+        {
+            $carts = Cart::content();
+            $cartQty = Cart::count();
+            $cartTotal = Cart::total();
+            $divisions = ShipDivision::orderBy('division_name','ASC')->get();
+
+            return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal','divisions'));
+        }else{
+             $notification = array(
+            'message' => 'Shopping At list One Product',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->to('/')->with($notification);
+
+
+        }
+       }else{
+         $notification = array(
+            'message'=> 'You Need to LogIn First',
+            'alert-type' => 'error',
+        );
+
+         return redirect()->route('login')->with( $notification);
+       }
+       
     }//End Method
 }
