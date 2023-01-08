@@ -16,6 +16,7 @@ use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\stripeController;
 
 
 use App\Models\User;
@@ -234,6 +235,12 @@ Route::get('/get-wishlist-product',[WishlistController::class,'GetWishlistProduc
 /////////////////////////////WISH-LIST Page remove product//////////////////
 Route::get('/wishlist-remove/{id}',[WishlistController::class,'RemoveWishlistProduct']);
 
+
+
+///////////////STRIPE ORDER PAYMENT//////////////////////////////
+Route::post('/stripe/order',[stripeController::class,'StripeOrder'])->name('stripe.order');
+
+
 /////////////////////////////VIEW CART Page//////////////////
 Route::get('/mycart',[CartPageController::class,'MyCart'])->name('mycart');
 
@@ -313,3 +320,4 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
