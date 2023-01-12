@@ -17,6 +17,8 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\stripeController;
+use App\Http\Controllers\User\AllUserController;
+
 
 
 use App\Models\User;
@@ -249,6 +251,16 @@ Route::get('/cart-remove/{rowId}',[CartPageController::class,'RemoveCartProduct'
 
 Route::get('/cart-increment/{rowId}',[CartPageController::class,'CartIncrement']);
 Route::get('/cart-decrement/{rowId}',[CartPageController::class,'CartDecrement']);
+
+
+//////////////////////////****** MY-ORDERS*********///////////////////////////////
+
+Route::get('/my/orders',[AllUserController::class,'MyOrders'])->name('my.orders');
+Route::get('/order_details/{order_id}',[AllUserController::class,'OrderDetails']);
+
+
+
+
 
 });
 

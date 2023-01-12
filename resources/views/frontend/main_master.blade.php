@@ -655,7 +655,10 @@ function applycoupon()
       url:"{{ url('/coupon-apply') }}",
       success:function(data){
          couponCalculation();
-         $('#couponField').hide();
+         if(data.validity == true){
+            $('#couponField').hide();
+         }
+         
           //start message
             const Toast = Swal.mixin({
                                     toast:true,
