@@ -26,10 +26,10 @@ return new class extends Migration
             $table->integer('post_code')->nullable();
             $table->string('payment_type');
             $table->string('payment_method')->nullable();
-            $table->string('trsnsition_id');
+            $table->string('trsnsition_id')->nullable();
             $table->string('currency');
             $table->float('amount',8,2);
-            $table->string('order_number');
+            $table->string('order_number')->nullable();
             $table->string('invoice_number');
             $table->string('order_date');
             $table->string('order_month');

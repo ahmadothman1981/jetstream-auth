@@ -18,6 +18,8 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\stripeController;
 use App\Http\Controllers\User\AllUserController;
+use App\Http\Controllers\User\CashController;
+
 
 
 
@@ -239,8 +241,10 @@ Route::get('/wishlist-remove/{id}',[WishlistController::class,'RemoveWishlistPro
 
 
 
-///////////////STRIPE ORDER PAYMENT//////////////////////////////
+///////////////STRIPE & CASH ORDER PAYMENT//////////////////////////////
 Route::post('/stripe/order',[stripeController::class,'StripeOrder'])->name('stripe.order');
+
+Route::post('/cash/order',[CashController::class,'CashOrder'])->name('cash.order');
 
 
 /////////////////////////////VIEW CART Page//////////////////
