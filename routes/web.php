@@ -15,6 +15,7 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\stripeController;
 use App\Http\Controllers\User\AllUserController;
@@ -340,3 +341,11 @@ Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGe
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
 
+////////////////***********Admin Orders All Routes***************///////////////////
+
+Route::prefix('orders')->group(function(){
+     Route::get('/pending/orders',[OrderController::class,'PendingOrders'])->name('pending-orders');
+     
+     
+
+});

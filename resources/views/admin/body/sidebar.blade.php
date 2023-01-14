@@ -125,21 +125,21 @@ $route = Route::current()->getName();
 
           <li class="header nav-small-cap">User Interface</li>
 
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="grid"></i>
-            <span>Components</span>
-            <span class="pull-right-container">
+       <li class="treeview {{ ($prefix == '/orders')? 'active' : '' }}">
+              <a href="#">
+                  <i data-feather="file"></i>
+                  <span>Orders</span>
+                  <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-            <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
+              </a>
+              <ul class="treeview-menu">
 
-          </ul>
-        </li>
+                  <li class="{{ ($route == 'pending-orders')? 'active' : '' }}"><a href="{{ route('pending-orders') }}"><i class="ti-more"></i>Pending Orders</a></li>
+                  
+
+              </ul>
+          </li>
 
 		<li class="treeview">
           <a href="#">
