@@ -222,7 +222,7 @@ Route::get('/product/mini/cart/',[CartController::class,'AddMiniCart']);
 
 Route::get('/minicart/product-remove/{rowId}',[CartController::class,'removeMiniCart']);
 
-
+////////////*********************user prefix***************////////////////////
 Route::group(['prefix'=>'user','middleware' => ['othman','auth'],'namespace'=>'User'],function(){
 
 ///////////////////////////// Add To WishList //////////////////
@@ -261,6 +261,9 @@ Route::get('/cart-decrement/{rowId}',[CartPageController::class,'CartDecrement']
 
 Route::get('/my/orders',[AllUserController::class,'MyOrders'])->name('my.orders');
 Route::get('/order_details/{order_id}',[AllUserController::class,'OrderDetails']);
+
+Route::get('/invoice_downlaod/{order_id}',[AllUserController::class,'InvoiceDownload']);
+
 
 
 
