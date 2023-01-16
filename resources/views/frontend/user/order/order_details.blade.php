@@ -200,15 +200,32 @@
 
             </div><!--end order items row-->
 
-            @if($order->status !== "deliverd")
+            @if($order->status!=="delivered")
 
             @else
+
+            @php
+            $order = App\Models\Order::where('id',$order->id)->where('return_reason','==', NULL)->first();
+            @endphp
+
+            @if($order)
+            <form action="{{ route('return.order',$order->id) }}" method="post">
+                @csrf
             <div class="form-group">
                 <label for="label">Order Return Reason:</label>
                 <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Return Reason</textarea>
             </div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+            </form>
+            @else
+
+            <span class="badge badge-pill badge-warning" style="background: red;">Your Return Request Have Been Sent For this Order</span>
+            
             @endif
 
+
+            @endif
+             <br><br>
             
              
         </div><!--end row-->

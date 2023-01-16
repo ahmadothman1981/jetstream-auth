@@ -265,7 +265,9 @@ Route::get('/order_details/{order_id}',[AllUserController::class,'OrderDetails']
 
 Route::get('/invoice_downlaod/{order_id}',[AllUserController::class,'InvoiceDownload']);
 
+Route::post('/return/order/{order_id}',[AllUserController::class,'ReturnOrder'])->name('return.order');
 
+Route::get('/return/orders/list',[AllUserController::class,'ReturnOrderList'])->name('return.orders.list');
 
 
 
@@ -361,7 +363,21 @@ Route::prefix('orders')->group(function(){
      Route::get('/cancel/orders',[OrderController::class,'CancelOrders'])->name('cancel-orders');
      //update status/////*******************
      Route::get('/pending/confirm/{order_id}',[OrderController::class,'PendingToConfirm'])->name('pending-confirm');
+
+     Route::get('/confirm/processing/{order_id}',[OrderController::class,'ConfirmToProcessing'])->name('confirm.processing');
+
+     Route::get('/processing/picked/{order_id}',[OrderController::class,'ProcessingToPicked'])->name('processing.picked');
+
+     Route::get('/picked/shipped/{order_id}',[OrderController::class,'PickedToShipped'])->name('picked.shipped');
+
+     Route::get('/shipped/delivered/{order_id}',[OrderController::class,'ShippedToDelivered'])->name('shipped.delivered');
+
+     Route::get('/delivered/cancel/{order_id}',[OrderController::class,'DeliveredToCancel'])->name('delivered.cancel');
      
+
+     Route::get('/invoice/download/{order_id}',[OrderController::class,'AdminInvoiceDownload'])->name('invoice.download');
+     
+
      
 
 });
