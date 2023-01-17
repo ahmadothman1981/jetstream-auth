@@ -20,6 +20,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\stripeController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\Backend\ReportController;
 
 
 
@@ -222,8 +223,9 @@ Route::get('/product/mini/cart/',[CartController::class,'AddMiniCart']);
 /////////////////////////////remove product MINI CART//////////////////
 
 Route::get('/minicart/product-remove/{rowId}',[CartController::class,'removeMiniCart']);
-
-////////////*********************user prefix***************////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////*********************USER PREFIX***************////////////////////
+///////////////////////////////////////////////////////////////////////////////
 Route::group(['prefix'=>'user','middleware' => ['othman','auth'],'namespace'=>'User'],function(){
 
 ///////////////////////////// Add To WishList //////////////////
@@ -268,6 +270,8 @@ Route::get('/invoice_downlaod/{order_id}',[AllUserController::class,'InvoiceDown
 Route::post('/return/order/{order_id}',[AllUserController::class,'ReturnOrder'])->name('return.order');
 
 Route::get('/return/orders/list',[AllUserController::class,'ReturnOrderList'])->name('return.orders.list');
+
+Route::get('/cancel/orders',[AllUserController::class,'CancelOrders'])->name('cancel.order');
 
 
 
@@ -379,5 +383,14 @@ Route::prefix('orders')->group(function(){
      
 
      
+
+});
+
+//////Admin Reports Routes////////////
+Route::prefix('reports')->group(function(){
+     Route::get('/view',[ReportController::class,'ReportView'])->name('all-reports');
+
+
+
 
 });
