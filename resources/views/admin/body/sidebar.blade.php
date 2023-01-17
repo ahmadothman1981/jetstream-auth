@@ -139,7 +139,7 @@ $route = Route::current()->getName();
                   
                   
               </ul>
-              </ul>
+             
           </li>
 
 		<li class="treeview {{ ($prefix == '/orders')? 'active' : '' }}">
@@ -166,6 +166,7 @@ $route = Route::current()->getName();
 
                     <li class="{{ ($route == 'cancel-orders')? 'active' : '' }}"><a href="{{ route('cancel-orders') }}"><i class="ti-more"></i>Cancel Orders</a></li>
               </ul>
+
               </ul>
           </li>
 
