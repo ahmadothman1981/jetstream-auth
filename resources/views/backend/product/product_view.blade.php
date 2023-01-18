@@ -20,7 +20,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">	<p>Product</p> List</h3>
+				  <h3 class="box-title">	<p>Product</p> List <span class="badge badge-pill badge-danger">{{ count($products) }}</span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">

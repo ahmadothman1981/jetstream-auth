@@ -20,7 +20,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Category List <span class="badge badge-pill badge-danger">{{ count($category) }}</span></h3>
+				  <h3 class="box-title"> Blog Category List <span class="badge badge-pill badge-danger">{{ count($blogcategory) }}</span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -28,22 +28,22 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Category Icon</th>
-								<th>Category En</th>
-								<th>Category Ar</th>
+								
+								<th>Blog Category En</th>
+								<th>Blog Category Ar</th>
 								<th>Action</th>
 								
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($category as $item)
+							@foreach($blogcategory as $item)
 							<tr>
-								<td> <span><i class="{{ $item->category_icon}}"></i></span></td>
-								<td>{{ $item->category_name_en  }}</td>
-								<td>{{ $item->category_name_ar  }}</td>
 								
-									<td><a href="{{ route('category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-									<a href="{{ route('category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+								<td>{{ $item->blog_category_name_en  }}</td>
+								<td>{{ $item->blog_category_name_ar  }}</td>
+								
+									<td><a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<a href="{{ route('blog.category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
 								
 							</tr>
@@ -61,27 +61,27 @@
 			  <!-- /.box -->          
 			</div>
 			<!-- /.col -->
-			<! Add Category-->
+			<! Add Blog Category-->
 				  <div class="col-4">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Category </h3>
+				  <h3 class="box-title">Add  Blog Category </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('category.store') }}" >
+ <form method="post" action="{{ route('blogcategory.store') }}" >
 	 	@csrf
 					   
 
 	 <div class="form-group">
-		<h5>Category English  <span class="text-danger">*</span></h5>
+		<h5> Blog Category English  <span class="text-danger">*</span></h5>
 		<div class="controls">
-	 <input type="text"  name="category_name_en" class="form-control" > 
-	 @error('category_name_en') 
+	 <input type="text"  name="blog_category_name_en" class="form-control" > 
+	 @error('blog_category_name_en') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 
 	</div>
@@ -89,25 +89,17 @@
 
 
 	<div class="form-group">
-		<h5>Category Arabic <span class="text-danger">*</span></h5>
+		<h5> Blog Category Arabic <span class="text-danger">*</span></h5>
 		<div class="controls">
-	 <input type="text" name="category_name_ar" class="form-control" >
-     @error('category_name_ar') 
+	 <input type="text" name="blog_category_name_ar" class="form-control" >
+     @error('blog_category_name_ar') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror 
 	  </div>
 	</div>
 
 
-	<div class="form-group">
-		<h5>Category Icon  <span class="text-danger">*</span></h5>
-		<div class="controls">
-	 <input type="text" name="category_icon" class="form-control" >
-     @error('category_icon') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
-	  </div>
-	</div> 
+	
 					 
 
 			 <div class="text-xs-right">

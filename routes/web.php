@@ -21,6 +21,7 @@ use App\Http\Controllers\User\stripeController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\BlogController;
 
 
 
@@ -405,6 +406,25 @@ Route::prefix('reports')->group(function(){
 //////Admin All Users Routes////////////
 Route::prefix('alluser')->group(function(){
      Route::get('/view',[AdminProfileController::class,'AllUsers'])->name('all-users');
+
+     
+
+
+});
+
+
+
+//////Admin Blog Routes////////////
+Route::prefix('blog')->group(function(){
+     Route::get('/category',[BlogController::class,'BlogCategory'])->name('blog.category');
+
+      Route::post('/store',[BlogController::class,'BlogCategoryStore'])->name('blogcategory.store');
+
+      Route::get('/category/edit/{id}',[BlogController::class,'BlogCategoryEdit'])->name('blog.category.edit');
+
+      Route::post('/update',[BlogController::class,'BlogCategoryUpdate'])->name('blogcategory.update');
+
+      Route::get('/category/delete/{id}',[BlogController::class,'BlogCategoryDelete'])->name('blog.category.delete');
 
      
 
