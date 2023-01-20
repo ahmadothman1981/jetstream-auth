@@ -28,7 +28,7 @@
 				<h5>Brand Select <span class="text-danger">*</span></h5>
 				<div class="controls">
 				<select name="brand_id"   class="form-control" required="">
-				<option value="" selected="" disabled="" >Select Category</option>
+				<option value="" selected="" disabled="" >Select Brand</option>
 					@foreach($brands as $brand)
 		<option value="{{ $brand->id }}">{{ $brand->brand_name_en }}</option>
 					@endforeach	
