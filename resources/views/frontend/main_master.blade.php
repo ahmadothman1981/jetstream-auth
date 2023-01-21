@@ -366,8 +366,8 @@
 </script>
 
 
-///////// Start Add Wish List Page/////////
 
+<!-- ///////////////////Start Add Wish List Page////////////////////////// -->
 <script type="text/javascript">
    
 function AddToWishList(product_id)
@@ -641,8 +641,8 @@ function AddToWishList(product_id)
     ////////Cart Decrement End/////////
 </script>
 
+<!-- ///////////////////COUPON APPLY START////////////////////////// -->
 
-////////COUPON APPLY START///////////
 
 <script type="text/javascript">
 function applycoupon()
@@ -737,9 +737,9 @@ function couponCalculation()
 couponCalculation();
 </script>
 
-////////COUPON APPLY END///////////
 
-///////////////////Start COUPON Remove//////////////////////////
+<!-- ///////////////////COUPON APPLY END////////////////////////// -->
+<!-- ///////////////////Start COUPON Remove////////////////////////// -->
 <script type="text/javascript">
    function couponRemove()
    {
@@ -786,6 +786,6 @@ couponCalculation();
 </script>
 
 
-///////////////////End COUPON Remove//////////////////////////
+<!-- ///////////////////End COUPON Remove////////////////////////// -->
 </body>
 </html>

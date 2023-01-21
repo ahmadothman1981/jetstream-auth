@@ -22,6 +22,7 @@ use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Frontend\HomeBlogController;
 
 
 
@@ -431,11 +432,15 @@ Route::prefix('blog')->group(function(){
 
       Route::get('/add/post',[BlogController::class,'AddBlogPost'])->name('add.post');
 
-      Route::post('/post/store',[BlogController::class,'BlogPostStore'])->name('post-store');
-
-
-
-     
+      Route::post('/post/store',[BlogController::class,'BlogPostStore'])->name('post-store'); 
 
 
 });
+
+////////////*******FRONT END HOME ROUTES*************////////////////
+
+Route::get('/blog',[HomeBlogController::class,'AddBlogPost'])->name('home.blog');
+
+Route::get('/blog/details/{id}',[HomeBlogController::class,'DetailsBlogPost'])->name('blog.details');
+
+Route::get('/blog/category/post/{category_id}',[HomeBlogController::class,'HomeBlogCatPost']);
