@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 08:16 AM
+-- Generation Time: Jan 22, 2023 at 03:32 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,62 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'zA7tK6Af7QqoqtxG9Rh1qL6jW4kwPJaTAbUfGVcPMbgPqIxVOoUqSdcr6vPW', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2022-11-05 04:24:35');
+(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '63LB7YMq3EeSEeXeq0K4AubxWQTWfEokm9DT2LReaEvGZUQQWBL1spzsKQyB', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2022-11-05 04:24:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_posts`
+--
+
+CREATE TABLE IF NOT EXISTS `blog_posts` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `post_title_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_title_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_slug_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_details_en` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_details_ar` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_posts`
+--
+
+INSERT INTO `blog_posts` (`id`, `category_id`, `post_title_en`, `post_title_ar`, `post_slug_en`, `post_slug_ar`, `post_image`, `post_details_en`, `post_details_ar`, `created_at`, `updated_at`) VALUES
+(1, 4, '5 Habits That Will Keep 2023', '5 عادات ستجعل 2023 أفضل', '5-habits-that-will-keep-2023', '5-عادات-ستجعل-2023-أفضل', 'upload/post/1755567650656242.jpeg', 'Originally launched as a part of Gawker Media Network, Gizmodo is a design, technology, science and science fiction website that also features articles on politics.', ' \nمن الرائع أن يكون لديك قائمة نبيلة بأهداف العام الجديد ، ولكن الأهم من ذلك بكثير هو تحديد الأهداف التي يمكنك الالتزام بها باستمرار. بدلاً من سرد ، على سبيل المثال ، من عشر إلى عشرين طريقة لتحسين نفسك أو عملك ، اختر أربع أو خمس طرق فقط يمكن دمجها عمليًا في روتين يومي. فيما يلي بعض الأشياء التي ساعدت في إحداث فرق حقيقي بالنسبة لي', '2023-01-20 16:36:19', NULL),
+(2, 4, 'Strong Employer Branding', 'العلامة التجارية القوية لصاحب العمل', 'strong-employer-branding', 'العلامة-التجارية-القوية-لصاحب-العمل', 'upload/post/1755567976474957.jpeg', '<p>The power of <a  is unmistakable. In 2022, according to a specialist company in that field, Universum,  reported that it was a top priority for their strategies. Businesses that realize the value of harnessing it will lead the charge toward better employer-employee relationships and more brand visibility. Employer branding is the bridge from where a business is today to where it wants to be tomorrow.</p>\n\n<p>A well-conceived and executed employer brand can become the foundation of the entire employee experience, from job candidate status to corporate alumnus. A Glassdoor poll found that <a href=\"https://www.glassdoor.com/employers/resources/hr-and-recruiting-stats/\" rel=\"nofollow noopener\">86% of employees and job seekers</a> research company reviews and ratings when choosing which business to apply to, and an effective employer brand can serve as free advertising&mdash; one that informs the world about what a company stands for and what people can expect if they become part of its team.</p>', '\nقوة العلامة التجارية لصاحب العمل لا لبس فيها. في عام 2022 ، وفقًا لإحدى الشركات المتخصصة في هذا المجال ، Universum ، أفاد 86٪ من أرباب العمل الأكثر جاذبية في العالم أن ذلك يمثل أولوية قصوى لاستراتيجياتهم. الشركات التي تدرك قيمة الاستفادة منها ستقود زمام الأمور نحو علاقات أفضل بين صاحب العمل والموظف وزيادة وضوح العلامة التجارية. العلامة التجارية لصاحب العمل هي الجسر من مكان العمل اليوم إلى حيث يريد أن يكون غدًا.\n\nيمكن أن تصبح العلامة التجارية لصاحب العمل المصممة والمنفذة جيدًا الأساس لتجربة الموظف بأكملها ، من حالة المرشح للوظيفة إلى خريجي الشركات. وجد استطلاع أجراه موقع Glassdoor أن 86٪ من الموظفين والباحثين عن عمل يبحثون عن تقييمات وتقييمات الشركة عند اختيار النشاط التجاري الذي يتقدمون إليه ، ويمكن للعلامة التجارية الفعالة لصاحب العمل أن تكون بمثابة إعلان مجاني - إعلان يُعلم العالم بما تمثله الشركة وما الأشخاص يمكن أن تتوقع إذا أصبحوا جزءًا من فريقها.', '2023-01-20 16:41:29', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_post_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `blog_post_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `blog_category_name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_slug_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_post_categories`
+--
+
+INSERT INTO `blog_post_categories` (`id`, `blog_category_name_en`, `blog_category_name_ar`, `blog_category_slug_en`, `blog_category_slug_ar`, `created_at`, `updated_at`) VALUES
+(1, 'TECH', 'تكنولوجيا', 'tech', 'تكنولوجيا', NULL, NULL),
+(2, 'Wealth', 'صحة', 'wealth', 'صحة', NULL, NULL),
+(4, 'marketing', 'التسويق', 'marketing', 'التسويق', '2023-01-18 10:54:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -130,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_discount`, `coupon_validity`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'EID AL FETTER', 40, '2023-01-05', 1, '2022-12-21 09:50:26', '2022-12-21 09:50:26'),
+(2, 'EID AL FETTER', 40, '2023-01-20', 1, '2023-01-12 09:29:40', '2023-01-12 09:29:40'),
 (3, 'TEST', 12, '2023-01-02', 1, '2023-01-01 17:45:06', NULL);
 
 -- --------------------------------------------------------
@@ -162,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -187,7 +242,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2022_12_20_190206_create_coupons_table', 9),
 (19, '2022_12_27_120539_create_ship_divisions_table', 10),
 (20, '2022_12_27_143916_create_ship_districts_table', 11),
-(21, '2022_12_28_093734_create_ship_states_table', 12);
+(21, '2022_12_28_093734_create_ship_states_table', 12),
+(22, '2023_01_06_171251_create_shippings_table', 13),
+(23, '2023_01_08_141353_create_orders_table', 14),
+(24, '2023_01_08_141535_create_order_items_table', 14),
+(25, '2023_01_18_105322_create_blog_post_categories_table', 15),
+(26, '2023_01_20_140456_create_blog_posts_table', 16);
 
 -- --------------------------------------------------------
 
@@ -238,6 +298,91 @@ INSERT INTO `multi_imgs` (`id`, `product_id`, `photo_name`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `post_code` int(11) DEFAULT NULL,
+  `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `trsnsition_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` double(8,2) NOT NULL,
+  `order_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invoice_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `confirmed_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `processing_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `picked_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipped_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `delivered_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `notes`, `post_code`, `payment_type`, `payment_method`, `trsnsition_id`, `currency`, `amount`, `order_number`, `invoice_number`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
+(1, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', 42312, 'card_1MOj5xAZSzg6tHElQxotFLTJ', 'Stripe', 'txn_3MOj5yAZSzg6tHEl3hEkU2GE', 'usd', 6103.00, '63bd7a4d5e12c', 'MSS53883355', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'shipped', '2023-01-10 12:46:39', '2023-01-16 05:51:16'),
+(2, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', NULL, 'card_1MOj7HAZSzg6tHElXh3yyxap', 'Stripe', 'txn_3MOj7IAZSzg6tHEl0fIFLjcL', 'usd', 6103.00, '63bd7a9f3a178', 'MSS58132039', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-01-10 12:48:00', '2023-01-16 06:01:44'),
+(3, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'test', 12545, 'card_1MOjKZAZSzg6tHElZTsbdiFU', 'Stripe', 'txn_3MOjKaAZSzg6tHEl0RuAwzsw', 'usd', 58.00, '63bd7dd761c02', 'MSS30086125', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'canceled', '2023-01-10 13:01:46', '2023-01-16 06:16:14'),
+(4, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', NULL, 'card_1MPSiFAZSzg6tHElM5mfa2kA', 'Stripe', 'txn_3MPSiGAZSzg6tHEl260QGZjQ', 'usd', 32.00, '63c0274372df2', 'MSS67339013', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2023-01-12 13:29:10', NULL),
+(5, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42132, 'card_1MPSjKAZSzg6tHElWkxxiTZD', 'Stripe', 'txn_3MPSjLAZSzg6tHEl2mVrmJHc', 'usd', 6103.00, '63c027863bd05', 'MSS70370982', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'confirmed', '2023-01-12 13:30:15', '2023-01-16 07:41:07'),
+(6, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 3532.00, NULL, 'MSS75808009', '13 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '16 January 2023', 'i wanna return for late delivery', 'delivered', '2023-01-13 13:27:07', '2023-01-16 08:23:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE IF NOT EXISTS `order_items` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_items_order_id_foreign` (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty`, `price`, `created_at`, `updated_at`) VALUES
+(1, 2, 17, 'Red', 'Large', '1', 6103.00, NULL, NULL),
+(2, 3, 20, 'Black', 'Large', '3', 32.00, NULL, NULL),
+(3, 4, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
+(4, 5, 17, 'Red', 'Large', '1', 6103.00, NULL, NULL),
+(5, 6, 14, 'Black', NULL, '1', 3500.00, NULL, NULL),
+(6, 6, 20, 'Red', 'Small', '1', 32.00, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_resets`
 --
 
@@ -253,7 +398,8 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('user@mail.com', '$2y$10$.NQAdIDT1lgEKoW/xPm50e.NnefXTZsJW27ZrPshJHnfSXx1L6zTW', '2022-11-04 12:59:08');
+('user@example.com', '$2y$10$YYg/.jXl98KgR/sfOPbjH.C98H//Qlcl4F/EGNgcXFkz3e/jlPOfq', '2023-01-10 13:38:31'),
+('user@mail.com', '$2y$10$SujwNLVV8V2MTtvmr4JxOumWgMy0OqTaSP3/.sVEJGUZd0q5VhLIq', '2023-01-12 05:48:29');
 
 -- --------------------------------------------------------
 
@@ -355,8 +501,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('CNZ7wHWqoVuXtFO7fiWRs1Svmr7jexyS4xFeNoXe', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoid242VTZXMUZwU1V3d3FWckhadjBneEJNVGNqU01vSWpKbUtZU2J4YSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMzoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3VzZXIvbXljYXJ0Ijt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL215Y2FydCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1672602252),
-('oMP32tOhn8pGtjIC0xKyMjACUoAYg1ODzTBzeSAt', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiUnBmU2UzV0JoYnd3QXhXTEVpTkEzSHpiUXg2em1ZZWJIb0trWEVJaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL215Y2FydCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkOTJJWFVOcGtqTzByT1E1YnlNaS5ZZTRvS29FYTNSbzlsbEMvLm9nL2F0Mi51aGVXRy9pZ2kiO3M6NDoiY2FydCI7YToxOntzOjc6ImRlZmF1bHQiO086Mjk6IklsbHVtaW5hdGVcU3VwcG9ydFxDb2xsZWN0aW9uIjoyOntzOjg6IgAqAGl0ZW1zIjthOjE6e3M6MzI6IjY2MjJmZTE1OTkxMDIyNmU5YzIyMjgxMmZhMzFiMTBkIjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6MTE6e3M6NToicm93SWQiO3M6MzI6IjY2MjJmZTE1OTkxMDIyNmU5YzIyMjgxMmZhMzFiMTBkIjtzOjI6ImlkIjtzOjI6IjIwIjtzOjM6InF0eSI7czoxOiIxIjtzOjQ6Im5hbWUiO3M6MTQ6IlNoaXJ0IEJ1c2luZXNzIjtzOjU6InByaWNlIjtkOjMyO3M6Njoid2VpZ2h0IjtkOjE7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6Mzp7czo0OiJzaXplIjtzOjU6IlNtYWxsIjtzOjU6ImNvbG9yIjtzOjM6IlJlZCI7czo1OiJpbWFnZSI7czo0NjoidXBsb2FkL3Byb2R1Y3RzL3RoYW1ibmFpbC8xNzUxMTEzNDUzNjU2ODYxLmpwZyI7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo3OiJ0YXhSYXRlIjtpOjA7czo0OToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGFzc29jaWF0ZWRNb2RlbCI7TjtzOjQ2OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AZGlzY291bnRSYXRlIjtpOjA7czo4OiJpbnN0YW5jZSI7czo3OiJkZWZhdWx0Ijt9fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6ImNvdXBvbiI7YTo0OntzOjExOiJjb3Vwb25fbmFtZSI7czoxMzoiRUlEIEFMIEZFVFRFUiI7czoxNToiY291cG9uX2Rpc2NvdW50IjtpOjQwO3M6MTU6ImRpc2NvdW50X2Ftb3VudCI7ZDoxMztzOjEyOiJ0b3RhbF9hbW91bnQiO2Q6MTk7fX0=', 1672604064);
+('GY76n9TIX2i4x7i7CFEREu0G8o5R7CC8GZOhO6MH', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYTBCZ25nUjhyYWpvaDJxS0dWSmFzVWZLTFlrVmpQcVVnV0s2V29WNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1674304664);
 
 -- --------------------------------------------------------
 
@@ -371,7 +516,7 @@ CREATE TABLE IF NOT EXISTS `ship_districts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `ship_districts`
@@ -383,7 +528,9 @@ INSERT INTO `ship_districts` (`id`, `division_id`, `district_name`, `created_at`
 (4, 2, 'RAMSISS', '2022-12-28 05:54:25', '2022-12-28 05:54:25'),
 (5, 2, 'HELWAN', '2022-12-28 05:06:50', NULL),
 (6, 4, 'LUXOR', '2022-12-28 05:17:18', NULL),
-(7, 1, 'SHIRBIN', '2022-12-28 05:58:29', NULL);
+(7, 1, 'SHIRBIN', '2022-12-28 05:58:29', NULL),
+(8, 5, 'ASSUIT', '2023-01-07 08:27:16', NULL),
+(9, 5, 'ALFATH', '2023-01-07 08:27:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -423,7 +570,7 @@ CREATE TABLE IF NOT EXISTS `ship_states` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `ship_states`
@@ -431,7 +578,15 @@ CREATE TABLE IF NOT EXISTS `ship_states` (
 
 INSERT INTO `ship_states` (`id`, `division_id`, `district_id`, `state_name`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'ahmad maher street', '2022-12-28 09:52:31', NULL),
-(2, 2, 4, 'abbassia', '2022-12-28 09:55:17', NULL);
+(2, 2, 4, 'abbassia', '2022-12-28 09:55:17', NULL),
+(4, 2, 3, 'fsdfsd', '2023-01-02 05:18:39', NULL),
+(5, 1, 1, 'meet khamr', '2023-01-07 06:54:37', NULL),
+(6, 1, 1, 'aga', '2023-01-07 06:54:45', NULL),
+(7, 1, 1, 'senbelaween', '2023-01-07 06:55:00', NULL),
+(8, 5, 9, 'alfath', '2023-01-07 08:27:44', NULL),
+(9, 5, 8, 'assuit', '2023-01-07 08:27:51', NULL),
+(10, 4, 6, 'armant', '2023-01-07 08:28:56', NULL),
+(11, 4, 6, 'isna', '2023-01-07 08:29:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -571,6 +726,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_seen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -589,18 +745,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Lowell Prosacco PhD', 'bergnaum.carter@example.net', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'g1MqXK73lK', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(2, 'Nola Keeling', 'kshlerin.kade@example.org', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'lacqCvbg4R', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(3, 'Demario Stamm', 'hallie58@example.org', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'w06aNuP6tC', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(4, 'Jamison Schmidt MD', 'leilani.williamson@example.net', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'fGL1Ma6Xjx', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(5, 'Darien McGlynn', 'avery.beahan@example.org', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'gzG3C42MuD', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(6, 'Lonny Buckridge', 'bobbie.mosciski@example.org', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'UyoTNSrxN8', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(7, 'Annalise Steuber', 'jakayla.thompson@example.com', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'BTPfOKFeD6', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(8, 'Shawn McClure II', 'maryam45@example.net', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'ZTIKpPVxdQ', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(9, 'user laravel', 'user@example.com', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'gsXyLosMxXTzl5YH1ZW6oQ8edNOqd3QkxBZQ69wWIfqulhlEfnfhewjnqhc9', NULL, 'profile-photos/XxjFuG2kDo8Y54Pzy83YLenDg7RCiK7fDEQGFZF7.jpg', '2022-11-01 16:45:46', '2022-11-03 13:16:33'),
-(10, 'Orlando Eichmann DVM', 'lkrajcik@example.net', NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'QmJTsl7o96', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(11, 'ahmadothman', 'user@mail.com', '01234567890', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2022-11-06 16:55:52');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Lowell Prosacco PhD', 'bergnaum.carter@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'g1MqXK73lK', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(2, 'Nola Keeling', 'kshlerin.kade@example.org', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'lacqCvbg4R', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(3, 'Demario Stamm', 'hallie58@example.org', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'w06aNuP6tC', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(4, 'Jamison Schmidt MD', 'leilani.williamson@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'fGL1Ma6Xjx', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(5, 'Darien McGlynn', 'avery.beahan@example.org', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'gzG3C42MuD', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(6, 'Lonny Buckridge', 'bobbie.mosciski@example.org', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'UyoTNSrxN8', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(7, 'Annalise Steuber', 'jakayla.thompson@example.com', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'BTPfOKFeD6', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(8, 'Shawn McClure II', 'maryam45@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'ZTIKpPVxdQ', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(9, 'user laravel', 'user@example.com', '0111111111', '2023-01-18 10:43:08', '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'edCnhUMbv5NccMOVc0cA8w5xFM1nNXjWmOkvD86GXsVKPOrg8kFLxEi5l4Vt', NULL, 'profile-photos/XxjFuG2kDo8Y54Pzy83YLenDg7RCiK7fDEQGFZF7.jpg', '2022-11-01 16:45:46', '2023-01-18 08:43:08'),
+(10, 'Orlando Eichmann DVM', 'lkrajcik@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'QmJTsl7o96', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
+(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-01-17 19:08:45', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-01-17 17:08:45');
 
 -- --------------------------------------------------------
 
@@ -625,6 +781,16 @@ INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_a
 (6, 9, 20, '2022-12-18 10:07:02', NULL),
 (7, 9, 18, '2022-12-18 10:07:05', NULL),
 (8, 9, 17, '2022-12-18 11:09:56', NULL);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
