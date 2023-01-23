@@ -23,6 +23,8 @@ use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Frontend\HomeBlogController;
+use App\Http\Controllers\Backend\SiteSettingController;
+
 
 
 
@@ -444,3 +446,15 @@ Route::get('/blog',[HomeBlogController::class,'AddBlogPost'])->name('home.blog')
 Route::get('/blog/details/{id}',[HomeBlogController::class,'DetailsBlogPost'])->name('blog.details');
 
 Route::get('/blog/category/post/{category_id}',[HomeBlogController::class,'HomeBlogCatPost']);
+
+
+//////Admin Site Setting Routes////////////
+Route::prefix('setting')->group(function(){
+
+     Route::get('/site',[SiteSettingController::class,'SiteSetting'])->name('site.setting');
+
+     Route::post('/site/update',[SiteSettingController::class,'SiteSettingUpdate'])->name('update.sitesetting');
+
+     
+
+});
