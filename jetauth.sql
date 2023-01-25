@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2023 at 03:32 PM
+-- Generation Time: Jan 23, 2023 at 08:47 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -247,7 +247,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (23, '2023_01_08_141353_create_orders_table', 14),
 (24, '2023_01_08_141535_create_order_items_table', 14),
 (25, '2023_01_18_105322_create_blog_post_categories_table', 15),
-(26, '2023_01_20_140456_create_blog_posts_table', 16);
+(26, '2023_01_20_140456_create_blog_posts_table', 16),
+(28, '2023_01_23_062451_create_site_settings_table', 17);
 
 -- --------------------------------------------------------
 
@@ -501,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('GY76n9TIX2i4x7i7CFEREu0G8o5R7CC8GZOhO6MH', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYTBCZ25nUjhyYWpvaDJxS0dWSmFzVWZLTFlrVmpQcVVnV0s2V29WNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1674304664);
+('YUir3OFNmIHOWtb9L9kw9v1k72KQpkSoCDaULeu4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNTJuRGlMcjJYdEpqUkxBemJpa0pIZllxeWt2dkRNMTJJRFljaHZzSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkOTJJWFVOcGtqTzByT1E1YnlNaS5ZZTRvS29FYTNSbzlsbEMvLm9nL2F0Mi51aGVXRy9pZ2kiO30=', 1674459904);
 
 -- --------------------------------------------------------
 
@@ -587,6 +588,36 @@ INSERT INTO `ship_states` (`id`, `division_id`, `district_id`, `state_name`, `cr
 (9, 5, 8, 'assuit', '2023-01-07 08:27:51', NULL),
 (10, 4, 6, 'armant', '2023-01-07 08:28:56', NULL),
 (11, 4, 6, 'isna', '2023-01-07 08:29:14', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE IF NOT EXISTS `site_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_one` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_two` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`id`, `logo`, `phone_one`, `phone_two`, `email`, `company_name`, `company_address`, `facebook`, `twitter`, `linkedin`, `youtube`, `created_at`, `updated_at`) VALUES
+(1, 'upload/logo/1755796334317428.png', '12345678910', '0123456789', 'mansoura@aikido.com', 'aikikai', 'mansoura', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.linkdin.com/', 'https://www.youtube.com/', NULL, '2023-01-23 05:11:08');
 
 -- --------------------------------------------------------
 

@@ -455,6 +455,10 @@ Route::prefix('setting')->group(function(){
 
      Route::post('/site/update',[SiteSettingController::class,'SiteSettingUpdate'])->name('update.sitesetting');
 
+      Route::get('/seo',[SiteSettingController::class,'SeoSetting'])->name('seo.setting');
+
+      Route::post('/seo/update',[SiteSettingController::class,'SeoSettingUpdate'])->name('update.seosetting');
+
      
 
 });
