@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Frontend\HomeBlogController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\User\ReviewController;
 
 
 
@@ -475,7 +476,10 @@ Route::prefix('return')->group(function(){
      Route::get('/admin/all/request',[ReturnController::class,'ReturnAllRequest'])->name('all.request');
 
     
-
-     
+ 
 
 });
+
+/////////////////////*********Front-End Product REVIEW****************/////////////////////
+Route::post('/review/store',[ReviewController::class,'ReviewStore'])->name('review.store');
+
