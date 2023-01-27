@@ -62,7 +62,39 @@
 
                             <td class="col-md-2">
                                 <label for="">
-                                    <span class="badge badge-pill badge-warning" style="background:#418DB9 ;">{{$order->status }}</span>
+                                    @if($order->status  == 'Pending')
+
+                                    <span class="badge badge-pill badge-warning" style="background:#800080;">Pending</span>
+                                    
+
+                                    @elseif($order->status  == 'confirmed')
+    <span class="badge badge-pill badge-warning" style="background:#0000FF;">Confirmed</span>
+
+
+                                    @elseif($order->status  == 'processing')
+    <span class="badge badge-pill badge-warning" style="background:#41FA8B;">Processing</span>
+
+
+                                    @elseif($order->status  == 'picked')
+    <span class="badge badge-pill badge-warning" style="background:#3E4EF0;">Picked</span>
+
+
+                                    @elseif($order->status  == 'shipped')
+    <span class="badge badge-pill badge-warning" style="background:#884EF0;">Shipped</span>
+
+                                    @elseif($order->status  == 'delivered')
+    <span class="badge badge-pill badge-warning" style="background:#41FA8B;">Delivered</span>
+
+                                @if($order->return_order == 1)
+                                    <span class="badge badge-pill badge-warning" style="background:red ;">Return Requested</span>
+                                @endif
+
+
+                                    @else
+    <span class="badge badge-pill badge-warning" style="background:#FF0000;">Cancel</span>
+
+
+                                    @endif
                                     </label>
                             </td>
 
