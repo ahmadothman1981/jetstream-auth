@@ -483,3 +483,25 @@ Route::prefix('return')->group(function(){
 /////////////////////*********Front-End Product REVIEW****************/////////////////////
 Route::post('/review/store',[ReviewController::class,'ReviewStore'])->name('review.store');
 
+
+
+
+//////Admin Review Manage Routes////////////
+Route::prefix('review')->group(function(){
+
+     Route::get('/pending',[ReviewController::class,'PendingReview'])->name('pending.review');
+
+     Route::get('/admin/approve/{id}',[ReviewController::class,'ReviewApprove'])->name('review.approve');
+
+     Route::get('/publish',[ReviewController::class,'PublishReview'])->name('publish.review');
+
+     Route::get('/delete/{id}',[ReviewController::class,'ReviewDelete'])->name('delete.review');
+
+     
+
+    
+ 
+
+});
+
+
