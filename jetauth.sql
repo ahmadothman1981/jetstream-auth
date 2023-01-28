@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2023 at 08:47 AM
+-- Generation Time: Jan 28, 2023 at 10:23 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '63LB7YMq3EeSEeXeq0K4AubxWQTWfEokm9DT2LReaEvGZUQQWBL1spzsKQyB', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2022-11-05 04:24:35');
+(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'XnSHnjRfKcTzQ2vTlBqfNlIOV8zYiYGxOQx0YuguiFtUk1IoqX0OMh3Nm20z', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2022-11-05 04:24:35');
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -248,7 +248,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2023_01_08_141535_create_order_items_table', 14),
 (25, '2023_01_18_105322_create_blog_post_categories_table', 15),
 (26, '2023_01_20_140456_create_blog_posts_table', 16),
-(28, '2023_01_23_062451_create_site_settings_table', 17);
+(28, '2023_01_23_062451_create_site_settings_table', 17),
+(29, '2023_01_25_061902_create_seos_table', 18),
+(30, '2023_01_27_183121_create_reviews_table', 19);
 
 -- --------------------------------------------------------
 
@@ -330,24 +332,26 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `delivered_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
   `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `notes`, `post_code`, `payment_type`, `payment_method`, `trsnsition_id`, `currency`, `amount`, `order_number`, `invoice_number`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
-(1, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', 42312, 'card_1MOj5xAZSzg6tHElQxotFLTJ', 'Stripe', 'txn_3MOj5yAZSzg6tHEl3hEkU2GE', 'usd', 6103.00, '63bd7a4d5e12c', 'MSS53883355', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'shipped', '2023-01-10 12:46:39', '2023-01-16 05:51:16'),
-(2, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', NULL, 'card_1MOj7HAZSzg6tHElXh3yyxap', 'Stripe', 'txn_3MOj7IAZSzg6tHEl0fIFLjcL', 'usd', 6103.00, '63bd7a9f3a178', 'MSS58132039', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-01-10 12:48:00', '2023-01-16 06:01:44'),
-(3, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'test', 12545, 'card_1MOjKZAZSzg6tHElZTsbdiFU', 'Stripe', 'txn_3MOjKaAZSzg6tHEl0RuAwzsw', 'usd', 58.00, '63bd7dd761c02', 'MSS30086125', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'canceled', '2023-01-10 13:01:46', '2023-01-16 06:16:14'),
-(4, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', NULL, 'card_1MPSiFAZSzg6tHElM5mfa2kA', 'Stripe', 'txn_3MPSiGAZSzg6tHEl260QGZjQ', 'usd', 32.00, '63c0274372df2', 'MSS67339013', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2023-01-12 13:29:10', NULL),
-(5, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42132, 'card_1MPSjKAZSzg6tHElWkxxiTZD', 'Stripe', 'txn_3MPSjLAZSzg6tHEl2mVrmJHc', 'usd', 6103.00, '63c027863bd05', 'MSS70370982', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'confirmed', '2023-01-12 13:30:15', '2023-01-16 07:41:07'),
-(6, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 3532.00, NULL, 'MSS75808009', '13 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '16 January 2023', 'i wanna return for late delivery', 'delivered', '2023-01-13 13:27:07', '2023-01-16 08:23:57');
+INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `notes`, `post_code`, `payment_type`, `payment_method`, `trsnsition_id`, `currency`, `amount`, `order_number`, `invoice_number`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_order`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
+(1, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', 42312, 'card_1MOj5xAZSzg6tHElQxotFLTJ', 'Stripe', 'txn_3MOj5yAZSzg6tHEl3hEkU2GE', 'usd', 6103.00, '63bd7a4d5e12c', 'MSS53883355', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'shipped', '2023-01-10 12:46:39', '2023-01-16 05:51:16'),
+(2, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', NULL, 'card_1MOj7HAZSzg6tHElXh3yyxap', 'Stripe', 'txn_3MOj7IAZSzg6tHEl0fIFLjcL', 'usd', 6103.00, '63bd7a9f3a178', 'MSS58132039', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-01-10 12:48:00', '2023-01-16 06:01:44'),
+(3, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'test', 12545, 'card_1MOjKZAZSzg6tHElZTsbdiFU', 'Stripe', 'txn_3MOjKaAZSzg6tHEl0RuAwzsw', 'usd', 58.00, '63bd7dd761c02', 'MSS30086125', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'canceled', '2023-01-10 13:01:46', '2023-01-16 06:16:14'),
+(4, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', NULL, 'card_1MPSiFAZSzg6tHElM5mfa2kA', 'Stripe', 'txn_3MPSiGAZSzg6tHEl260QGZjQ', 'usd', 32.00, '63c0274372df2', 'MSS67339013', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-01-12 13:29:10', NULL),
+(5, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42132, 'card_1MPSjKAZSzg6tHElWkxxiTZD', 'Stripe', 'txn_3MPSjLAZSzg6tHEl2mVrmJHc', 'usd', 6103.00, '63c027863bd05', 'MSS70370982', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'confirmed', '2023-01-12 13:30:15', '2023-01-16 07:41:07'),
+(6, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 3532.00, '63c027863bd02', 'MSS75808009', '13 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '27 January 2023', '2', 'mistaken', 'delivered', '2023-01-13 13:27:07', '2023-01-27 13:08:43'),
+(7, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 6103.00, '63c027863bd09', 'MSS68111946', '25 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '25 January 2023', '1', 'Broke', 'delivered', '2023-01-25 09:59:23', '2023-01-25 11:02:59');
 
 -- --------------------------------------------------------
 
@@ -367,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `order_items_order_id_foreign` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_items`
@@ -379,7 +383,8 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty
 (3, 4, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
 (4, 5, 17, 'Red', 'Large', '1', 6103.00, NULL, NULL),
 (5, 6, 14, 'Black', NULL, '1', 3500.00, NULL, NULL),
-(6, 6, 20, 'Red', 'Small', '1', 32.00, NULL, NULL);
+(6, 6, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
+(7, 7, 17, 'Black', 'Large', '1', 6103.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -482,6 +487,59 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `subs
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `summary` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reviews_product_id_foreign` (`product_id`),
+  KEY `reviews_user_id_foreign` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `summary`, `status`, `created_at`, `updated_at`) VALUES
+(1, 20, 11, 'this is a good shirt', 'so far so good', '1', '2023-01-27 17:20:10', '2023-01-28 07:09:02'),
+(2, 17, 11, 'good device hard working', 'good device', '1', '2023-01-27 17:22:28', '2023-01-28 07:10:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seos`
+--
+
+CREATE TABLE IF NOT EXISTS `seos` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_analytics` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `seos`
+--
+
+INSERT INTO `seos` (`id`, `meta_title`, `meta_author`, `meta_keyword`, `meta_description`, `google_analytics`, `created_at`, `updated_at`) VALUES
+(1, 'mansoura aikikai', 'mansoura aikido aikikai', 'aikido,self defence,aikikai', 'Aikido is a modern Martial Art created by the Founder, Morihei Ueshiba. After the Founder\'s passing, his son Kisshomaru Ueshiba was inaugurated as Aikido Doshu. At present, Moriteru Ueshiba has succeeded his father as Aikido Doshu.\r\n\r\nThe Aikikai Foundation is an association that was established in order to support inheritance of Aikido created by the Founder, to train body and mind through Aikido and to promote Aikido. Today, Aikido has become established in 140 countries around the world.\r\nAikido Hombu Dojo was built in 1931. Under Doshu, a great number of Shihan and Shidoin unite in their efforts to commit to the development and', 'google-analytics', NULL, '2023-01-25 05:39:06');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -502,7 +560,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('YUir3OFNmIHOWtb9L9kw9v1k72KQpkSoCDaULeu4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNTJuRGlMcjJYdEpqUkxBemJpa0pIZllxeWt2dkRNMTJJRFljaHZzSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkOTJJWFVOcGtqTzByT1E1YnlNaS5ZZTRvS29FYTNSbzlsbEMvLm9nL2F0Mi51aGVXRy9pZ2kiO30=', 1674459904);
+('HJoNAtbGcHSDpBkchn5LrPUyqglmFkkozKWiw033', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY2w0alVhY1dHMkd1T3dtaVlNZmFhRkRTYWJnNFRBcU0yRktyV3JHbCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJFlUbTg1Z1hvZUkuckl5MUlVbi41YnVtRGFoTXJ6YVljZ1pDVWFHZm55ZTBaS3RrMDVCZkRLIjt9', 1674849575),
+('KpPlJ2iPxCUipW5D1e0vci6WGz2MFlQbqrS4XLEF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNzFadm03b0VuRFNZcm41Q3REeDhnT053MllQWDJnZXlncnB3dVN0NiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0L2RldGFpbHMvMjAvc2hpcnQtYnVzaW5lc3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJDkySVhVTnBrak8wck9RNWJ5TWkuWWU0b0tvRWEzUm85bGxDLy5vZy9hdDIudWhlV0cvaWdpIjt9', 1674897699);
 
 -- --------------------------------------------------------
 
@@ -787,7 +846,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verifie
 (8, 'Shawn McClure II', 'maryam45@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'ZTIKpPVxdQ', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
 (9, 'user laravel', 'user@example.com', '0111111111', '2023-01-18 10:43:08', '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'edCnhUMbv5NccMOVc0cA8w5xFM1nNXjWmOkvD86GXsVKPOrg8kFLxEi5l4Vt', NULL, 'profile-photos/XxjFuG2kDo8Y54Pzy83YLenDg7RCiK7fDEQGFZF7.jpg', '2022-11-01 16:45:46', '2023-01-18 08:43:08'),
 (10, 'Orlando Eichmann DVM', 'lkrajcik@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'QmJTsl7o96', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-01-17 19:08:45', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-01-17 17:08:45');
+(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-01-27 19:59:32', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-01-27 17:59:32');
 
 -- --------------------------------------------------------
 
@@ -822,6 +881,13 @@ INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_a
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
