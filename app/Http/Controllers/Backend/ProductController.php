@@ -105,6 +105,7 @@ $notification = array(
         return view('backend.product.product_view',compact('products'));
     }//End Method
 
+
     public function EditProduct($id)
     {
         $categories = Category::latest()->get();
@@ -288,6 +289,14 @@ $notification = array(
         );
 
         return redirect()->back()->with($notification);
+    }//End Method
+
+
+    public function ProductStock()
+    {
+        $products = Product::latest()->get();
+
+        return view('backend.product.product_stock',compact('products'));
     }//End Method
 }
 
