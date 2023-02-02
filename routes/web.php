@@ -26,6 +26,8 @@ use App\Http\Controllers\Frontend\HomeBlogController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\User\ReviewController;
+use App\Http\Controllers\Backend\AdminUserController;
+
 
 
 
@@ -508,15 +510,25 @@ Route::prefix('review')->group(function(){
 Route::prefix('stock')->group(function(){
 
      Route::get('/product',[ProductController::class,'ProductStock'])->name('product.stock');
-
-   
-
-     
-
     
  
 
 });
+
+
+/////Admin User Role ALL Routes////////////
+Route::prefix('adminuserrole')->group(function(){
+
+     Route::get('/all',[AdminUserController::class,'AllAdminRole'])->name('all-admin.user');
+
+     Route::get('/add',[AdminUserController::class,'AddAdminRole'])->name('add.admin');
+
+     Route::post('/store',[AdminUserController::class,'StoreAdminRole'])->name('admin.user.store');
+    
+ 
+
+});
+
 
 
 
