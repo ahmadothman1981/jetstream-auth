@@ -44,12 +44,88 @@
 								<td><img src="{{ asset($item->profile_photo_path) }}" style="width: 50px; height:50px; "></td>
 								<td>{{ $item->name  }}</td>
 								<td>{{ $item->email }}</td>
-								<td ></td>
+								<td >
+									@if($item->brand == 1)
+									<span class="badge btn-primary">Brand</span>
+									@else
+									@endif
+
+									@if($item->category == 1)
+									<span class="badge btn-secondary">category</span>
+									@else
+									@endif
+
+									@if($item->product == 1)
+									<span class="badge btn-danger">product</span>
+									@else
+									@endif
+
+									@if($item->slider == 1)
+									<span class="badge btn-success">slider</span>
+									@else
+									@endif
+
+									@if($item->coupons == 1)
+									<span class="badge btn-warning">coupons</span>
+									@else
+									@endif
+
+									@if($item->shipping == 1)
+									<span class="badge btn-info">shipping</span>
+									@else
+									@endif
+
+									@if($item->blog == 1)
+									<span class="badge btn-light">blog</span>
+									@else
+									@endif
+
+									@if($item->setting == 1)
+									<span class="badge btn-dark">setting</span>
+									@else
+									@endif
+
+									@if($item->returnorder == 1)
+									<span class="badge btn-secondary">returnorder</span>
+									@else
+									@endif
+
+									@if($item->review == 1)
+									<span class="badge btn-info">review</span>
+									@else
+									@endif
+
+									@if($item->orders == 1)
+									<span class="badge btn-warning">orders</span>
+									@else
+									@endif
+
+									@if($item->stock == 1)
+									<span class="badge btn-success">stock</span>
+									@else
+									@endif
+
+									@if($item->reports == 1)
+									<span class="badge btn-dark">reports</span>
+									@else
+									@endif
+
+									@if($item->alluser == 1)
+									<span class="badge btn-danger">alluser</span>
+									@else
+									@endif
+
+									@if($item->adminuserrole == 1)
+									<span class="badge btn-light">adminuserrole</span>
+									@else
+									@endif
+
+								</td>
 		
 									
 								
-								<td width="35%"><a href="{{ route('pending.orders.details',$item->id) }}" class="btn btn-info" title="View Order"><i class="fa fa-eye"></i></a>
-									<a href="{{ route('invoice.download',$item->id) }}" id="download" class="btn btn-danger" title="Invoice Download"> <i class="fa fa-download"></i></a>
+								<td width="35%"><a href="{{ route('edit.admin.user',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<a href="{{ route('delete.admin.user',$item->id) }}" id="delete" class="btn btn-danger" title="Delete"> <i class="fa fa-trash"></i></a>
 								</td>
 								
 							</tr>
