@@ -29,6 +29,29 @@ $route = Route::current()->getName();
           </a>
         </li>
 
+        @php
+          $brand = (auth()->guard('admin')->user()->brand == 1);
+          $category = (auth()->guard('admin')->user()->category == 1);
+          $product = (auth()->guard('admin')->user()->product == 1);
+          $slider = (auth()->guard('admin')->user()->slider == 1);
+          $coupons = (auth()->guard('admin')->user()->coupons == 1);
+          $shipping = (auth()->guard('admin')->user()->shipping == 1);
+          $blog = (auth()->guard('admin')->user()->blog == 1);
+          $setting = (auth()->guard('admin')->user()->setting == 1);
+          $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
+          $review = (auth()->guard('admin')->user()->review == 1);
+          $orders = (auth()->guard('admin')->user()->orders == 1);
+          $stock = (auth()->guard('admin')->user()->stock == 1);
+          $reports = (auth()->guard('admin')->user()->reports == 1);
+          $alluser = (auth()->guard('admin')->user()->alluser == 1);
+          $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
+
+          
+        @endphp
+
+
+
+        @if($brand == true)
         <li class="treeview {{ ($prefix == '/brand')? 'active' : '' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -42,7 +65,12 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+        @else
+        @endif
 
+
+
+        @if($category == true)
         <li  class="treeview {{ ($prefix == '/category')? 'active' : '' }}">
           <a href="#">
             <i data-feather="mail"></i> <span>Category</span>
@@ -59,6 +87,11 @@ $route = Route::current()->getName();
           </ul>
         </li>
 
+        @else
+        @endif
+
+
+        @if($product == true)
         <li class="treeview {{ ($prefix == '/product')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -73,8 +106,11 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+        @else
+        @endif
 
 
+        @if($slider == true)
          <li class="treeview {{ ($prefix == '/slider')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -89,7 +125,11 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+         @else
+        @endif
 
+
+        @if($coupons == true)
          <li class="treeview {{ ($prefix == '/coupons')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -104,6 +144,11 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+         @else
+        @endif
+
+
+        @if($shipping == true)
           <li class="treeview {{ ($prefix == '/shipping')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -120,9 +165,10 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
+           @else
+           @endif
 
-
-
+           @if($blog == true)
            <li class="treeview {{ ($prefix == '/blog')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -142,10 +188,11 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
+           @else
+           @endif
 
 
-
-
+            @if($setting == true)
            <li class="treeview {{ ($prefix == '/setting')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -161,10 +208,12 @@ $route = Route::current()->getName();
                   <li class="{{ ($route == 'seo.setting')? 'active' : '' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>SEO Setting</a></li>
 
                   
-                  
+                  </ul>
+                </li>
+                 @else
+                @endif
 
-              </ul>
-          </li>
+          @if($returnorder == true)
 
           <li class="treeview {{ ($prefix == '/return')? 'active' : '' }}">
               <a href="#">
@@ -185,7 +234,10 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
+           @else
+          @endif
 
+          @if($review == true)
 
            <li class="treeview {{ ($prefix == '/review')? 'active' : '' }}">
               <a href="#">
@@ -207,9 +259,13 @@ $route = Route::current()->getName();
               </ul>
           </li>
 
+           @else
+          @endif
+
 
           <li class="header nav-small-cap">User Interface</li>
 
+          @if($stock == true)
           <li class="treeview {{ ($prefix == '/stock')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -226,7 +282,10 @@ $route = Route::current()->getName();
               </ul>
              
           </li>
+            @else
+          @endif
 
+          @if($reports == true)
        <li class="treeview {{ ($prefix == '/reports')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -244,7 +303,10 @@ $route = Route::current()->getName();
              
           </li>
 
+           @else
+          @endif
 
+           @if($alluser == true)
           <li class="treeview {{ ($prefix == '/alluser')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -263,7 +325,10 @@ $route = Route::current()->getName();
           </li>
 
 
+           @else
+          @endif
 
+           @if($adminuserrole == true)
             <li class="treeview {{ ($prefix == '/adminuserrole')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -281,9 +346,11 @@ $route = Route::current()->getName();
              
           </li>
 
+            
+           @else
+          @endif
 
-
-
+           @if($orders == true)
 		<li class="treeview {{ ($prefix == '/orders')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -312,7 +379,8 @@ $route = Route::current()->getName();
               </ul>
           </li>
 
-
+          @else
+          @endif
 
 
       </ul>
