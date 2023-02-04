@@ -232,7 +232,7 @@ Route::get('/product/mini/cart/',[CartController::class,'AddMiniCart']);
 
 Route::get('/minicart/product-remove/{rowId}',[CartController::class,'removeMiniCart']);
 //////////////////////////////////////////////////////////////////////////////
-////////////*********************USER PREFIX***************////////////////////
+////////////*********************USER LOGIN PREFIX***************////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 Route::group(['prefix'=>'user','middleware' => ['othman','auth'],'namespace'=>'User'],function(){
 
@@ -282,7 +282,9 @@ Route::get('/return/orders/list',[AllUserController::class,'ReturnOrderList'])->
 Route::get('/cancel/orders',[AllUserController::class,'CancelOrders'])->name('cancel.order');
 
 
+///////ORDER TRACKING ROUTE//////////////////
 
+Route::post('/order/tracking',[AllUserController::class,'OrderTracking'])->name('order.tracking');
 
 });
 

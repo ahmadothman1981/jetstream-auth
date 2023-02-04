@@ -11,6 +11,7 @@
             <li><a href="{{ route('whishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
             <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
             <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
+            <li><a href="" type="button" data-toggle="modal" data-target="#ordertracking"><i class="icon fa fa-check"></i>Order Tracking</a></li>
           <li>
     @auth
    <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>User Profile</a>
@@ -242,5 +243,34 @@
   </div>
   <!-- /.header-nav --> 
   <!-- ============================================== NAVBAR : END ============================================== --> 
+
+
+
+  <!-- Order Tracking Modal -->
+<div class="modal fade" id="ordertracking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Track Your Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form action="{{ route('order.tracking') }}" method="post">
+          @csrf
+          <div class="modal-body">
+            <label>Invoice Code</label>
+            <input type="text" name="code" required="" class="form-control" placeholder="Your Order Invoice Number"  >
+            <button class="btn btn-danger" type="submit" style="margin-top: 5px;">Track Now</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
   
 </header>
