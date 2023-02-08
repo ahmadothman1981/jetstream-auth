@@ -538,5 +538,8 @@ Route::prefix('adminuserrole')->group(function(){
 });
 
 
+//////////////PRODUCT SEARCH////////////////////
 
+
+Route::post('/search',[IndexController::class,'ProductSearch'])->name('product.search');
 

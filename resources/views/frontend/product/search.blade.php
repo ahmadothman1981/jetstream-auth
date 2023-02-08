@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-Sub-SubCategory Product
+ Product Search
 @endsection
 
 
@@ -12,17 +12,7 @@ Sub-SubCategory Product
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
         <li><a href="#">Home</a></li>
-        @foreach($breadsubsubcat as $item)
-        <li class='active'>{{ $item->category->category_name_en }}</li>
-        @endforeach
-
-        @foreach($breadsubsubcat as $item)
-        <li class='active'>{{ $item->subcategory->subcategory_name_en }}</li>
-        @endforeach
-
-        @foreach($breadsubsubcat as $item)
-        <li class='active'>{{ $item->subsubcategory_name_en }}</li>
-        @endforeach
+        <li class='active'>Handbags</li>
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
@@ -193,24 +183,8 @@ Sub-SubCategory Product
             <!-- /.container-fluid --> 
           </div>
         </div>
-
-
-         @foreach($breadsubsubcat as $item)
-         <span class="badge badge-danger" style="background:gray; ">{{ $item->category->category_name_en }}</span>
         
-        @endforeach
-        /
-        @foreach($breadsubsubcat as $item)
-         <span class="badge badge-danger" style="background:gray; ">{{ $item->subcategory->subcategory_name_en }}</span>
-       
-        @endforeach
-        /
-        @foreach($breadsubsubcat as $item)
-        <span class="badge badge-danger" style="background:red; ">{{ $item->subsubcategory_name_en }}</span>
-       
-        @endforeach
-        
-     
+     <h4><b>Total Search:</b><span class="badge badge-danger" style="background: red"> {{ count($products) }} </span> Items </h4>
         <div class="clearfix filters-container m-t-10">
           <div class="row">
             <div class="col col-sm-6 col-md-2">
@@ -446,7 +420,7 @@ Sub-SubCategory Product
             <div class="text-right">
               <div class="pagination-container">
                 <ul class="list-inline list-unstyled">
-                  {{ $products->links() }}
+                 
                 </ul>
                 <!-- /.list-inline --> 
               </div>
