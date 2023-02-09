@@ -193,6 +193,8 @@ class IndexController extends Controller
 
     public function ProductSearch(Request $request)
     {
+
+        $request->validate(["search" => "required"]);
         $item = $request->search;
 
         $products = Product::where('product_name_en','LIKE',"%$item%")->get();
@@ -200,6 +202,14 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name_en','ASC')->get();
 
         return view('frontend.product.search',compact('products','categories'));
+    }//End Method
+
+
+/////advance search product
+
+    public function SearchProduct(Request $request)
+    {
+        return $request;
     }//End Method
 
 
