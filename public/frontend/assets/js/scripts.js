@@ -338,6 +338,9 @@ $("body").on("keyup","#search", function(){
 
    
     let text = $("#search").val();
+
+    if(text.length > 0)
+    {
     //console.log(text);
     $.ajax({
             data: {search: text},
@@ -348,10 +351,13 @@ $("body").on("keyup","#search", function(){
 
             },
             success:function(result){
-
+                $("#searchProducts").html(result);
             }
 
         }); // end ajax 
+    }//end if condition
+
+    if(text.length < 1) $("#searchProducts").html("");
 
 });  //end one
 

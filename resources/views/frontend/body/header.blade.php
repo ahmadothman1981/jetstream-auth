@@ -97,9 +97,11 @@
                     </ul>
                   </li>
                 </ul>
-      <input class="search-field" id="search" name="search" placeholder="Search here..." />
+      <input class="search-field" id="search" onfocus="search_result_show()" onblur="search_result_hide()" name="search" placeholder="Search here..." />
                 <button  class="search-button" type="submit" ></button> </div>
             </form>
+
+            <div id="searchProducts"></div>
           </div>
           <!-- /.search-area --> 
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
@@ -276,3 +278,32 @@
 
   
 </header>
+<style>
+  .search-area {
+    position:relative;
+  }
+
+  #searchProducts {
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:white;
+    z-index:999;
+    border-radius: 8px;
+    margin-top:5px;
+  }
+</style>
+
+<script type="text/javascript">
+  
+  function search_result_show()
+  {
+     $("#searchProducts").slideDown();
+  }
+
+  function search_result_hide()
+  {
+    $("#searchProducts").slideUp();
+  }
+</script>
