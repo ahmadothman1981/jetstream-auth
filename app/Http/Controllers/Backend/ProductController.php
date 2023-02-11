@@ -30,6 +30,20 @@ class ProductController extends Controller
     public function StoreProduct(Request $request)
     {
 
+        $request->validate([
+            'file'=> 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
+
+        ]);
+
+        if($files = $request->file('file'))
+        {
+            $destinationPath = 'upload/pdf';  //upload path
+
+            $digitalItem = date('YmdHis').".".$files->getClientOriginalExtension();
+
+            $files->move($destinationPath,$digitalItem);
+        }
+
     $image = $request->file('product_thambnail');
       $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
       Image::make($image)->resize(917,1000)->save('upload/products/thambnail/'.$name_gen);
@@ -65,6 +79,7 @@ class ProductController extends Controller
             'spacial_deals'=>$request->spacial_deals,
             'status'=>1,
             'product_thambnail'=>$save_url,
+            'digital_file'=>$digitalItem,
             'created_at'=>Carbon::now(),
         ]);
 
