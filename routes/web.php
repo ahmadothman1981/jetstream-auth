@@ -27,6 +27,7 @@ use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\Backend\AdminUserController;
+use App\Http\Controllers\Frontend\ShopController;
 
 
 
@@ -547,3 +548,9 @@ Route::post('/search',[IndexController::class,'ProductSearch'])->name('product.s
 
 Route::post('search-product',[IndexController::class,'SearchProduct']);
 
+/////////Shop Page Route////////////////////////////////
+
+
+Route::get('/shop',[ShopController::class,'ShopPage'])->name('shop.page');
+
+Route::post('/shop',[ShopController::class,'ShopFilter'])->name('shop.filter');
