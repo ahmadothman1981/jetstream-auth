@@ -553,4 +553,4 @@ Route::post('search-product',[IndexController::class,'SearchProduct']);
 
 Route::get('/shop',[ShopController::class,'ShopPage'])->name('shop.page');
 
-Route::post('/shop',[ShopController::class,'ShopFilter'])->name('shop.filter');
+Route::post('/shop/filter',[ShopController::class,'ShopFilter'])->name('shop.filter');
