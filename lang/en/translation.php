@@ -1,0 +1,86 @@
+<?php
+return [
+
+'Language'=>'Language',
+'My Account'=> 'My Account',
+'Wishlist'=> 'Wishlist',
+'My Cart'=>'My Cart',
+'Checkout'=>'Checkout',
+'Order Tracking'=>'Order Tracking',
+'User Profile'=>'User Profile',
+'Login/Register'=>'Login/Register',
+'Categories'=>'Categories',
+'Sub Total'=>'Sub Total',
+'Checkout'=>'Checkout',
+'cart'=>'cart',
+'Home'=>'Home',
+'Shop'=>'Shop',
+'Todays offer'=>'Todays offer',
+'Blog'=>'Blog',
+'Track Your Order'=>'Track Your Order',
+'Invoice Code'=>'Invoice Code',
+'Track Now'=>'Track Now',
+'Your Order Invoice Number'=>'Your Order Invoice Number',
+'Search here...'=>'Search here...',
+'Categories'=>'Categories',
+'Health and Beauty'=>'Health and Beauty',
+'Kids and Babies'=>'Kids and Babies',
+'Sports'=>'Sports',
+'Home and Garden'=>'Home and Garden',
+'hot deals'=>'hot deals',
+'Product tags'=>'Product tags',
+'Special Offer'=>'Special Offer',
+'Special Deals'=>'Special Deals',
+'Newsletters'=>'Newsletters',
+'Sign Up for Our Newsletter!'=>'Sign Up for Our Newsletter!',
+'Email address'=>'Email address',
+'Subscribe'=>'Subscribe',
+'Subscribe to our newsletter'=>'Subscribe to our newsletter',
+'Top Brands'=>'Top Brands',
+'Shop Now'=>'Shop Now',
+'money back'=>'money back',
+'30 Days Money Back Guarantee'=>'30 Days Money Back Guarantee',
+'free shipping'=>'free shipping',
+'Shipping on orders over $99'=>'Shipping on orders over $99',
+'Special Sale'=>'Special Sale',
+'Extra $5 off on all items'=>'Extra $5 off on all items',
+'New Products'=>'New Products',
+'All'=>'All',
+'Add to cart'=>'Add to cart',
+'Featured products'=>'Featured products',
+'New Mens Fashion'=>'New Mens Fashion',
+'Save up to 40% off'=>'Save up to 40% off',
+'NEW'=>'NEW',
+'Best seller'=>'Best seller',
+'latest form blog'=>'latest form blog',
+'Read more'=>'Read more',
+'New Arrivals'=>'New Arrivals',
+'Contact Us'=>'Contact Us',
+'Customer Service'=>'Customer Service',
+'My Account'=>'My Account',
+'Order History'=>'Order History',
+'FAQ'=>'FAQ',
+'Specials'=>'Specials',
+'Help Center'=>'Help Center',
+'Corporation'=>'Corporation',
+'About us'=>'About us',
+'Customer Service'=>'Customer Service',
+'Company'=>'Company',
+'Investor Relations'=>'Investor Relations',
+'Advanced Search'=>'Advanced Search',
+'Why Choose Us'=>'Why Choose Us',
+'Shopping Guide'=>'Shopping Guide',
+'Blog'=>'Blog',
+
+
+
+
+
+
+
+
+];
+
+
+
+ ?>

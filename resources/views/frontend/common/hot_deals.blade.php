@@ -3,7 +3,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
 @endphp
 
  <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
-          <h3 class="section-title">hot deals</h3>
+          <h3 class="section-title">{{ __('translation.hot deals') }}</h3>
           <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
             @foreach($hot_deals as $product)
@@ -43,7 +43,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                 
                 <div class="product-info text-left m-t-20">
                   <h3 class="name"><a href="detail.html">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
+@if(session()->get('locale') == 'ar' )   {{ $product->product_name_ar }}  
 @else  {{ $product->product_name_en }} 
 @endif</a></h3>
 
@@ -64,7 +64,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                   <div class="action">
                     <div class="add-cart-button btn-group">
                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                      <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                      <button class="btn btn-primary cart-btn" type="button">{{ __('translation.Add to cart') }}</button>
                     </div>
                   </div>
                   <!-- /.action --> 

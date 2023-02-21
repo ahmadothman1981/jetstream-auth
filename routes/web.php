@@ -9,7 +9,6 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
-use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
@@ -28,6 +27,7 @@ use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\LanguageController;
 
 
 
@@ -203,10 +203,8 @@ Route::prefix('slider')->group(function(){
 
 
 //////////////////////////////////Multi Language All Routes///////////////////////////
+Route::get('/language/{locale}',[LanguageController::class,'language'])->name('language.converter');
 
-Route::get('/language/english',[LanguageController::class,'English'])->name('english.language');
-
-Route::get('/language/arabic',[LanguageController::class,'Arabic'])->name('arabic.language');
 ////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////Product Details Page URL 
 

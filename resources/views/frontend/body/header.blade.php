@@ -7,16 +7,16 @@
         <div class="cnt-account">
           <ul class="list-unstyled">
             <li><a href="#"><i class="icon fa fa-user"></i>
-              @if(session()->get('Language') == 'Arabic' ) حسابى  @else  My Account @endif</a></li>
-            <li><a href="{{ route('whishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-            <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
-            <li><a href="" type="button" data-toggle="modal" data-target="#ordertracking"><i class="icon fa fa-check"></i>Order Tracking</a></li>
+                {{ __('translation.My Account') }} </a></li>
+            <li><a href="{{ route('whishlist') }}"><i class="icon fa fa-heart"></i>{{ __('translation.Wishlist') }}</a></li>
+            <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>{{ __('translation.My Cart') }}</a></li>
+            <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>{{ __('translation.Checkout') }}</a></li>
+            <li><a href="" type="button" data-toggle="modal" data-target="#ordertracking"><i class="icon fa fa-check"></i>{{ __('translation.Order Tracking') }}</a></li>
           <li>
     @auth
-   <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>User Profile</a>
+   <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>{{ __('translation.My User Profile') }}</a>
     @else
-    <a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a>
+    <a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>{{ __('translation.Login/Register') }}</a>
     @endauth
             </li>
             
@@ -26,21 +26,15 @@
         
         <div class="cnt-block">
           <ul class="list-unstyled list-inline">
-            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">USD</a></li>
-                <li><a href="#">INR</a></li>
-                <li><a href="#">GBP</a></li>
-              </ul>
-            </li>
+            
             <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
-              @if(session()->get('Language') == 'Arabic' ) اللغة  @else  Language @endif</span><b class="caret"></b></a>
+                 {{ __('translation.Language') }}</span><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                @if(session()->get('Language') == 'Arabic')
-                <li><a href="{{ route('english.language') }}">English</a></li>
-                @else
-                <li><a href="{{ route('arabic.language') }}">Arabic</a></li>
-                @endif
+               
+                <li><a href="{{ route('language.converter','en') }}">English</a></li>
+               
+                <li><a href="{{ route('language.converter','ar') }}">Arabic</a></li>
+              
               </ul>
             </li>
           </ul>
@@ -87,17 +81,11 @@
               
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">
-                  <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu" >
-                      <li class="menu-header">Computer</li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
-                    </ul>
+                  <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">{{ __('translation.Categories') }} <b class="caret"></b></a>
+                    
                   </li>
                 </ul>
-      <input class="search-field" id="search" onfocus="search_result_show()" onblur="search_result_hide()" name="search" placeholder="Search here..." />
+      <input class="search-field" id="search" onfocus="search_result_show()" onblur="search_result_hide()" name="search" placeholder="{{ __('translation.Search here...') }}" />
                 <button  class="search-button" type="submit" ></button> </div>
             </form>
 
@@ -114,7 +102,7 @@
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
               <div class="basket-item-count"><span class="count" id="cartQty"></span></div>
-              <div class="total-price-basket"> <span class="lbl">cart -</span> <span class="total-price"> <span class="sign">$</span><span class="value" id="cartSubTotal"></span> </span> </div>
+              <div class="total-price-basket"> <span class="lbl">{{ __('translation.Add to cart') }} -</span> <span class="total-price"> <span class="sign">$</span><span class="value" id="cartSubTotal"></span> </span> </div>
             </div>
             </a>
             <ul class="dropdown-menu">
@@ -129,9 +117,9 @@
 <!-- =====================  MINI CART END WITH AJAX =============== -->
 
                 <div class="clearfix cart-total">
-                  <div class="pull-right"> <span class="text">Sub Total :</span><span class='price' id="cartSubTotal"></span> </div>
+                  <div class="pull-right"> <span class="text">{{ __('translation.Sub Total') }} :</span><span class='price' id="cartSubTotal"></span> </div>
                   <div class="clearfix"></div>
-                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">{{ __('translation.Checkout') }}</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>
@@ -164,7 +152,7 @@
             <div class="nav-outer">
               <ul class="nav navbar-nav">
                 <li class="active dropdown yamm-fw"> <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
- @if(session()->get('Language') == 'Arabic' ) الصفحة الرئيسية @else  Home @endif
+                     {{ __('translation.Home') }}
                 </a> </li>
 
                 <!--//get categories Table data  -->
@@ -175,7 +163,7 @@
 
               @foreach($categories as $category)
                 <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
-@if(session()->get('Language') == 'Arabic' )  {{$category->category_name_ar  }}  
+@if(session()->get('locale') == 'ar' )  {{$category->category_name_ar  }}  
 @else {{$category->category_name_en  }} 
 @endif
                   </a>
@@ -194,7 +182,7 @@
                           <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
       <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">                      
                           <h2 class="title">
-@if(session()->get('Language') == 'Arabic' )  {{ $subcategory->subcategory_name_ar }}  
+@if(session()->get('locale') == 'ar' )  {{ $subcategory->subcategory_name_ar }}  
 @else {{ $subcategory->subcategory_name_en }} 
 @endif
                             </h2></a>
@@ -207,7 +195,7 @@
               @foreach($subsubcategories as $subsubcategory)
                             <ul class="links">
                             <li><a href="{{ url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' ) {{$subsubcategory->subsubcategory_name_ar }} @else {{$subsubcategory->subsubcategory_name_en }}
+@if(session()->get('locale') == 'ar' ) {{$subsubcategory->subsubcategory_name_ar }} @else {{$subsubcategory->subsubcategory_name_en }}
  @endif
                               </a></li>
                               
@@ -227,11 +215,11 @@
                 </li>
           @endforeach<!-- end category foreach -->
 
-            <li > <a href="{{ route('shop.page') }}">Shop</a> </li>
+            <li > <a href="{{ route('shop.page') }}">  {{ __('translation.Shop') }}</a> </li>
 
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
+                <li class="dropdown  navbar-right special-menu"> <a href="#">{{ __('translation.Todays offer') }}</a> </li>
 
-                <li class="dropdown  navbar-right special-menu" > <a href="{{ route('home.blog') }}">Blog</a> </li>
+                <li class="dropdown  navbar-right special-menu" > <a href="{{ route('home.blog') }}">{{ __('translation.Blog') }}</a> </li>
               </ul>
               <!-- /.navbar-nav -->
               <div class="clearfix"></div>
@@ -258,7 +246,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Track Your Order</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{ __('translation.Track Your Order') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -268,9 +256,9 @@
         <form action="{{ route('order.tracking') }}" method="post">
           @csrf
           <div class="modal-body">
-            <label>Invoice Code</label>
-            <input type="text" name="code" required="" class="form-control" placeholder="Your Order Invoice Number"  >
-            <button class="btn btn-danger" type="submit" style="margin-top: 5px;">Track Now</button>
+            <label>{{ __('translation.Invoice Code') }}</label>
+            <input type="text" name="code" required="" class="form-control" placeholder="{{ __('translation.Your Order Invoice Number') }}"  >
+            <button class="btn btn-danger" type="submit" style="margin-top: 5px;">{{ __('translation.Track Now') }}</button>
           </div>
         </form>
       </div>

@@ -2,14 +2,14 @@
 $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
  @endphp
  <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> {{ __('translation.Categories') }}</div>
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
 
 
         @foreach($categories as $category)
               <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon {{ $category->category_icon }}" aria-hidden="true"></i>
-@if(session()->get('Language') == 'Arabic' )  {{$category->category_name_ar  }}  
+@if(session()->get('locale') == 'ar' )  {{$category->category_name_ar  }}  
 @else {{$category->category_name_en  }}
 @endif
                 </a>
@@ -25,7 +25,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                       <div class="col-sm-12 col-md-3">
 
             <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">   <h2 class="title">
-@if(session()->get('Language') == 'Arabic' )  {{ $subcategory->subcategory_name_ar }}  
+@if(session()->get('locale') == 'ar' )  {{ $subcategory->subcategory_name_ar }}  
 @else {{ $subcategory->subcategory_name_en }} 
 @endif
                             </h2></a>
@@ -37,7 +37,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                         <ul class="links list-unstyled">
                           <li><a href="{{ url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en) }}">
                             
-@if(session()->get('Language') == 'Arabic' ) {{$subsubcategory->subsubcategory_name_ar }} @else {{$subsubcategory->subsubcategory_name_en }}
+@if(session()->get('locale') == 'ar' ) {{$subsubcategory->subsubcategory_name_ar }} @else {{$subsubcategory->subsubcategory_name_en }}
  @endif
                             
                           </a></li>
@@ -60,58 +60,22 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
               
         @endforeach <!--End For each CATEGORY -->
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-heartbeat"></i>Health and Beauty</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Gaming</a></li>
-                          <li><a href="#">Laptop Skins</a></li>
-                          <li><a href="#">Apple</a></li>
-                          <li><a href="#">Dell</a></li>
-                          <li><a href="#">Lenovo</a></li>
-                          <li><a href="#">Microsoft</a></li>
-                          <li><a href="#">Asus</a></li>
-                          <li><a href="#">Adapters</a></li>
-                          <li><a href="#">Batteries</a></li>
-                          <li><a href="#">Cooling Pads</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Routers &amp; Modems</a></li>
-                          <li><a href="#">CPUs, Processors</a></li>
-                          <li><a href="#">PC Gaming Store</a></li>
-                          <li><a href="#">Graphics Cards</a></li>
-                          <li><a href="#">Components</a></li>
-                          <li><a href="#">Webcam</a></li>
-                          <li><a href="#">Memory (RAM)</a></li>
-                          <li><a href="#">Motherboards</a></li>
-                          <li><a href="#">Keyboards</a></li>
-                          <li><a href="#">Headphones</a></li>
-                        </ul>
-                      </div>
-                      <div class="dropdown-banner-holder"> <a href="#"><img alt="" src="{{ asset('frontend/assets/images/banners/banner-side.png') }}" /></a> </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
+              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-heartbeat"></i>{{ __('translation.Health and Beauty') }}</a>
+                
                 <!-- /.dropdown-menu --> </li>
               <!-- /.menu-item -->
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-paper-plane"></i>Kids and Babies</a> 
+              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-paper-plane"></i>{{ __('translation.Kids and Babies') }}</a> 
                 <!-- /.dropdown-menu --> </li>
               <!-- /.menu-item -->
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-futbol-o"></i>Sports</a> 
+              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-futbol-o"></i>{{ __('translation.Sports') }}</a> 
                 <!-- ================================== MEGAMENU VERTICAL ================================== --> 
                 <!-- /.dropdown-menu --> 
                 <!-- ================================== MEGAMENU VERTICAL ================================== --> </li>
               <!-- /.menu-item -->
               
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-envira"></i>Home and Garden</a> 
+              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-envira"></i>{{ __('translation.Home and Garden') }}</a> 
                 <!-- /.dropdown-menu --> </li>
               <!-- /.menu-item -->
               

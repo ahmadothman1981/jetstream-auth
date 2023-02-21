@@ -8,10 +8,10 @@ $tags_ar= App\Models\Product::groupBy('product_tags_ar')->select('product_tags_a
 
 
  <div class="sidebar-widget product-tag wow fadeInUp">
-          <h3 class="section-title">Product tags</h3>
+          <h3 class="section-title">{{ __('translation.Product tags') }}</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="tag-list"> 
-@if(session()->get('Language') == 'Arabic' )
+@if(session()->get('locale') == 'ar' )
 @foreach($tags_ar as $tag) 
    <a class="item active" title="Phone" href="{{ url('product/tag/'.$tag ->product_tags_ar) }}">{{ str_replace(',',' ',$tag ->product_tags_ar) }}</a>  
 @endforeach 

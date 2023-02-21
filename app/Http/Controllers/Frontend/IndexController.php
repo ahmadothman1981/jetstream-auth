@@ -29,6 +29,7 @@ class IndexController extends Controller
         $hot_deals = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(4)->get();
         $special_offer = Product::where('spacial_offer',1)->orderBy('id','DESC')->limit(6)->get();
         $special_deals = Product::where('spacial_deals',1)->orderBy('id','DESC')->limit(5)->get();
+        $new_arrival = Product::where('created_at','!=',NULL)->orderBy('id','DESC')->limit(5)->get();
         $skip_category_0 = Category::skip(0)->first();
         $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
 
@@ -39,8 +40,8 @@ class IndexController extends Controller
         $skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
         //return $skip_category->id;
        // die();
-
-        return view('frontend.index',compact('categories','sliders','products','feature','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost'));
+    $lang_code = \App::getLocale();
+        return view('frontend.index',compact('categories','sliders','products','feature','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost','new_arrival','lang_code'));
     }//end method
 
     public function UserLogout()

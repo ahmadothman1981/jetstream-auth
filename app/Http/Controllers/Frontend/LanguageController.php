@@ -4,26 +4,18 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class LanguageController extends Controller
 {
-    public function Arabic()
-    {   
-        session()->get('Language');
-        session()->forget('Language');
-        Session::put('Language','Arabic');
+    public function language($locale)
+    {
+        if(in_array($locale,['ar','en']))
+    {
+        session()->put('locale',$locale);
+    }
 
-        return redirect()->back();
-    }//End Method
+    
+    return redirect()->back();
 
-
-    public function English()
-    {   
-        session()->get('Language');
-        session()->forget('Language');
-        Session::put('Language','English');
-
-        return redirect()->back();
     }//End Method
 }
