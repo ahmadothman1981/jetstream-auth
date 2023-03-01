@@ -120,6 +120,8 @@ return [
 'Availability'=>'التوفر',
 'Reviews'=>'المراجعات',
 'Even the members of some kind of disease are not soft. Now season him with fear and trouble, but consectetuer'=>'حتى أعضاء نوع من المرض ليسوا لينين. دهنه الآن بالخوف والمتاعب ، لكن المذاق',
+'Compare products'=>'قارن بين المنتجات',
+
 
 
 

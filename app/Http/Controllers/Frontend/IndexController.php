@@ -143,7 +143,7 @@ class IndexController extends Controller
      
        $breadsubsubcat = Product::with(['subsubcategory','subcategory'])->where('id',$id)->get();
        
-
+   
       return view('frontend.product.product_details',compact('product','multiImage','product_color_en','product_color_ar','product_size_en','product_size_ar','relatedProduct','breadsubsubcat'));
     }//End Method
 
@@ -242,6 +242,8 @@ class IndexController extends Controller
 
         return view('frontend.product.search_product',compact('products'));
     }//End Method
+
+
 
 
 }

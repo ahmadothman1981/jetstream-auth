@@ -121,18 +121,24 @@ Sub-SubCategory Product
             <!-- /.sidebar-widget --> 
             <!-- ============================================== PRICE SILDER : END ============================================== --> 
             <!-- ============================================== MANUFACTURES============================================== -->
+             @php
+              $all_brands = App\Models\Brand::orderBy('brand_name_en','ASC')->get();
+              @endphp
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Manufactures</h4>
               </div>
               <div class="sidebar-widget-body">
                 <ul class="list">
-                  <li><a href="#">Forever 18</a></li>
-                  <li><a href="#">Nike</a></li>
-                  <li><a href="#">Dolce & Gabbana</a></li>
-                  <li><a href="#">Alluare</a></li>
-                  <li><a href="#">Chanel</a></li>
-                  <li><a href="#">Other Brand</a></li>
+                  @foreach($all_brands as $item)
+
+                  <li><a href="#">
+                    @if(session()->get('locale') == 'ar' )
+                        {{ $item->brand_name_ar }}
+                    @else
+                        {{ $item->brand_name_en }}
+                    @endif</a></li>
+                  @endforeach
                 </ul>
                 <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
               </div>
@@ -141,18 +147,25 @@ Sub-SubCategory Product
             <!-- /.sidebar-widget --> 
             <!-- ============================================== MANUFACTURES: END ============================================== --> 
             <!-- ============================================== COLOR============================================== -->
+             @php
+              $colors = App\Models\Product::orderBy('product_name_en','ASC')->get();
+              @endphp
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
                 <h4 class="widget-title">Colors</h4>
               </div>
+
               <div class="sidebar-widget-body">
                 <ul class="list">
-                  <li><a href="#">Red</a></li>
-                  <li><a href="#">Blue</a></li>
-                  <li><a href="#">Yellow</a></li>
-                  <li><a href="#">Pink</a></li>
-                  <li><a href="#">Brown</a></li>
-                  <li><a href="#">Teal</a></li>
+                  @foreach($colors as $item)
+                  <li><a href="#">
+                    @if(session()->get('locale') == 'ar' )
+                      {{ $item->product_color_ar }}
+                    @else
+                     {{ $item->product_color_en }}
+                     @endif
+                  </a></li>
+                  @endforeach
                 </ul>
               </div>
               <!-- /.sidebar-widget-body --> 
@@ -161,7 +174,7 @@ Sub-SubCategory Product
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- ============================================== COMPARE============================================== -->
             <div class="sidebar-widget wow fadeInUp outer-top-vs">
-              <h3 class="section-title">Compare products</h3>
+              <h3 class="section-title">{{ __('translation.Compare products') }} </h3>
               <div class="sidebar-widget-body">
                 <div class="compare-report">
                   <p>You have no <span>item(s)</span> to compare</p>

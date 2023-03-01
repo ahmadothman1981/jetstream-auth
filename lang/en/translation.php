@@ -120,6 +120,8 @@ return [
 'Availability'=>'Availability',
 'Reviews'=>'Reviews',
 'Even the members of some kind of disease are not soft. Now season him with fear and trouble, but consectetuer'=>'Even the members of some kind of disease are not soft. Now season him with fear and trouble, but consectetuer',
+'Compare products'=>'Compare products',
+
 
 
 
