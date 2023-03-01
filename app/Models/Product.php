@@ -23,4 +23,16 @@ protected $guarded = [];
    {
     return $this->belongsTo(brand::class,'brand_id','id');
    }//releation method
+
+  
+
+    public function subcategory()
+   {
+    return $this->belongsTo(SubCategory::class,'subcategory_id','id');
+   }//releation method
+
+     public function subsubcategory()
+   {
+    return $this->belongsTo(subsubcategory::class,'subsubcategory_id','id');
+   }//releation method
 }

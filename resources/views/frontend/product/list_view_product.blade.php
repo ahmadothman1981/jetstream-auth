@@ -13,7 +13,7 @@
                         <div class="col col-sm-8 col-lg-8">
                           <div class="product-info">
                             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
+@if(session()->get('locale') == 'ar' )   {{ $product->product_name_ar }}  
 @else  {{ $product->product_name_en }} 
 @endif
                             </a></h3>
@@ -26,7 +26,7 @@
                              @endif
                             
                             <!-- /.product-price -->
-                            <div class="description m-t-10">@if(session()->get('Language') == 'Arabic' )   {{ $product->short_desc_ar }}  
+                            <div class="description m-t-10">@if(session()->get('locale') == 'ar' )   {{ $product->short_desc_ar }}  
 @else  {{ $product->short_desc_en }} 
 @endif</div>
                             <div class="cart clearfix animate-effect">

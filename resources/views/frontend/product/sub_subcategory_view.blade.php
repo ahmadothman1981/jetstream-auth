@@ -11,17 +11,32 @@ Sub-SubCategory Product
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
+        <li><a href="{{ url('/') }}">{{ __('translation.Home') }}</a></li>
         @foreach($breadsubsubcat as $item)
-        <li class='active'>{{ $item->category->category_name_en }}</li>
+        <li class='active'>
+         @if(session()->get('locale') == 'ar' )
+          {{ $item->category->category_name_ar }}
+          @else {{ $item->category->category_name_en }} 
+          @endif
+        </li>
         @endforeach
 
         @foreach($breadsubsubcat as $item)
-        <li class='active'>{{ $item->subcategory->subcategory_name_en }}</li>
+        <li class='active'>
+          @if(session()->get('locale') == 'ar' )
+           {{ $item->subcategory->subcategory_name_ar }}
+           @else  {{ $item->subcategory->subcategory_name_en }} 
+           @endif
+        </li>
         @endforeach
 
         @foreach($breadsubsubcat as $item)
-        <li class='active'>{{ $item->subsubcategory_name_en }}</li>
+        <li class='active'>
+          @if(session()->get('locale') == 'ar' )
+          {{ $item->subsubcategory_name_ar }}
+          @else {{ $item->subsubcategory_name_en }}
+          @endif
+        </li>
         @endforeach
       </ul>
     </div>
@@ -51,7 +66,7 @@ Sub-SubCategory Product
               @foreach($categories as $category)
                   <div class="accordion-group">
                     <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
-@if(session()->get('Language') == 'Arabic' )  {{$category->category_name_ar  }}  
+@if(session()->get('locale') == 'ar' )  {{$category->category_name_ar  }}  
 @else {{$category->category_name_en  }}
 @endif
                     </a> </div>
@@ -65,7 +80,7 @@ Sub-SubCategory Product
 					@foreach($subcategories as $subcategory)
                         <ul>
                           <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )  {{ $subcategory->subcategory_name_ar }}  
+@if(session()->get('locale') == 'ar' )  {{ $subcategory->subcategory_name_ar }}  
 @else {{ $subcategory->subcategory_name_en }} 
 @endif
 						</a></li>
@@ -196,17 +211,37 @@ Sub-SubCategory Product
 
 
          @foreach($breadsubsubcat as $item)
-         <span class="badge badge-danger" style="background:gray; ">{{ $item->category->category_name_en }}</span>
+         <span class="badge badge-danger" style="background:gray; ">
+          @if(session()->get('locale') == 'ar' )
+          {{ $item->category->category_name_ar }}
+          @else
+           {{ $item->category->category_name_en }} 
+          @endif
+
+
+        </span>
         
         @endforeach
         /
         @foreach($breadsubsubcat as $item)
-         <span class="badge badge-danger" style="background:gray; ">{{ $item->subcategory->subcategory_name_en }}</span>
+         <span class="badge badge-danger" style="background:gray; ">
+          @if(session()->get('locale') == 'ar' )
+           {{ $item->subcategory->subcategory_name_ar }}
+           @else
+             {{ $item->subcategory->subcategory_name_en }} 
+           @endif
+         </span>
        
         @endforeach
         /
         @foreach($breadsubsubcat as $item)
-        <span class="badge badge-danger" style="background:red; ">{{ $item->subsubcategory_name_en }}</span>
+        <span class="badge badge-danger" style="background:red; ">
+          @if(session()->get('locale') == 'ar' )
+          {{ $item->subsubcategory_name_ar }}
+          @else
+           {{ $item->subsubcategory_name_en }}
+          @endif
+        </span>
        
         @endforeach
         
@@ -309,8 +344,10 @@ Sub-SubCategory Product
                         
                         <div class="product-info text-left">
                           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
-@else  {{ $product->product_name_en }} 
+@if(session()->get('locale') == 'ar' )
+   {{ $product->product_name_ar }}  
+@else
+  {{ $product->product_name_en }} 
 @endif
                           </a></h3>
                           <div class="rating rateit-small"></div>
@@ -376,8 +413,10 @@ Sub-SubCategory Product
                         <div class="col col-sm-8 col-lg-8">
                           <div class="product-info">
                             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
-@else  {{ $product->product_name_en }} 
+@if(session()->get('locale') == 'ar' )
+   {{ $product->product_name_ar }}  
+@else
+  {{ $product->product_name_en }} 
 @endif
                             </a></h3>
 
@@ -389,15 +428,18 @@ Sub-SubCategory Product
                              @endif
                             
                             <!-- /.product-price -->
-                            <div class="description m-t-10">@if(session()->get('Language') == 'Arabic' )   {{ $product->short_desc_ar }}  
-@else  {{ $product->short_desc_en }} 
-@endif</div>
+                            <div class="description m-t-10">
+                              @if(session()->get('locale') == 'ar' )
+                                 {{ $product->short_desc_ar }}  
+                              @else  {{ $product->short_desc_en }} 
+                              @endif
+                        </div>
                             <div class="cart clearfix animate-effect">
                               <div class="action">
                                 <ul class="list-unstyled">
                                   <li class="add-cart-button btn-group">
                                     <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                    <button class="btn btn-primary cart-btn" type="button">{{ __('translation.Add to cart') }}</button>
                                   </li>
                                   <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
                                   <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>

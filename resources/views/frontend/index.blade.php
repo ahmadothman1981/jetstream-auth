@@ -241,6 +241,7 @@ Easy Online Shop
               <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">{{ __('translation.All') }}</a></li>
               @foreach($categories as $category)
               <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">
+
 @if(session()->get('locale') == 'ar' )   {{ $category->category_name_ar }} 
 @else {{ $category->category_name_en }} 
 @endif

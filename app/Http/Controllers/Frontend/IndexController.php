@@ -21,6 +21,7 @@ class IndexController extends Controller
 {
     public function Index()
     {
+
         $blogpost = BlogPost::latest()->get();
         $categories = Category::orderBy('category_name_en','ASC')->get();
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
@@ -41,6 +42,9 @@ class IndexController extends Controller
         //return $skip_category->id;
        // die();
     $lang_code = \App::getLocale();
+    
+        
+
         return view('frontend.index',compact('categories','sliders','products','feature','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost','new_arrival','lang_code'));
     }//end method
 
@@ -133,8 +137,14 @@ class IndexController extends Controller
 
       $cat_id = $product->category_id;
       $relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->get();
+      $subcat_id = $product->subcategory_id;
 
-      return view('frontend.product.product_details',compact('product','multiImage','product_color_en','product_color_ar','product_size_en','product_size_ar','relatedProduct'));
+      $subsubcat_id = $product->subsubcategory_id;
+     
+       $breadsubsubcat = Product::with(['subsubcategory','subcategory'])->where('id',$id)->get();
+       
+
+      return view('frontend.product.product_details',compact('product','multiImage','product_color_en','product_color_ar','product_size_en','product_size_ar','relatedProduct','breadsubsubcat'));
     }//End Method
 
     public function TagWiseProduct($tag)

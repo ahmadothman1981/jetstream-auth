@@ -18,23 +18,7 @@
           
           <div class="module-body">
             <ul class="toggle-footer" style="">
-              <li class="media">
-                <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span> </div>
-                <div class="media-body">
-                  <p>{{$setting ->company_name  }},{{ $setting->company_address }}</p>
-                </div>
-              </li>
-              <li class="media">
-                <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-mobile fa-stack-1x fa-inverse"></i> </span> </div>
-                <div class="media-body">
-                  <p>{{$setting ->phone_one }}<br>
-                    {{$setting ->phone_two  }}</p>
-                </div>
-              </li>
-              <li class="media">
-                <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
-                <div class="media-body"> <span><a href="#">{{$setting ->email  }}</a></span> </div>
-              </li>
+              <iframe style="width: 100%;border:3px solid black; height:40%; " src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d27351.31921172197!2d31.327796915625!3d31.028620500000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f79d60c05ae879%3A0x7f56784b94343d80!2z2KPZg9in2K_ZitmF2YrYqSBTbWlseQ!5e0!3m2!1sen!2seg!4v1677132718142!5m2!1sen!2seg" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </ul>
           </div>
           <!-- /.module-body --> 
@@ -49,7 +33,7 @@
           
           <div class="module-body">
             <ul class='list-unstyled'>
-              <li class="first"><a href="#" title="Contact us">{{ __('translation.My Account') }}</a></li>
+              <li class="first"><a href="{{ route('login') }}" title="Contact us">{{ __('translation.My Account') }}</a></li>
               <li><a href="#" title="About us">{{ __('translation.Order History') }}</a></li>
               <li><a href="#" title="faq">{{ __('translation.FAQ') }}</a></li>
               <li><a href="#" title="Popular Searches">{{ __('translation.Specials') }}</a></li>
@@ -94,9 +78,12 @@
               <li class=" last"><a href="contact-us.html" title="Suppliers">{{ __('translation.Contact Us') }}</a></li>
             </ul>
           </div>
+
           <!-- /.module-body --> 
         </div>
+
       </div>
+
     </div>
   </div>
   <div class="copyright-bar">

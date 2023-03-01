@@ -48,7 +48,7 @@ Sub-Category Product
               @foreach($categories as $category)
                   <div class="accordion-group">
                     <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
-@if(session()->get('Language') == 'Arabic' )  {{$category->category_name_ar  }}  
+@if(session()->get('locale') == 'ar' )  {{$category->category_name_ar  }}  
 @else {{$category->category_name_en  }}
 @endif
                     </a> </div>
@@ -62,7 +62,7 @@ Sub-Category Product
 					@foreach($subcategories as $subcategory)
                         <ul>
                           <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )  {{ $subcategory->subcategory_name_ar }}  
+@if(session()->get('locale') == 'ar' )  {{ $subcategory->subcategory_name_ar }}  
 @else {{ $subcategory->subcategory_name_en }} 
 @endif
 						</a></li>

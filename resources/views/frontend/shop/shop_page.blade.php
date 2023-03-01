@@ -53,15 +53,13 @@ Shop Page
 
 
 
-              @foreach($categories as $category)
+             @foreach($categories as $category)
                   <div class="accordion-group">
                     <div class="accordion-heading">
 
                       <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" name="category[]" value="{{$category->category_slug_en }}" @if(!empty($filterCat) && in_array($category->category_slug_en,$filterCat)) checked @endif >
-                  @if(session()->get('Language') == 'Arabic' )  {{$category->category_name_ar  }}  
-                  @else {{$category->category_name_en  }}
-                  @endif
+            <input type="checkbox" class="form-check-input" name="category[]" value="{{$category->slug }}" @if(!empty($filterCat) && in_array($category->slug,$filterCat)) checked @endif onchange="this.form.submit()">
+                 {{$category->name}}  
                       </label>
                   </div>
                     <!-- /.accordion-heading -->
@@ -71,7 +69,7 @@ Shop Page
                   <!-- /.accordion-group -->
                   
                 @endforeach
-                 <input type="submit" name="submit" value="Search">
+               
                 </div>
                 <!-- /.accordion --> 
               </div>
@@ -100,10 +98,9 @@ Shop Page
                     <div class="accordion-heading">
 
                       <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" name="brand[]" value="{{$brand->brand_slug_en }}" @if(!empty($filterBrand) && in_array($brand->brand_slug_en,$filterBrand)) checked @endif >
-                  @if(session()->get('Language') == 'Arabic' )  {{$brand->brand_name_ar  }}  
-                  @else {{$brand->brand_name_en  }}
-                  @endif
+            <input type="checkbox" class="form-check-input" name="brand[]" value="{{$brand->slug }}" @if(!empty($filterBrand) && in_array($brand->slug,$filterBrand)) checked @endif onchange="this.form.submit()">
+            {{$brand->name}} 
+                  
                       </label>
                   </div>
                     <!-- /.accordion-heading -->
@@ -113,7 +110,8 @@ Shop Page
                   <!-- /.accordion-group -->
                   
                 @endforeach
-                  <input type="submit" name="submit" value="Brand Search">
+                <!-- /.accordion --> 
+                  <!-- / <input type="submit" name="submit" value=" Search">--> 
                 </div>
                 <!-- /.accordion --> 
               </div>

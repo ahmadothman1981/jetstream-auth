@@ -15,9 +15,30 @@
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Clothing</a></li>
-				<li class='active'>Floral Print Buttoned</li>
+				<li><a href="{{ url('/') }}">
+					
+				    {{ __('translation.Home') }}</a></li>
+				@foreach($breadsubsubcat as $item)
+				<li><a href="#">
+					@if(session()->get('locale') == 'ar' )
+					{{ $item->subcategory->subcategory_name_ar }}
+					@else
+					{{ $item->subcategory->subcategory_name_en }}
+					@endif
+			</a></li>
+
+				@endforeach
+				
+				@foreach($breadsubsubcat as $item)
+				<li><a href="#">
+					@if(session()->get('locale') == 'ar' )
+					{{ $item->subsubcategory->subsubcategory_name_ar }}
+					@else
+					{{ $item->subsubcategory->subsubcategory_name_en }}
+					@endif
+			</a></li>
+				@endforeach
+				
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -39,15 +60,15 @@
 
 <!-- ============================================== NEWSLETTER ============================================== -->
 <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
-	<h3 class="section-title">Newsletters</h3>
+	<h3 class="section-title">{{ __('translation.Newsletters') }}</h3>
 	<div class="sidebar-widget-body outer-top-xs">
-		<p>Sign Up for Our Newsletter!</p>
+		<p>{{ __('translation.Sign Up for Our Newsletter!') }}</p>
         <form>
         	 <div class="form-group">
-			    <label class="sr-only" for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Subscribe to our newsletter">
+			    <label class="sr-only" for="exampleInputEmail1">{{ __('translation.Email address') }}</label>
+			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{ __('translation.Subscribe to our newsletter') }}">
 			  </div>
-			<button class="btn btn-primary">Subscribe</button>
+			<button class="btn btn-primary">{{ __('translation.Subscribe') }}</button>
 		</form>
 	</div><!-- /.sidebar-widget-body -->
 </div><!-- /.sidebar-widget -->
@@ -58,19 +79,19 @@
 	<div id="advertisement" class="advertisement">
         <div class="item">
             <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member1.png') }}" alt="Image"></div>
-		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
+		<div class="testimonials"><em>"</em> {{ __('translation.Even the members of some kind of disease are not soft. Now season him with fear and trouble, but consectetuer') }}.<em>"</em></div>
 		<div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
         </div><!-- /.item -->
 
          <div class="item">
          	<div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member3.png') }}" alt="Image"></div>
-		<div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
+		<div class="testimonials"><em>"</em>{{ __('translation.Even the members of some kind of disease are not soft. Now season him with fear and trouble, but consectetuer') }}.<em>"</em></div>
 		<div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
         </div><!-- /.item -->
 
         <div class="item">
             <div class="avatar"><img src="{{ asset('frontend/assets/images/testimonials/member2.png') }}" alt="Image"></div>
-		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
+		<div class="testimonials"><em>"</em> {{ __('translation.Even the members of some kind of disease are not soft. Now season him with fear and trouble, but consectetuer') }}.<em>"</em></div>
 		<div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
         </div><!-- /.item -->
 
@@ -133,7 +154,7 @@
 
 
 							<h1 class="name" id="pname">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
+@if(session()->get('locale') == 'ar' )   {{ $product->product_name_ar }}  
 @else  {{ $product->product_name_en }} 
 @endif
 							</h1>
@@ -191,7 +212,7 @@
 
 									<div class="col-sm-8">
 										<div class="reviews">
-						<a href="#" class="lnk">({{ count($reviewcount) }} Reviews)</a>
+						<a href="#" class="lnk">({{ count($reviewcount) }} {{ __('translation.Reviews') }})</a>
 										</div>
 									</div>
 								</div><!-- /.row -->		
@@ -201,19 +222,19 @@
 								<div class="row">
 									<div class="col-sm-2">
 										<div class="stock-box">
-											<span class="label">Availability :</span>
+											<span class="label">{{ __('translation.Availability') }} :</span>
 										</div>	
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
-											<span class="value">In Stock</span>
+											<span class="value">{{ __('translation.In Stock') }}</span>
 										</div>	
 									</div>
 								</div><!-- /.row -->	
 							</div><!-- /.stock-container -->
 
 							<div class="description-container m-t-20">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->short_desc_ar }}  
+@if(session()->get('locale') == 'ar' )   {{ $product->short_desc_ar }}  
 @else  {{ $product->short_desc_en }} 
 @endif
 							</div><!-- /.description-container -->
@@ -260,9 +281,9 @@
 
 											@else
 											
-							<label class="info-title control-label">Choose Size <span>*</span></label>
+							<label class="info-title control-label">{{ __('translation.Choose Size') }} <span>*</span></label>
 							<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
-								<option selected="" disabled="">--Choose Size--</option>
+								<option selected="" disabled="">--{{ __('translation.Choose Size') }}--</option>
 
 								@foreach($product_size_en as $size)
 								<option value="{{ ucwords($size) }}">{{ $size }}</option>
@@ -275,9 +296,9 @@
 
 									<div class="col-sm-6">
 										<div class="form-group">
-							<label class="info-title control-label">Choose Color <span>*</span></label>
+							<label class="info-title control-label">{{ __('translation.Choose Color') }} <span>*</span></label>
 							<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
-								<option selected="" disabled="">--Choose Color--</option>
+								<option selected="" disabled="">-- {{ __('translation.Choose Color') }}--</option>
 
 								@foreach($product_color_en as $color)
 								<option value="{{ ucwords($color) }}">{{ $color }}</option>
@@ -310,7 +331,7 @@
 									</div>
 								<input type="hidden" id="product_id" value="{{$product->id }}" min="1">
 									<div class="col-sm-7">
-		<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+		<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i>{{ __('translation.Add to cart') }}</button>
 									</div>
 
 									
@@ -331,9 +352,9 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-								<li><a data-toggle="tab" href="#tags">TAGS</a></li>
+								<li class="active"><a data-toggle="tab" href="#description">{{ __('translation.DESCRIPTION') }}</a></li>
+								<li><a data-toggle="tab" href="#review">{{ __('translation.REVIEW') }}</a></li>
+								<li><a data-toggle="tab" href="#tags">{{ __('translation.TAGS') }}</a></li>
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
 						<div class="col-sm-9">
@@ -343,7 +364,7 @@
 								<div id="description" class="tab-pane in active">
 									<div class="product-tab">
 									<p class="text">
-@if(session()->get('Language') == 'Arabic' )   {!!$product->long_desc_ar!!}  
+@if(session()->get('locale') == 'ar' )   {!!$product->long_desc_ar!!}  
 @else  {!! $product->long_desc_en!!} 
 @endif									</p>									
 									</div>	
@@ -441,14 +462,14 @@
 
 										
 										<div class="product-add-review">
-											<h4 class="title">Write your own review</h4>
+											<h4 class="title">{{ __('translation.Write your own review') }}</h4>
 											<div class="review-table">
 												
 											</div><!-- /.review-table -->
 											
 											<div class="review-form">
 												@guest
-			<p><b>For Add Product Review ,You Nedd To Login First<a href="{{ route('login') }}">Login here</a></b></p>
+			<p><b>{{ __('translation.For Add Product Review ,You Nedd To Login First') }}<a href="{{ route('login') }}">{{ __('translation.Login here') }}</a></b></p>
 												@else
 
 
@@ -491,21 +512,21 @@
 							<div class="col-sm-6">
 								
 								<div class="form-group">
-									<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
+									<label for="exampleInputSummary">{{ __('translation.Summary') }} <span class="astk">*</span></label>
 							<input type="text" name="summary" class="form-control txt" id="exampleInputSummary" placeholder="">
 								</div><!-- /.form-group -->
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="exampleInputReview">Review <span class="astk">*</span></label>
+									<label for="exampleInputReview">{{ __('translation.Review') }} <span class="astk">*</span></label>
 									<textarea class="form-control txt txt-review" name="comment" id="exampleInputReview" rows="4" placeholder=""></textarea>
 								</div><!-- /.form-group -->
 							</div>
 						</div><!-- /.row -->
 						
 						<div class="action text-right">
-							<button type="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+							<button type="submit" class="btn btn-primary btn-upper">{{ __('translation.SUBMIT REVIEW') }}</button>
 						</div><!-- /.action -->
 
 					</form><!-- /.cnt-form -->
@@ -522,25 +543,25 @@
 								<div id="tags" class="tab-pane">
 									<div class="product-tag">
 										
-										<h4 class="title">Product Tags</h4>
+										<h4 class="title">{{ __('translation.Product Tags') }}</h4>
 										<form role="form" class="form-inline form-cnt">
 											<div class="form-container">
 									
 												<div class="form-group">
-													<label for="exampleInputTag">Add Your Tags: </label>
+													<label for="exampleInputTag">{{ __('translation.Add Your Tags') }}: </label>
 													<input type="email" id="exampleInputTag" class="form-control txt">
 													
 
 												</div>
 
-												<button class="btn btn-upper btn-primary" type="submit">ADD TAGS</button>
+												<button class="btn btn-upper btn-primary" type="submit">{{ __('translation.ADD TAGS') }}</button>
 											</div><!-- /.form-container -->
 										</form><!-- /.form-cnt -->
 
 										<form role="form" class="form-inline form-cnt">
 											<div class="form-group">
 												<label>&nbsp;</label>
-												<span class="text col-md-offset-3">Use spaces to separate tags. Use single quotes (') for phrases.</span>
+												<span class="text col-md-offset-3">{{ __('translation.Use spaces to separate tags Use single quotes () for phrases') }}</span>
 											</div>
 										</form><!-- /.form-cnt -->
 
@@ -554,7 +575,7 @@
 
 				<!-- ============================================== UPSELL PRODUCTS ============================================== -->
 <section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Releated Products</h3>
+	<h3 class="section-title">{{ __('translation.Releated Products') }}</h3>
 	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
 	    	
 
@@ -568,13 +589,13 @@
 				<a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a>
 			</div><!-- /.image -->			
 
-			            <div class="tag sale"><span>sale</span></div>            		   
+			            <div class="tag sale"><span>{{ __('translation.sale') }}</span></div>            		   
 		</div><!-- /.product-image -->
 			
 		
 		<div class="product-info text-left">
 			<h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
+@if(session()->get('locale') == 'ar' )   {{ $product->product_name_ar }}  
 @else  {{ $product->product_name_en }} 
 @endif
 			</a></h3>

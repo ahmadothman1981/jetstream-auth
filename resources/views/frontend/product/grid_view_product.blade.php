@@ -24,7 +24,7 @@
                         
                         <div class="product-info text-left">
                           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
+@if(session()->get('locale') == 'ar' )   {{ $product->product_name_ar }}  
 @else  {{ $product->product_name_en }} 
 @endif
                           </a></h3>
