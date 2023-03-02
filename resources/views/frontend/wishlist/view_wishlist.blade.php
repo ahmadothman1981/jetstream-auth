@@ -9,8 +9,8 @@ Wish-List Page
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Wishlist</li>
+				<li><a href="{{ url('/') }}">{{ __('translation.Home') }}</a></li>
+				<li class='active'>{{ __('translation.Wishlist') }}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -25,7 +25,7 @@ Wish-List Page
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="4" class="heading-title">My Wishlist</th>
+					<th colspan="4" class="heading-title">{{ __('translation.My Wishlist') }}</th>
 				</tr>
 			</thead>
 			<tbody id="wishlist">

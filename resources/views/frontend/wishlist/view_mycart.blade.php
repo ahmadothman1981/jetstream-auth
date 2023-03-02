@@ -10,8 +10,8 @@ My Cart Page
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>MyCart</li>
+				<li><a href="{{ url('/') }}">{{ __('translation.Home') }}</a></li>
+				<li class='active'>{{ __('translation.My Cart') }}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -26,13 +26,13 @@ My Cart Page
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="cart-romove item">Image</th>
-					<th class="cart-description item">Product Name</th>
-					<th class="cart-product-name item">Color</th>
-					<th class="cart-edit item">Size</th>
-					<th class="cart-qty item">Quantity</th>
-					<th class="cart-sub-total item">Subtotal</th>
-					<th class="cart-total last-item">Remove</th>
+					<th class="cart-romove item">{{ __('translation.Image') }}</th>
+					<th class="cart-description item">{{ __('translation.Product Name') }}</th>
+					<th class="cart-product-name item">{{ __('translation.Color') }}</th>
+					<th class="cart-edit item">{{ __('translation.Size') }}</th>
+					<th class="cart-qty item">{{ __('translation.Quantity') }}</th>
+					<th class="cart-sub-total item">{{ __('translation.SubTotal') }}</th>
+					<th class="cart-total last-item">{{ __('translation.Remove') }}</th>
 				</tr>
 			</thead><!-- /thead -->
 			<tbody id="cartPage">
@@ -54,8 +54,8 @@ My Cart Page
 		<thead>
 			<tr>
 				<th>
-					<span class="estimate-title">Discount Code</span>
-					<p>Enter your coupon code if you have one..</p>
+					<span class="estimate-title">{{ __('translation.Discount Code') }}</span>
+					<p>{{ __('translation.Enter your coupon code if you have one') }}..</p>
 				</th>
 			</tr>
 		</thead>
@@ -63,10 +63,10 @@ My Cart Page
 				<tr>
 					<td>
 						<div class="form-group">
-							<input type="text" class="form-control unicase-form-control text-input" placeholder="You Coupon.."  id="coupon_name">
+							<input type="text" class="form-control unicase-form-control text-input" placeholder="{{ __('translation.Your Coupon') }}.."  id="coupon_name">
 						</div>
 						<div class="clearfix pull-right">
-							<button type="submit" class="btn-upper btn btn-primary" onclick="applycoupon()">APPLY COUPON</button>
+							<button type="submit" class="btn-upper btn btn-primary" onclick="applycoupon()">{{ __('translation.APPLY COUPON') }}</button>
 						</div>
 					</td>
 				</tr>
@@ -86,7 +86,7 @@ My Cart Page
 				<tr>
 					<td>
 						<div class="cart-checkout-btn pull-right">
-							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">{{ __('translation.PROCCED TO CHEKOUT') }}</a>
 							
 						</div>
 					</td>

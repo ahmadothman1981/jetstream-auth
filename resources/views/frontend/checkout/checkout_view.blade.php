@@ -10,8 +10,8 @@ My Checkout
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Checkout</li>
+				<li><a href="home.html">{{ __('translation.Home') }}</a></li>
+				<li class='active'>{{ __('translation.Checkout') }}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -40,29 +40,29 @@ My Checkout
 
 				<!-- guest-login -->			
 				<div class="col-md-6 col-sm-6 already-registered-login">
-					<h4 class="checkout-subtitle"><b>Shipping Address</b> </h4>
+					<h4 class="checkout-subtitle"><b>{{ __('translation.Shipping Address') }} </b> </h4>
 					
 					<form class="register-form" action="{{ route('checkout.store') }}" method="POST">
 						@csrf
 
 
 						<div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1"><b>Shipping Name</b> <span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>{{ __('translation.Shipping Name') }}</b> <span>*</span></label>
 					    <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" value="{{ Auth::user()->name  }}" required="">
 					  </div><!-- end form group -->
 
 					  <div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1"> <b>Email</b><span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"> <b>{{ __('translation.Email') }}</b><span>*</span></label>
 					    <input type="email" name="shipping_email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="User Name" value="{{ Auth::user()->email  }}" required="">
 					  </div><!-- end form group -->
 
 					  <div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1"> <b>Phone </b><span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"> <b>{{ __('translation.Phone') }} </b><span>*</span></label>
 					    <input type="number" name="shipping_phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone Number" value="{{ Auth::user()->phone  }}" required="">
 					  </div><!-- end form group -->
 
 					  <div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1"><b>Post Code</b> <span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>{{ __('translation.Post Code') }} </b> <span>*</span></label>
 					    <input type="text" name="post_code" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Post Code" >
 					  </div><!-- end form group -->
 
@@ -77,10 +77,10 @@ My Checkout
 					
 					
 						<div class="form-group">
-				<h5><b>Division Select</b> <span class="text-danger">*</span></h5>
+				<h5><b>{{ __('translation.Division Select') }}</b> <span class="text-danger">*</span></h5>
 				<div class="controls">
 				<select name="division_id"   class="form-control" required="">
-				<option value="" selected="" disabled="" >Select Division</option>
+				<option value="" selected="" disabled="" >{{ __('translation.Select Division') }}</option>
 					@foreach($divisions as $item)
 		<option value="{{ $item->id }}">{{ $item->division_name }}</option>
 					@endforeach	
@@ -92,10 +92,10 @@ My Checkout
 			</div>	 <!-- end form group --> 
 
 				<div class="form-group">
-				<h5><b>District Select</b> <span class="text-danger">*</span></h5>
+				<h5><b>{{ __('translation.District Select') }}</b> <span class="text-danger">*</span></h5>
 				<div class="controls">
 				<select name="district_id"   class="form-control" required="">
-				<option value="" selected="" disabled="" >Select District</option>
+				<option value="" selected="" disabled="" >{{ __('translation.Select District') }}</option>
 					
 					</select>
 					@error('district_id') 
@@ -105,10 +105,10 @@ My Checkout
 			</div>	 <!-- end form group --> 
 
 				<div class="form-group">
-				<h5><b>State Select</b> <span class="text-danger">*</span></h5>
+				<h5><b>{{ __('translation.Select State') }}</b> <span class="text-danger">*</span></h5>
 				<div class="controls">
 				<select name="state_id"   class="form-control" required="">
-				<option value="" selected="" disabled="" >Select State</option>
+				<option value="" selected="" disabled="" >{{ __('translation.Select State') }}</option>
 						
 					</select>
 					@error('state_id') 
@@ -118,7 +118,7 @@ My Checkout
 			</div>	 <!-- end form group -->  
 					
 				 <div class="form-group">
-					    <label class="info-title" for="exampleInputEmail1"><b>Notes</b> <span>*</span></label>
+					    <label class="info-title" for="exampleInputEmail1"><b>{{ __('translation.Notes') }}</b> <span>*</span></label>
 					   <textarea class="form-control" cols="30" rows="5" placeholder="Notes" name="notes"></textarea>
 					  </div><!-- end form group -->
 
@@ -147,7 +147,7 @@ My Checkout
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Your Checkout Progress</h4>
+		    	<h4 class="unicase-checkout-title">{{ __('translation.Your Checkout Progress') }}</h4>
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
@@ -155,17 +155,17 @@ My Checkout
 					@foreach($carts as $item)
 
 					<li>
-						<strong>Image:</strong>
+						<strong>{{ __('translation.Image') }}:</strong>
 					<img src="{{ asset($item->options->image) }}" style="height: 50px; width:50px;">
 					</li>
 					<li>
-						<strong>Qty:</strong>
+						<strong>{{ __('translation.Qty') }}:</strong>
 						({{ $item->qty }})
 
-						<strong>Color:</strong>
+						<strong>{{ __('translation.Color') }}:</strong>
 						{{ $item->options->color}}
 
-						<strong>Size:</strong>
+						<strong>{{ __('translation.Size') }}:</strong>
 						{{ $item->options->size }}
 					</li>
 
@@ -174,21 +174,21 @@ My Checkout
 						<hr>
 					<li>
 						@if(Session::has('coupon'))
-					<strong>SubTotal:</strong>${{ $cartTotal }} <hr>
-					 <strong>Coupon Name:</strong>{{ session()->get('coupon')['coupon_name'] }}
+					<strong>{{ __('translation.SubTotal') }}:</strong>${{ $cartTotal }} <hr>
+					 <strong>{{ __('translation.Coupon Name') }}:</strong>{{ session()->get('coupon')['coupon_name'] }}
 					 ({{ session()->get('coupon')['coupon_discount'] }}%)
 					 <hr>
 
-				 	<strong>Coupon Discount:</strong>${{ session()->get('coupon')['discount_amount']}}
+				 	<strong>{{ __('translation.Coupon Discount') }}:</strong>${{ session()->get('coupon')['discount_amount']}}
 				 	<hr>
 
-				 	<strong>Grand Total:</strong>${{ session()->get('coupon')['total_amount']}}
+				 	<strong>{{ __('translation.Grand Total') }}:</strong>${{ session()->get('coupon')['total_amount']}}
 				 	<hr>
 					 	 
 						@else
-						<strong>SubTotal:</strong>${{ $cartTotal }} <hr>
+						<strong>{{ __('translation.SubTotal') }}:</strong>${{ $cartTotal }} <hr>
 
-						<strong>GrandTotal:</strong>${{ $cartTotal }} <hr>
+						<strong>{{ __('translation.GrandTotal') }}:</strong>${{ $cartTotal }} <hr>
 						 
 						@endif 
 						
@@ -213,7 +213,7 @@ My Checkout
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Select Payment Method </h4>
+		    	<h4 class="unicase-checkout-title">{{ __('translation.Select Payment Method') }} </h4>
 		    </div>
 
 		    <div class="row">

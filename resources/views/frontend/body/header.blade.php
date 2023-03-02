@@ -6,7 +6,7 @@
       <div class="header-top-inner">
         <div class="cnt-account">
           <ul class="list-unstyled">
-            <li><a href="#"><i class="icon fa fa-user"></i>
+            <li><a href="{{ route('dashboard') }}"><i class="icon fa fa-user"></i>
                 {{ __('translation.My Account') }} </a></li>
             <li><a href="{{ route('whishlist') }}"><i class="icon fa fa-heart"></i>{{ __('translation.Wishlist') }}</a></li>
             <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>{{ __('translation.My Cart') }}</a></li>
@@ -119,7 +119,7 @@
                 <div class="clearfix cart-total">
                   <div class="pull-right"> <span class="text">{{ __('translation.Sub Total') }} :</span><span class='price' id="cartSubTotal"></span> </div>
                   <div class="clearfix"></div>
-                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">{{ __('translation.Checkout') }}</a> </div>
+                  <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20">{{ __('translation.Checkout') }}</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>
