@@ -153,6 +153,39 @@ return [
 'Your Coupon'=>'قسيمتك',
 'Wishlist'=>'قائمة الرغبات',
 'My Wishlist'=>'قائمة امنياتي',
+'We are sorry, the page you have requested is not available'=>'معذرة ، الصفحة التي طلبتها غير متوفرة',
+'Go To Homepage'=>'اذهب إلى الصفحة الرئيسية',
+'Category'=>'الفئة',
+'shop by'=>'تسوق عن طريق',
+'Brand'=>'العلامات التجارية',
+'Price Slider'=>'تحديد السعر',
+'Show Now'=>'اعرض الآن',
+'Manufactures'=>'المصنّعين',
+'Colors'=>'الألوان',
+'share post'=>'مشاركة المقالة',
+'Leave A Comment'=>'اترك تعليقا',
+'Your Name'=>'اسمك',
+'Title'=>'اللقب',
+'Your Comments'=>'تعليقاتك',
+'Submit Comment'=>'ارسال التعليق',
+'Blog Category'=>'فئة المدونة',
+'TAGS'=>'العلامات',
+'Big Sale'=>'خصم كبير',
+'Save up to 49% off'=>'وفر حتى 49٪ خصم',
+'Lorem ipsum dolor sit amet, consectetur adipiscing elit'=>'العميل مهم جدا ، العميل سيتبعه',
+'Grid'=>'شبكة',
+'List'=>'قائمة',
+'Sort by'=>'ترتيب حسب',
+'Position'=>'موضع',
+'position'=>'موضع',
+'Price:Lowest first'=>'السعر: الأدنى أولاً',
+'Price:HIghest first'=>'السعر: الأعلى أولاً',
+'Product Name:A to Z'=>'اسم المنتج: من الألف إلى الياء',
+'Show'=>'يعرض',
+
+
+
+
 
 
 

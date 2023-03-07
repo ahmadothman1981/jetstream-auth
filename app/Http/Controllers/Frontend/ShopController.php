@@ -15,6 +15,52 @@ class ShopController extends Controller
     public function ShopPage()
     {
         $query = Product::query();
+        $currentLang = app()->getLocale();
+
+          if (!empty($_GET['category']))
+          {
+
+            $slugs = explode(',',$_GET['category']);
+            $catSlugAttrName = 'category_slug_'.$currentLang;
+
+            $catIds = Category::select('id')->whereIn($catSlugAttrName,$slugs)->pluck('id')->toArray();
+            $searchedProducts = $query->whereIn('category_id',$catIds);
+
+          }
+
+        if (!empty($_GET['brand'])) {
+            $slugs = explode(',',$_GET['brand']);
+            $brandSlugAttrName = 'brand_slug_'.$currentLang;
+            $brandIds = Brand::select('id')->whereIn($brandSlugAttrName,$slugs)->pluck('id')->toArray();
+            $searchedProducts = $query->whereIn('brand_id',$brandIds);
+        }else{
+
+            $searchedProducts = Product::query();
+        }
+
+        $products = $searchedProducts->where('status',1)->orderBy('id','DESC')->paginate(3);
+
+
+        /*** st new code ****/
+        $categoryName = $currentLang =='ar'? 'category_name_ar':'category_name_en';
+        $categorySlug = $currentLang =='ar'? 'category_slug_ar':'category_slug_en';
+        $categoryFieldArray = ['id', $categoryName.' as name', $categorySlug.' as slug'];
+        $categories = Category::select($categoryFieldArray)
+            ->orderBy('category_name_en','ASC')->get();
+
+        /*** nd new code ****/
+        /*** st new code ****/
+        $brandName = $currentLang =='ar'? 'brand_name_ar':'brand_name_en';
+        $brandSlug = $currentLang =='ar'? 'brand_slug_ar':'brand_slug_en';
+        $brandFieldArray = ['id', $brandName.' as name', $brandSlug.' as slug'];
+        $brands = Brand::select($brandFieldArray)
+            ->orderBy('brand_name_en','ASC')->get();
+        /*** nd new code ****/
+          return view('frontend.shop.shop_page',compact('products','categories','brands'));
+    }//End Method
+   /* public function ShopPage()
+    {
+        $query = Product::query();
 
           if (!empty($_GET['category'])) {
             $slugs = explode(',',$_GET['category']);
@@ -62,7 +108,7 @@ class ShopController extends Controller
         $brands = Collection::make($brandsData);
 //dd($brands);
         return view('frontend.shop.shop_page',compact('products','categories','brands'));
-    }//End Method
+    }//End Method*/
 
     public function ShopFilter(Request $request)
     {

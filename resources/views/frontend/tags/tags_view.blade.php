@@ -11,8 +11,8 @@ Tag Wise Product
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
+        <li><a href="#">{{ __('translation.Home') }}</a></li>
+        <li class='active'>{{ __('translation.TAGS') }}</li>
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
@@ -31,9 +31,9 @@ Tag Wise Product
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              <h3 class="section-title">{{ __('translation.shop by') }}</h3>
               <div class="widget-header">
-                <h4 class="widget-title">Category</h4>
+                <h4 class="widget-title">{{ __('translation.Category') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -41,8 +41,10 @@ Tag Wise Product
               @foreach($categories as $category)
                   <div class="accordion-group">
                     <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
-@if(session()->get('Language') == 'Arabic' )  {{$category->category_name_ar  }}  
-@else {{$category->category_name_en  }}
+@if(session()->get('locale') == 'ar' )
+  {{$category->category_name_ar  }}  
+@else
+ {{$category->category_name_en  }}
 @endif
                     </a> </div>
                     <!-- /.accordion-heading -->
@@ -55,8 +57,10 @@ Tag Wise Product
 					@foreach($subcategories as $subcategory)
                         <ul>
                           <li><a href="#">
-@if(session()->get('Language') == 'Arabic' )  {{ $subcategory->subcategory_name_ar }}  
-@else {{ $subcategory->subcategory_name_en }} 
+@if(session()->get('locale') == 'ar' )
+  {{ $subcategory->subcategory_name_ar }}  
+@else
+ {{ $subcategory->subcategory_name_en }} 
 @endif
 						</a></li>
                          
@@ -82,7 +86,7 @@ Tag Wise Product
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+                <h4 class="widget-title">{{ __('translation.Price Slider') }}</h4>
               </div>
               <div class="sidebar-widget-body m-t-10">
                 <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
@@ -90,7 +94,7 @@ Tag Wise Product
                   <input type="text" class="price-slider" value="" >
                 </div>
                 <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
+                <a href="#" class="lnk btn btn-primary">{{ __('translation.Show Now') }}</a> </div>
               <!-- /.sidebar-widget-body --> 
             </div>
             <!-- /.sidebar-widget --> 
@@ -98,7 +102,7 @@ Tag Wise Product
             <!-- ============================================== MANUFACTURES============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Manufactures</h4>
+                <h4 class="widget-title">{{ __('translation.Manufactures') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <ul class="list">
@@ -118,7 +122,7 @@ Tag Wise Product
             <!-- ============================================== COLOR============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Colors</h4>
+                <h4 class="widget-title">{{ __('translation.Colors') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <ul class="list">
@@ -135,16 +139,7 @@ Tag Wise Product
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- ============================================== COMPARE============================================== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
-              <h3 class="section-title">Compare products</h3>
-              <div class="sidebar-widget-body">
-                <div class="compare-report">
-                  <p>You have no <span>item(s)</span> to compare</p>
-                </div>
-                <!-- /.compare-report --> 
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
+           
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
             <!-- ============================================== PRODUCT TAGS ============================================== -->
@@ -174,9 +169,9 @@ Tag Wise Product
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
             <div class="container-fluid">
               <div class="caption vertical-top text-left">
-                <div class="big-text"> Big Sale </div>
-                <div class="excerpt hidden-sm hidden-md"> Save up to 49% off </div>
-                <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
+                <div class="big-text"> {{ __('translation.Big Sale') }} </div>
+                <div class="excerpt hidden-sm hidden-md"> {{ __('translation.Save up to 49% off') }} </div>
+                <div class="excerpt-normal hidden-sm hidden-md">{{ __('translation.Lorem ipsum dolor sit amet, consectetur adipiscing elit') }}  </div>
               </div>
               <!-- /.caption --> 
             </div>
@@ -190,8 +185,8 @@ Tag Wise Product
             <div class="col col-sm-6 col-md-2">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>{{ __('translation.Grid') }}</a> </li>
+                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>{{ __('translation.List') }}</a></li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
@@ -199,15 +194,15 @@ Tag Wise Product
             <!-- /.col -->
             <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Sort by</span>
+                <div class="lbl-cnt"> <span class="lbl">{{ __('translation.Sort by') }}</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
+                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> {{ __('translation.Position') }} <span class="caret"></span> </button>
                       <ul role="menu" class="dropdown-menu">
-                        <li role="presentation"><a href="#">position</a></li>
-                        <li role="presentation"><a href="#">Price:Lowest first</a></li>
-                        <li role="presentation"><a href="#">Price:HIghest first</a></li>
-                        <li role="presentation"><a href="#">Product Name:A to Z</a></li>
+                        <li role="presentation"><a href="#">{{ __('translation.position') }}</a></li>
+                        <li role="presentation"><a href="#">{{ __('translation.Price:Lowest first') }}</a></li>
+                        <li role="presentation"><a href="#">{{ __('translation.Price:HIghest first') }}</a></li>
+                        <li role="presentation"><a href="#">{{ __('translation.Product Name:A to Z') }}</a></li>
                       </ul>
                     </div>
                   </div>
@@ -217,7 +212,7 @@ Tag Wise Product
               </div>
               <!-- /.col -->
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
+                <div class="lbl-cnt"> <span class="lbl">{{ __('translation.Show') }}</span>
                   <div class="fld inline">
                     <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
                       <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
@@ -283,8 +278,10 @@ Tag Wise Product
                         
                         <div class="product-info text-left">
                           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
-@else  {{ $product->product_name_en }} 
+@if(session()->get('locale') == 'ar' )
+   {{ $product->product_name_ar }}  
+@else
+  {{ $product->product_name_en }} 
 @endif
                           </a></h3>
                           <div class="rating rateit-small"></div>
@@ -350,8 +347,10 @@ Tag Wise Product
                         <div class="col col-sm-8 col-lg-8">
                           <div class="product-info">
                             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-@if(session()->get('Language') == 'Arabic' )   {{ $product->product_name_ar }}  
-@else  {{ $product->product_name_en }} 
+@if(session()->get('locale') == 'ar' )
+   {{ $product->product_name_ar }}  
+@else
+  {{ $product->product_name_en }} 
 @endif
                             </a></h3>
 
@@ -363,9 +362,13 @@ Tag Wise Product
                              @endif
                             
                             <!-- /.product-price -->
-                            <div class="description m-t-10">@if(session()->get('Language') == 'Arabic' )   {{ $product->short_desc_ar }}  
-@else  {{ $product->short_desc_en }} 
-@endif</div>
+                            <div class="description m-t-10">
+                              @if(session()->get('locale') == 'ar' )
+                                 {{ $product->short_desc_ar }}  
+                              @else
+                                {{ $product->short_desc_en }} 
+                              @endif
+                            </div>
                             <div class="cart clearfix animate-effect">
                               <div class="action">
                                 <ul class="list-unstyled">

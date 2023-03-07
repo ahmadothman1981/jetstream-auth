@@ -35,10 +35,10 @@ Shop Page
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              <h3 class="section-title">{{ __('translation.shop by') }}</h3>
 
               <div class="widget-header">
-                <h4 class="widget-title">Category</h4>
+                <h4 class="widget-title">{{ __('translation.Category') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -58,7 +58,7 @@ Shop Page
                     <div class="accordion-heading">
 
                       <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" name="category[]" value="{{$category->slug }}" @if(!empty($filterCat) && in_array($category->slug,$filterCat)) checked @endif onchange="this.form.submit()">
+            <input type="checkbox" class="form-check-input" name="category[]" value="{{$category->slug }}" @if(!empty($filterCat) && in_array($category->slug,$filterCat)) checked @endif >
                  {{$category->name}}  
                       </label>
                   </div>
@@ -74,11 +74,13 @@ Shop Page
                 <!-- /.accordion --> 
               </div>
               <!-- /.sidebar-widget-body --> 
-            
+
+             <input value="Search" type="submit">
+
             <!-- /.sidebar-widget --> 
             <!-- /.Brand Filter -->
             <div class="widget-header">
-                <h4 class="widget-title">Brand</h4>
+                <h4 class="widget-title">{{ __('translation.Brand') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -98,7 +100,7 @@ Shop Page
                     <div class="accordion-heading">
 
                       <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" name="brand[]" value="{{$brand->slug }}" @if(!empty($filterBrand) && in_array($brand->slug,$filterBrand)) checked @endif onchange="this.form.submit()">
+            <input type="checkbox" class="form-check-input" name="brand[]" value="{{$brand->slug }}" @if(!empty($filterBrand) && in_array($brand->slug,$filterBrand)) checked @endif >
             {{$brand->name}} 
                   
                       </label>
@@ -116,13 +118,17 @@ Shop Page
                 <!-- /.accordion --> 
               </div>
               <!-- /.sidebar-widget-body --> 
+              <input value="Search" type="submit">
+
             </div>
+            
+            
             <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
             
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+                <h4 class="widget-title">{{ __('translation.Price Slider') }}</h4>
               </div>
               <div class="sidebar-widget-body m-t-10">
                 <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
@@ -130,7 +136,7 @@ Shop Page
                   <input type="text" class="price-slider" value="" >
                 </div>
                 <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
+                <a href="#" class="lnk btn btn-primary">{{ __('translation.Show Now') }}</a> </div>
               <!-- /.sidebar-widget-body --> 
             </div>
             <!-- /.sidebar-widget --> 
@@ -138,7 +144,7 @@ Shop Page
             <!-- ============================================== MANUFACTURES============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Manufactures</h4>
+                <h4 class="widget-title">{{ __('translation.Manufactures') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <ul class="list">
@@ -158,7 +164,7 @@ Shop Page
             <!-- ============================================== COLOR============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Colors</h4>
+                <h4 class="widget-title">{{ __('translation.Colors') }}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <ul class="list">
@@ -175,16 +181,7 @@ Shop Page
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COLOR: END ============================================== --> 
             <!-- ============================================== COMPARE============================================== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
-              <h3 class="section-title">Compare products</h3>
-              <div class="sidebar-widget-body">
-                <div class="compare-report">
-                  <p>You have no <span>item(s)</span> to compare</p>
-                </div>
-                <!-- /.compare-report --> 
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
+           
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
             <!-- ============================================== PRODUCT TAGS ============================================== -->
@@ -510,10 +507,10 @@ Shop Page
     </div>
     <!-- /.logo-slider --> 
     <!-- ==================================== BRANDS CAROUSEL : END  ======= --> 
-
+  </form>
     
 
-</form>
+
 
    </div>
   <!-- /.container --> 
