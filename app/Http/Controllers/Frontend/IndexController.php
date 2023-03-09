@@ -243,7 +243,24 @@ class IndexController extends Controller
         return view('frontend.product.search_product',compact('products'));
     }//End Method
 
+    public function ColorProduct($color)
+    {
+        $products = Product::where('status',1)->where('product_color_en',$color)->orWhere('product_color_ar',$color)->orderBy('id','DESC')->paginate(3);
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+       
+        return view('frontend.colors.colors_view',compact('products','categories'));
+    }//End Method
 
+    public function ManufacuresProduct($manufac)
+    {
+      
+        $brand_id = Brand::where('brand_name_en',$manufac)->pluck('id');
+        $products = Product::where('brand_id',$brand_id)->orderBy('id','DESC')->paginate(3);
+       // dd($products);
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+       
+        return view('frontend.manufactures.manufactures_view',compact('products','categories'));
+    }//End Method
 
 
 }

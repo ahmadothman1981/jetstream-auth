@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-Tag Wise Product
+Manufactures Product
 @endsection
 
 
@@ -12,7 +12,7 @@ Tag Wise Product
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
         <li><a href="#">{{ __('translation.Home') }}</a></li>
-        <li class='active'>{{ __('translation.TAGS') }}</li>
+        <li class='active'>{{ __('translation.Manufactures') }}</li>
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 

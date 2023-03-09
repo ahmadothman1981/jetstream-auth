@@ -552,3 +552,7 @@ Route::post('search-product',[IndexController::class,'SearchProduct']);
 Route::get('/shop',[ShopController::class,'ShopPage'])->name('shop.page');
 
 Route::post('/shop/filter',[ShopController::class,'ShopFilter'])->name('shop.filter');
+///////////////////////////////////////////////////////////////////////////////////////
+Route::get('product/color/{color}',[IndexController::class,'ColorProduct'])->name('color.product');
+/////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('product/manufacures/{manufac}',[IndexController::class,'ManufacuresProduct'])->name('manufactures.product');

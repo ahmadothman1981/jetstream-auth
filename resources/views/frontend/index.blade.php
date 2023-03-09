@@ -142,6 +142,10 @@ Easy Online Shop
           <!-- /.sidebar-widget-body --> 
         </div>
         <!-- /.sidebar-widget --> 
+
+         @include('frontend.common.colors')
+
+         @include('frontend.common.manufactures')
         <!-- ============================================== NEWSLETTER: END ============================================== --> 
         
         <!-- ============================================== Testimonials============================================== -->
