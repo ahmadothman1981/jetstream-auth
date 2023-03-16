@@ -119,7 +119,7 @@ class CartController extends Controller
         Session::put('coupon',[
             'coupon_name'=>$coupon->coupon_name,
             'coupon_discount'=>$coupon->coupon_discount,
-            'discount_amount'=>round(Cart::total() * $coupon->coupon_discount /100),
+            'discount_amount'=>$coupon->coupon_type =='PERCENTAGE'? round(Cart::total() * $coupon->coupon_discount /100) : round(Cart::total() - $coupon->coupon_discount),
             'total_amount'=>round(Cart::total() - Cart::total() * $coupon->coupon_discount /100)
 
 

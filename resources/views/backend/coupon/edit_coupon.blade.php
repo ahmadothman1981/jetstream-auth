@@ -18,7 +18,7 @@
 
 			
 			
-			<! Add Category-->
+			
 				  <div class="col-12">
 
 			 <div class="box">
@@ -46,7 +46,7 @@
 
 
 	<div class="form-group">
-		<h5>Coupon Discount <span class="text-danger">*</span></h5>
+		<h5> Enter Coupon Discount <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="coupon_discount" class="form-control" value="{{$coupons->coupon_discount }}">
      @error('coupon_discount') 
@@ -65,8 +65,37 @@
 	 @enderror 
 	  </div>
 	</div> 
+@php
+ $categories = App\Models\Category::latest()->get();
+@endphp
+	<div class="form-group">
+				<h5>Category Select <span class="text-danger">*</span></h5>
+				<div class="controls">
+				<select name="category_id"   class="form-control" required="">
+				<option value="" selected="" disabled="" >Select Category</option>
+					@foreach($categories as $category)
+		<option value="{{ $category->id }}"> {{ $category->category_name_en }}</option>
+					@endforeach	
+					</select>
+					@error('category_id') 
+	 				<span class="text-danger">{{ $message }}</span>
+	 				@enderror 
+				</div>
+			</div>	    
 					 
+<div class="form-group">
+				<h5>Coupon Type <span class="text-danger">*</span></h5>
+				<div class="controls">
+				<input type="radio" id="fixed" name="coupon_type" value="FIXED">
+				<label for="fixed">FIXED</label><br>
 
+				<input type="radio" id="percentage"  name="coupon_type" value="PERCENTAGE">
+				<label for="percentage">PERCENTAGE</label><br>
+					@error('coupon_type') 
+	 				<span class="text-danger">{{ $message }}</span>
+	 				@enderror 
+				</div>
+			</div>	  
 			 <div class="text-xs-right">
 	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
 						</div>

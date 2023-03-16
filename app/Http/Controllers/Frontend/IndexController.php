@@ -39,13 +39,16 @@ class IndexController extends Controller
 
         $skip_brand_1 = Brand::skip(0)->first();
         $skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
+
+        $top_selling = Product::orderBy('selling_qty','ASC')->limit(4)->get();
+        //dd($top_selling);
         //return $skip_category->id;
        // die();
     $lang_code = \App::getLocale();
     
         
 
-        return view('frontend.index',compact('categories','sliders','products','feature','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost','new_arrival','lang_code'));
+        return view('frontend.index',compact('categories','sliders','products','feature','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost','new_arrival','lang_code','top_selling'));
     }//end method
 
     public function UserLogout()
@@ -262,6 +265,8 @@ class IndexController extends Controller
        
         return view('frontend.manufactures.manufactures_view',compact('products','categories'));
     }//End Method
+
+
 
 
 }

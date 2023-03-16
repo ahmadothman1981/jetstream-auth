@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Coupon;
+use App\Models\Category;
 use Carbon\Carbon;
 
 class CouponController extends Controller
@@ -13,6 +14,8 @@ class CouponController extends Controller
     {
         $coupons = Coupon::orderBy('id','DESC')->get();
 
+       
+
         return view('backend.coupon.view_coupon',compact('coupons'));
 
     }//End Method
@@ -20,10 +23,15 @@ class CouponController extends Controller
 
     public function CouponStore(Request $request)
     {
+
+       
+        
         $request->validate([
             'coupon_name' => 'required',
             'coupon_discount' => 'required',
             'coupon_validity' => 'required',
+            'category_id' => 'required',
+            'coupon_type' => 'required',
         ]);
 
          
@@ -32,6 +40,8 @@ class CouponController extends Controller
         'coupon_name' => strtoupper($request->coupon_name),
         'coupon_discount' => $request->coupon_discount,
         'coupon_validity' => $request->coupon_validity,
+        'category_id'=>$request->category_id,
+        'coupon_type'=>$request->coupon_type,
         'created_at'=>Carbon::now(),
 
         ]);
@@ -60,6 +70,8 @@ class CouponController extends Controller
         'coupon_name' => strtoupper($request->coupon_name),
         'coupon_discount' => $request->coupon_discount,
         'coupon_validity' => $request->coupon_validity,
+        'category_id'=>$request->category_id,
+        'coupon_type'=>$request->coupon_type,
         'created_at'=>Carbon::now(),
 
         ]);

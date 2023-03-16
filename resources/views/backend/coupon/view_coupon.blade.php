@@ -30,6 +30,8 @@
 							<tr>
 								<th>Coupon Name</th>
 								<th>Coupon Discount</th>
+								<th>Coupon Type</th>
+								<th>Coupon Category</th>
 								<th>Coupon Validity</th>
 								<th>Status</th>
 								<th>Action</th>
@@ -41,7 +43,14 @@
 							<tr>
 								
 								<td>{{ $item->coupon_name  }}</td>
+								@if( $item->coupon_type == 'PERCENTAGE')
 								<td>{{ $item->coupon_discount  }}%</td>
+								@else
+								<td>{{ $item->coupon_discount  }}</td>
+								@endif
+								<td>{{ $item->coupon_type  }}</td>
+								
+								<td>{{ $item->category->category_name_en }}</td>
 								<td width="35%">
 									{{Carbon\Carbon::parse($item->coupon_validity)->format('D ,d F Y')}}
 									</td>
@@ -99,7 +108,7 @@
 
 
 	<div class="form-group">
-		<h5>Coupon Discount <span class="text-danger">*</span></h5>
+		<h5> ENTER Coupon Discount <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="coupon_discount" class="form-control" >
      @error('coupon_discount') 
@@ -118,6 +127,38 @@
 	 @enderror 
 	  </div>
 	</div> 
+
+	@php
+ $categories = App\Models\Category::latest()->get();
+@endphp
+	<div class="form-group">
+				<h5>Category Select <span class="text-danger">*</span></h5>
+				<div class="controls">
+				<select name="category_id"   class="form-control" required="">
+				<option value="" selected="" disabled="" >Select Category</option>
+					@foreach($categories as $category)
+		<option value="{{ $category->id }}"> {{ $category->category_name_en }}</option>
+					@endforeach	
+					</select>
+					@error('category_id') 
+	 				<span class="text-danger">{{ $message }}</span>
+	 				@enderror 
+				</div>
+			</div>	  
+
+			<div class="form-group">
+				<h5>Coupon Type <span class="text-danger">*</span></h5>
+				<div class="controls">
+				<input type="radio" id="fixed" name="coupon_type" value="FIXED">
+				<label for="fixed">FIXED</label><br>
+
+				<input type="radio" id="percentage"  name="coupon_type" value="PERCENTAGE">
+				<label for="percentage">PERCENTAGE</label><br>
+					@error('coupon_type') 
+	 				<span class="text-danger">{{ $message }}</span>
+	 				@enderror 
+				</div>
+			</div>
 					 
 
 			 <div class="text-xs-right">
