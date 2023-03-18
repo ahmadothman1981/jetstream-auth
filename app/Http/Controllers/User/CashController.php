@@ -19,6 +19,8 @@ class CashController extends Controller
         if(Session::has('coupon'))
         {
             $total_amount = Session::get('coupon')['total_amount'];
+
+
         }else{
             $total_amount = round(Cart::total());
         }
@@ -71,8 +73,16 @@ class CashController extends Controller
         ]);
     }
 
+    $discount_name =  Session::get('coupon')['coupon_name'];
+
+           $count =  Coupon::where('coupon_name',$discount_name)->count();
+           Coupon::where('coupon_name',$discount_name)->update([
+            'counting'=>$count+1,
+           ]);
+           
     if(Session::has('coupon'))
     {
+        
         Session::forget('coupon');
     }
 

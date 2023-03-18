@@ -32,7 +32,9 @@
 								<th>Coupon Discount</th>
 								<th>Coupon Type</th>
 								<th>Coupon Category</th>
+								<th>Coupon Counting</th>
 								<th>Coupon Validity</th>
+
 								<th>Status</th>
 								<th>Action</th>
 								
@@ -44,13 +46,14 @@
 								
 								<td>{{ $item->coupon_name  }}</td>
 								@if( $item->coupon_type == 'PERCENTAGE')
-								<td>{{ $item->coupon_discount  }}%</td>
+								<td>{{ $item->coupon_discount  }}% </td>
 								@else
 								<td>{{ $item->coupon_discount  }}</td>
 								@endif
 								<td>{{ $item->coupon_type  }}</td>
 								
 								<td>{{ $item->category->category_name_en }}</td>
+								<td>{{ $item->counting }}</td>
 								<td width="35%">
 									{{Carbon\Carbon::parse($item->coupon_validity)->format('D ,d F Y')}}
 									</td>

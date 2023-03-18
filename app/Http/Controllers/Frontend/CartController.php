@@ -113,8 +113,10 @@ class CartController extends Controller
 
     public function CouponApply(Request $request)
     {
+      
        $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
-       if($coupon)
+       
+       if($coupon )
        {
         Session::put('coupon',[
             'coupon_name'=>$coupon->coupon_name,
@@ -124,6 +126,7 @@ class CartController extends Controller
 
 
         ]);
+        
 
         return response()->json(array(
             'validity'=>true,
