@@ -33,4 +33,9 @@ class Order extends Model
    {
     return $this->belongsTo(User::class,'user_id','id');
    }//relation method
+
+   public function CouponId()
+   {
+    return $this->belongsTo(Coupon::class,'coupon','id');
+   }//relation method
 }

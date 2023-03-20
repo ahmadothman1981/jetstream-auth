@@ -652,6 +652,7 @@ function AddToWishList(product_id)
 function applycoupon()
 {
    var coupon_name = $('#coupon_name').val();
+
    $.ajax({
       type:'POST',
       datatype:'json',
@@ -661,6 +662,7 @@ function applycoupon()
          couponCalculation();
          if(data.validity == true){
             $('#couponField').hide();
+         
          }
          
           //start message
@@ -688,7 +690,8 @@ function applycoupon()
             //end messag
       },
    })
-}  
+} 
+
 
 
 function couponCalculation()
@@ -712,6 +715,7 @@ function couponCalculation()
          </tr>
                `)
          }else{
+
                $('#couponCalField').html(`
                <tr>
             <th>

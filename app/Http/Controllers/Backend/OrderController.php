@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Coupon;
 use Auth;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -18,14 +19,14 @@ class OrderController extends Controller
    public function PendingOrders()
    {
     $orders = Order::where('status','Pending')->orderBy('id','DESC')->get();
-
+    
     return view('backend.orders.pending_orders',compact('orders'));
    }//End Method 
 
    public function PendingOrdersDetails($order_id)
    {
-     $order = Order::with('division','district','state','user')->where('id',$order_id)->first();
-
+     $order = Order::with('division','district','state','user','CouponId')->where('id',$order_id)->first();
+     
      $orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
 
      return view('backend.orders.pending_orders_details',compact('order','orderItem'));
@@ -76,6 +77,7 @@ class OrderController extends Controller
 
    public function PendingToConfirm($order_id)
    {
+
     Order::findOrFail($order_id)->update([
         'status' => 'confirmed',
 

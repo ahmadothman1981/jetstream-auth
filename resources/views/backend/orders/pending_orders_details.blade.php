@@ -111,14 +111,24 @@
                             </tr>
 
                               <tr>
-                                <th>Invoice</th>
+                                <th>Invoice Number</th>
                                 <th><span class="text-danger">{{ $order->invoice_number }}</span></th>
                             </tr>
+                           
+                            <tr>
+                            
 
+
+
+
+
+                                <th>Order Total No Discount</th>
+                                <th>${{ $order->amount_no_discount }}</th>
+                             </tr>
                               <tr>
-                                <th>Orader Total</th>
+                                <th>Order Total</th>
                                 <th>${{ $order->amount }}</th>
-                            </tr>
+                             </tr>
 
                             <tr>
                                 <th>Order </th>
@@ -228,7 +238,10 @@
                             </td>
 
                              <td class="col-md-1">
-                        <label for="">${{ $item->price }}  (${{$item->price*$item->qty}})</label>
+                        <label for="">${{ $item->price }} 
+                           
+
+                         (${{$item->price*$item->qty}})</label>
                             </td>
                                
                            </tr> 

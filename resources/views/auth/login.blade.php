@@ -26,6 +26,10 @@
     </div>
      <form method="POST" action="{{ isset($guard) ? url($guard . '/login') : route('login') }}">
             @csrf
+
+                      
+            
+
         <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">{{ __('translation.User Email') }} <span>*</span></label>
             <input type="email" class="form-control unicase-form-control text-input" id="email" name="email" >
@@ -51,6 +55,7 @@
             <a href="{{ route('password.request') }}" class="forgot-password pull-right">{{ __('translation.Forgot your Password') }}?</a>
         </div>
         <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{ __('translation.Login') }}</button>
+      
     </form>                 
 </div>
 <!-- Sign-in -->
@@ -118,6 +123,7 @@
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
 @include('frontend.body.brands')
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->    </div><!-- /.container -->
-</div><!-- /.body-con
+</div><!-- /.body-con-->
+
 
 @endsection

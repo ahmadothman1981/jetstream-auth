@@ -9,9 +9,11 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Auth;
 use App\Models\Wishlist;
 use App\Models\Coupon;
+use App\Models\Order;
 use App\Models\ShipDivision;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -22,7 +24,7 @@ class CartController extends Controller
             Session::forget('coupon');
          }
         $product = Product::findOrFail($id);
-
+         
         if($product->discount_price == NULL)
         {
             Cart::add([
@@ -53,6 +55,7 @@ class CartController extends Controller
                     ],
                  ]);
               return response()->json(['success'=> 'Successfully Added On Your Cart']);
+             
         }
     }//End Method
 
@@ -113,21 +116,22 @@ class CartController extends Controller
 
     public function CouponApply(Request $request)
     {
-      
-       $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
-       
-       if($coupon )
+      $customer_coupon = Str::upper($request->coupon_name);
+       $coupon = Coupon::where('coupon_name',$customer_coupon)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
+        
+
+    if($coupon )
        {
         Session::put('coupon',[
+            'coupon_id'=>$coupon->id,
             'coupon_name'=>$coupon->coupon_name,
             'coupon_discount'=>$coupon->coupon_discount,
             'discount_amount'=>$coupon->coupon_type =='PERCENTAGE'? round(Cart::total() * $coupon->coupon_discount /100) : round(Cart::total() - $coupon->coupon_discount),
-            'total_amount'=>round(Cart::total() - Cart::total() * $coupon->coupon_discount /100)
-
-
+           
+            'total_amount'=>round(Cart::total() - Cart::total() * $coupon->coupon_discount /100),
+           
         ]);
-        
-
+      
         return response()->json(array(
             'validity'=>true,
             'success'=>'Coupon Applied Successfully'
@@ -143,12 +147,14 @@ class CartController extends Controller
     {
         if(Session::has('coupon'))
         {
+
             return response()->json(array(
                 'subtotal'=>Cart::total(),
                 'coupon_name'=>session()->get('coupon')['coupon_name'],
                 'coupon_discount'=>session()->get('coupon')['coupon_discount'],
                 'discount_amount'=>session()->get('coupon')['discount_amount'],
                 'total_amount'=>session()->get('coupon')['total_amount'],
+                
 
 
             ));
@@ -177,7 +183,7 @@ class CartController extends Controller
             $cartQty = Cart::count();
             $cartTotal = Cart::total();
             $divisions = ShipDivision::orderBy('division_name','ASC')->get();
-
+       
             return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal','divisions'));
         }else{
              $notification = array(

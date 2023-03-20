@@ -18,9 +18,9 @@ class CashController extends Controller
     {
         if(Session::has('coupon'))
         {
+            $coupon_id = Session::get('coupon')['coupon_id'];
+            $coupon_check = Coupon::where('id',$coupon_id)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
             $total_amount = Session::get('coupon')['total_amount'];
-
-
         }else{
             $total_amount = round(Cart::total());
         }
@@ -28,9 +28,6 @@ class CashController extends Controller
        
 
 
-   
-
-    //dd($charge);
     $order_id = Order::insertGetId([
          'user_id'=> Auth::id(),
          'division_id'=> $request->division_id,
@@ -51,6 +48,8 @@ class CashController extends Controller
          'order_year'=>Carbon::now()->format('Y'),
          'status'=>'Pending',
          'created_at'=>Carbon::now(),
+         'coupon'=>$coupon_id,
+         'amount_no_discount'=>round(Cart::total()),
 
 
     ]);
@@ -74,10 +73,9 @@ class CashController extends Controller
     }
 
     $discount_name =  Session::get('coupon')['coupon_name'];
-
            $count =  Coupon::where('coupon_name',$discount_name)->count();
            Coupon::where('coupon_name',$discount_name)->update([
-            'counting'=>$count+1,
+            'counting' => $count+1,
            ]);
            
     if(Session::has('coupon'))

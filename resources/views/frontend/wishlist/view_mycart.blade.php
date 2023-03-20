@@ -62,11 +62,14 @@ My Cart Page
 		<tbody>
 				<tr>
 					<td>
+						
 						<div class="form-group">
 							<input type="text" class="form-control unicase-form-control text-input" placeholder="{{ __('translation.Your Coupon') }}.."  id="coupon_name">
+							
 						</div>
 						<div class="clearfix pull-right">
-							<button type="submit" class="btn-upper btn btn-primary" onclick="applycoupon()">{{ __('translation.APPLY COUPON') }}</button>
+							<button type="submit" class="btn-upper btn btn-primary" onclick="applycoupon(); ">{{ __('translation.APPLY COUPON') }}</button>
+							
 						</div>
 					</td>
 				</tr>
@@ -85,7 +88,11 @@ My Cart Page
 		<tbody>
 				<tr>
 					<td>
+						
+								
 						<div class="cart-checkout-btn pull-right">
+							
+
 							<a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">{{ __('translation.PROCCED TO CHEKOUT') }}</a>
 							
 						</div>

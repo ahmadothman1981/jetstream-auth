@@ -85,6 +85,7 @@ Cash On Delivary Payment Page
 
 		   <form action="{{ route('cash.order') }} " method="post" id="payment-form">
                             @csrf
+                          
                         <div class="form-row">
             	<img src="{{ asset('frontend/assets/images/payments/cash.png') }}">
                             <label for="card-element">
