@@ -51,7 +51,7 @@ $route = Route::current()->getName();
 
 
 
-        @if($brand == true)
+        
         <li class="treeview {{ ($prefix == '/brand')? 'active' : '' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -65,12 +65,11 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
-        @else
-        @endif
+        
 
 
 
-        @if($category == true)
+       
         <li  class="treeview {{ ($prefix == '/category')? 'active' : '' }}">
           <a href="#">
             <i data-feather="mail"></i> <span>Category</span>
@@ -87,11 +86,9 @@ $route = Route::current()->getName();
           </ul>
         </li>
 
-        @else
-        @endif
+       
 
-
-        @if($product == true)
+        
         <li class="treeview {{ ($prefix == '/product')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -106,11 +103,10 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
-        @else
-        @endif
+        
 
 
-        @if($slider == true)
+        
          <li class="treeview {{ ($prefix == '/slider')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -125,11 +121,10 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
-         @else
-        @endif
+         
 
 
-        @if($coupons == true)
+        
          <li class="treeview {{ ($prefix == '/coupons')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -144,11 +139,10 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
-         @else
-        @endif
+        
 
 
-        @if($shipping == true)
+        
           <li class="treeview {{ ($prefix == '/shipping')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -165,10 +159,9 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
-           @else
-           @endif
+          
 
-           @if($blog == true)
+           
            <li class="treeview {{ ($prefix == '/blog')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -188,11 +181,10 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
-           @else
-           @endif
+           
 
 
-            @if($setting == true)
+            
            <li class="treeview {{ ($prefix == '/setting')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -210,10 +202,9 @@ $route = Route::current()->getName();
                   
                   </ul>
                 </li>
-                 @else
-                @endif
+                
 
-          @if($returnorder == true)
+          
 
           <li class="treeview {{ ($prefix == '/return')? 'active' : '' }}">
               <a href="#">
@@ -234,10 +225,9 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
-           @else
-          @endif
+        
 
-          @if($review == true)
+         
 
            <li class="treeview {{ ($prefix == '/review')? 'active' : '' }}">
               <a href="#">
@@ -259,13 +249,12 @@ $route = Route::current()->getName();
               </ul>
           </li>
 
-           @else
-          @endif
+          
 
 
          
 
-          @if($stock == true)
+        
           <li class="treeview {{ ($prefix == '/stock')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -282,10 +271,9 @@ $route = Route::current()->getName();
               </ul>
              
           </li>
-            @else
-          @endif
+          
 
-          @if($reports == true)
+          
        <li class="treeview {{ ($prefix == '/reports')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -303,10 +291,8 @@ $route = Route::current()->getName();
              
           </li>
 
-           @else
-          @endif
 
-           @if($alluser == true)
+         
           <li class="treeview {{ ($prefix == '/alluser')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -319,38 +305,38 @@ $route = Route::current()->getName();
 
                   <li class="{{ ($route == 'all-users')? 'active' : '' }}"><a href="{{ route('all-users') }}"><i class="ti-more"></i>All Users</a></li>
                   
-                  
               </ul>
              
           </li>
 
 
-           @else
-          @endif
-
-           @if($adminuserrole == true)
-            <li class="treeview {{ ($prefix == '/adminuserrole')? 'active' : '' }}">
+           <li class="treeview {{ ($prefix == '/Adminall')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
-                  <span> Admin User Role</span>
+                  <span> All Admins</span>
                   <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
               </a>
               <ul class="treeview-menu">
 
-                  <li class="{{ ($route == 'all-admin.user')? 'active' : '' }}"><a href="{{ route('all-admin.user') }}"><i class="ti-more"></i>All Admin User</a></li>
-                  
+                  <li class="{{ ($route == 'all-admin')? 'active' : '' }}"><a href="{{ route('all-admin') }}"><i class="ti-more"></i>All Admins</a></li>
+
+                   <li class="{{ ($route == 'roles')? 'active' : '' }}"><a href="{{ route('roles') }}"><i class="ti-more"></i>Admin Roles</a></li>
+
+                    <li class="{{ ($route == 'permissions')? 'active' : '' }}"><a href="{{ route('permissions') }}"><i class="ti-more"></i>Admin Permissions</a></li>
                   
               </ul>
              
           </li>
 
-            
-           @else
-          @endif
 
-           @if($orders == true)
+
+        
+
+         
+
+          
 		<li class="treeview {{ ($prefix == '/orders')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -379,8 +365,7 @@ $route = Route::current()->getName();
               </ul>
           </li>
 
-          @else
-          @endif
+         
 
 
       </ul>

@@ -28,13 +28,9 @@ use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\LanguageController;
-
-
-
-
-
-
 use App\Models\User;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,25 +75,9 @@ Route::get('admin/profile/edite',[AdminProfileController::class,'AdminProfileEdi
 Route::post('admin/profile/store',[AdminProfileController::class,'AdminProfileStore'])->name('admin.profile.store');
 Route::get('admin/change/password',[AdminProfileController::class,'AdminChangePassword'])->name('admin.change.password');
 Route::post('update/change/password',[AdminProfileController::class,'AdminUpdateChangePassword'])->name('update.change.password');
-
-
-
-
 });// End Middleware ADMIN/////////////////////
-
-
-
-
 ////////////////////////////////////////////////////////////
 /////////User All Routes//////////
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'
 ])->group(function () {
@@ -181,9 +161,6 @@ Route::prefix('product')->group(function(){
 });
 /////////////////////////////////////////////////////////////////
 /////////////////////////// Admin Manage Slider  Routes//////////////////
-
-
-
 Route::prefix('slider')->group(function(){
      Route::get('/view',[SliderController::class,'SliderView'])->name('manage-slider');
      Route::post('/store',[SliderController::class,'SliderStore'])->name('slider.store');
@@ -194,18 +171,13 @@ Route::prefix('slider')->group(function(){
      Route::get('/active/{id}',[SliderController::class,'SliderActive'])->name('slider.active');
 
 });
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////Front End All Routes---------------------------------
 
 
 //////////////////////////////////Multi Language All Routes///////////////////////////
 Route::get('/language/{locale}',[LanguageController::class,'language'])->name('language.converter');
-
-////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////Product Details Page URL 
 
 Route::get('product/details/{id}/{slug}',[IndexController::class,'ProdcutDetail']);
@@ -219,7 +191,6 @@ Route::get('subcategory/product/{subcat_id}/{slug}',[IndexController::class,'Sub
 Route::get('subsubcategory/product/{subsubcat_id}/{slug}',[IndexController::class,'SubSubCatWiseProduct']);
 /////////////////////////////PRODUCT VIEW MODEL WITH AJAX//////////////////
 Route::get('/product/view/modal/{id}',[IndexController::class,'ProductViewAjax']);
-
 
 /////////////////////////////ADD TO  CART STORE WITH AJAX//////////////////
 Route::post('cart/data/store/{id}',[CartController::class,'AddToCart']);
@@ -279,37 +250,21 @@ Route::post('/return/order/{order_id}',[AllUserController::class,'ReturnOrder'])
 Route::get('/return/orders/list',[AllUserController::class,'ReturnOrderList'])->name('return.orders.list');
 
 Route::get('/cancel/orders',[AllUserController::class,'CancelOrders'])->name('cancel.order');
-
-
 ///////ORDER TRACKING ROUTE//////////////////
-
 Route::post('/order/tracking',[AllUserController::class,'OrderTracking'])->name('order.tracking');
 
 });
-
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////// Admin Coupons  Routes//////////////////
-
-
-
 Route::prefix('coupons')->group(function(){
      Route::get('/view',[CouponController::class,'CouponView'])->name('manage-coupon');
      Route::post('/store',[CouponController::class,'CouponStore'])->name('coupon.store');
      Route::get('/edit/{id}',[CouponController::class,'CouponEdit'])->name('coupon.edit');
      Route::post('/update/{id}',[CouponController::class,'CouponUpdate'])->name('coupon.update');
      Route::get('/delete/{id}',[CouponController::class,'CouponDelete'])->name('coupon.delete');
-     
-
 });
-
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////// Admin Shipping   Routes//////////////////
-
-
 ////// Admin Shipping   Division////////////
 Route::prefix('shipping')->group(function(){
      Route::get('/division/view',[ShippingAreaController::class,'DivisionView'])->name('manage-division');
@@ -317,37 +272,24 @@ Route::prefix('shipping')->group(function(){
      Route::get('/division/edit/{id}',[ShippingAreaController::class,'DivisionEdit'])->name('division.edit');
      Route::post('/division/update/{id}',[ShippingAreaController::class,'DivisionUpdate'])->name('division.update');
      Route::get('/division/delete/{id}',[ShippingAreaController::class,'DivisionDelete'])->name('division.delete');
-
-
-
 /////////// Admin Shipping   District////////////
      Route::get('/district/view',[ShippingAreaController::class,'DistrictView'])->name('manage-district');
      Route::post('/district/store',[ShippingAreaController::class,'DistrictStore'])->name('district.store');
      Route::get('/district/edit/{id}',[ShippingAreaController::class,'DistrictEdit'])->name('district.edit');
      Route::post('/district/update/{id}',[ShippingAreaController::class,'DistrictUpdate'])->name('district.update');
      Route::get('/district/delete/{id}',[ShippingAreaController::class,'DistrictDelete'])->name('district.delete');
-
-
-
-
      /////////// Admin Shipping   State////////////
      Route::get('/state/view',[ShippingAreaController::class,'StateView'])->name('manage-state');
      Route::post('/state/store',[ShippingAreaController::class,'StateStore'])->name('state.store');
      Route::get('/state/edit/{id}',[ShippingAreaController::class,'StateEdit'])->name('state.edit');
      Route::post('/state/update/{id}',[ShippingAreaController::class,'StateUpdate'])->name('state.update');
      Route::get('/state/delete/{id}',[ShippingAreaController::class,'StateDelete'])->name('state.delete');
-     
 
 });
-
 /////Front End Coupon Option///////////////////
-
 Route::post('/coupon-apply',[CartController::class,'CouponApply']);
 Route::get('/coupon-calculation',[CartController::class,'CouponCalculation']);
 Route::get('/coupon-remove',[CartController::class,'CouponRemove']);
-
-
-
 /////////Checkout Routes///////////////////
 
 Route::get('/checkout',[CartController::class,'CheckoutCreate'])->name('checkout');
@@ -390,12 +332,8 @@ Route::prefix('orders')->group(function(){
      
 
      Route::get('/invoice/download/{order_id}',[OrderController::class,'AdminInvoiceDownload'])->name('invoice.download');
-     
-
-     
-
+  
 });
-
 //////Admin Reports Routes////////////
 Route::prefix('reports')->group(function(){
      Route::get('/view',[ReportController::class,'ReportView'])->name('all-reports');
@@ -404,25 +342,30 @@ Route::prefix('reports')->group(function(){
 
      Route::post('/search/by/month',[ReportController::class,'ReportByMonth'])->name('search-by-month');
 
-     Route::post('/search/by/year',[ReportController::class,'ReportByYear'])->name('search-by-year');
-
-
+     Route::post('/search/by/year',[ReportController::class,'ReportByYear'])->name('earch-by-year');
 });
-
-
-
-
 //////Admin All Users Routes////////////
 Route::prefix('alluser')->group(function(){
      Route::get('/view',[AdminProfileController::class,'AllUsers'])->name('all-users');
-
-     
-
-
+  
 });
+/////Admin All Admins Routes////////////
+Route::prefix('Adminall')->group(function(){
+     Route::get('/view',[AdminProfileController::class,'AllAdmins'])->name('all-admin');
+     ////Admin All Roles Routes////////////
+     Route::get('/roles',[RoleController::class,'AllRoles'])->name('roles');
+     Route::post('/roles/store',[RoleController::class,'AddRoles'])->name('role.store');
+     Route::get('/roles/edit/{id}',[RoleController::class,'RoleEdit'])->name('role.edit');
+     Route::post('/roles/update',[RoleController::class,'UpdateRoles'])->name('role.update');
+     Route::get('/roles/delete/{id}',[RoleController::class,'RoleDelete'])->name('role.delete');
+     ////Admin All Permissions Routes////////////
 
-
-
+    Route::get('/permissions',[PermissionsController::class,'AllPermissions'])->name('permissions');
+    Route::post('/permissions/store',[PermissionsController::class,'AddPermission'])->name('permissions.store');
+    Route::get('/permissions/edit/{id}',[PermissionsController::class,'PermissionEdit'])->name('permissions.edit');
+     Route::post('/permissions/update',[PermissionsController::class,'UpdatePermission'])->name('permissions.update');
+    Route::get('/permissions/delete/{id}',[PermissionsController::class,'PermissionDelete'])->name('permissions.delete');
+});
 //////Admin Blog Routes////////////
 Route::prefix('blog')->group(function(){
      Route::get('/category',[BlogController::class,'BlogCategory'])->name('blog.category');
@@ -512,28 +455,6 @@ Route::prefix('review')->group(function(){
 Route::prefix('stock')->group(function(){
 
      Route::get('/product',[ProductController::class,'ProductStock'])->name('product.stock');
-    
- 
-
-});
-
-
-/////Admin User Role ALL Routes////////////
-Route::prefix('adminuserrole')->group(function(){
-
-     Route::get('/all',[AdminUserController::class,'AllAdminRole'])->name('all-admin.user');
-
-     Route::get('/add',[AdminUserController::class,'AddAdminRole'])->name('add.admin');
-
-     Route::post('/store',[AdminUserController::class,'StoreAdminRole'])->name('admin.user.store');
-
-     Route::get('/edit/{id}',[AdminUserController::class,'EditAdminRole'])->name('edit.admin.user');
-
-     Route::post('/update',[AdminUserController::class,'UpdateAdminRole'])->name('admin.user.update');
-
-     Route::get('/delete/{id}',[AdminUserController::class,'DeletedminRole'])->name('delete.admin.user');
-    
- 
 
 });
 
@@ -557,3 +478,5 @@ Route::post('/shop/filter',[ShopController::class,'ShopFilter'])->name('shop.fil
 Route::get('product/color/{color}',[IndexController::class,'ColorProduct'])->name('color.product');
 /////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('product/manufacures/{manufac}',[IndexController::class,'ManufacuresProduct'])->name('manufactures.product');
+
+

@@ -8,6 +8,10 @@ use App\Models\Admin;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use DB;
+
 
 
 class AdminProfileController extends Controller
@@ -16,7 +20,7 @@ class AdminProfileController extends Controller
     {
         $id = Auth::user()->id;
         $adminData = Admin::find($id);
-
+        
         return view('admin.admin_profile_view',compact('adminData'));
 
     }//End Method 
@@ -25,6 +29,7 @@ class AdminProfileController extends Controller
     {
         $id = Auth::user()->id;
          $editeData = Admin::find($id);
+
          return view('admin.admin_profile_edite',compact('editeData'));
     }//End Method 
 
@@ -87,4 +92,14 @@ class AdminProfileController extends Controller
 
         return view('backend.user.all_user',compact('users'));
     }//End Method
+
+
+     public function AllAdmins()
+    {
+        $admins = Admin::latest()->get();
+
+        return view('admin.admin_all',compact('admins'));
+    }//End Method
+
+
 }
