@@ -354,6 +354,7 @@ Route::prefix('Adminall')->group(function(){
      Route::get('/view',[AdminProfileController::class,'AllAdmins'])->name('all-admin');
      ////Admin All Roles Routes////////////
      Route::get('/roles',[RoleController::class,'AllRoles'])->name('roles');
+     Route::get('/roles/add',[RoleController::class,'AddView'])->name('role.add');
      Route::post('/roles/store',[RoleController::class,'AddRoles'])->name('role.store');
      Route::get('/roles/edit/{id}',[RoleController::class,'RoleEdit'])->name('role.edit');
      Route::post('/roles/update',[RoleController::class,'UpdateRoles'])->name('role.update');

@@ -43,6 +43,16 @@
 			@enderror
 							</div>
 							</div>
+
+							<div class="form-group">
+								<h5>Permission Group <span class="text-danger">*</span></h5>
+								<div class="controls">
+			<input type="text"  name="group" class="form-control" value="{{ $permission->group }}" >
+			@error('group')
+			<span class="text-danger">{{ $message }}</span>
+			@enderror
+							</div>
+							</div>
 												
 						
 						<div class="text-xs-right">

@@ -28,8 +28,10 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
+								<th>ID</th>
 								<th>Permissions</th>
-								<th>Status</th>
+								<th>Group</th>
+								
 								<th>Action</th>
 								
 							</tr>
@@ -37,12 +39,13 @@
 						<tbody>
 							@foreach($permissions as $permission)
 							<tr>
-								
+								<td>{{ $permission->id }}</td>
 								<td>{{ $permission->name }}</td>
-								<td>{{ $permission->status }}</td>
+								<td>{{ $permission->group }}</td>
+								
 								<td>
 									<a href="{{ route('permissions.edit',$permission->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-									<a href="" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+									<a href="{{ route('permissions.delete',$permission->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
 								
 							</tr>
@@ -82,7 +85,18 @@
 			<span class="text-danger">{{ $message }}</span>
 			@enderror
 							</div>
+							</div>	
+
+							<div class="form-group">
+								<h5>Permission Group <span class="text-danger">*</span></h5>
+								<div class="controls">
+			<input type="text"  name="group" class="form-control" >
+			@error('group')
+			<span class="text-danger">{{ $message }}</span>
+			@enderror
+							</div>
 							</div>							
+															
 												
 							
 						

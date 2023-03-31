@@ -18,36 +18,64 @@ class RoleController extends Controller
         return view('admin.roles.all_rolles_view',compact('roles'));
     }//End Method
 
+    public function AddView()
+    {
+      $permissions = Permission::latest()->get();
+
+      $permissions_group = Permission::latest()->get()->unique('group');
+
+      return view('admin.roles.add_rolles',compact('permissions','permissions_group'));  
+    }//End Method
+
     public function AddRoles(Request $request)
     {
+
       $request->validate([
         'name'=> 'required',
       ],[
         'name.required'=> 'Input Role Name']); 
 
-        Role::create(['name' => $request->name]);
+        $role = Role::create(['name' => $request->name]);
+       
+          $input = $request->all();
+          $permis = $request->input('permission');
+          
+          $role->syncPermissions($permis);
+          
 
+       
         $notification = array(
             'message'=> 'Role Inserted Successfully',
             'alert-type' => 'success',
         );
 
-         return redirect()->back()->with( $notification);
+         return redirect()->route('roles')->with( $notification);
     }//End Method
 
     public function RoleEdit($id)
       {
         $role = Role::findOrFail($id);
-         return view('admin.roles.role_edit',compact('role'));
+        $permissions = Permission::latest()->get();
+      $permissions_group = Permission::latest()->get()->unique('group');
+      $permissions_rolles = $role->getPermissionNames();
+
+         return view('admin.roles.role_edit',compact('role','permissions','permissions_group','permissions_rolles'));
+    
       }//End Method
 
-      public function UpdateRoles(Request $request)
+      public function UpdateRoles(Request $request , Role $role)
       {
         $role_id = $request->id;
+ 
 
-        Role::findOrFail($role_id)->update([
+      Role::findOrFail($role_id)->update([
             'name'=>$request->name,
         ]);
+        
+          $input = $request->all();
+          $permis = $request->input('permission');
+         
+          Role::findOrFail($role_id)->syncPermissions($permis);
 
         $notification = array(
                 'message'=> 'Role Updated Successfully',
@@ -66,5 +94,5 @@ class RoleController extends Controller
             );
 
              return redirect()->back()->with( $notification);
-    }
+    }//End Method
 }

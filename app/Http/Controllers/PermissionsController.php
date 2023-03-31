@@ -20,10 +20,15 @@ class PermissionsController extends Controller
     {
       $request->validate([
         'name'=> 'required',
+        'group'=> 'required',
       ],[
-        'name.required'=> 'Input Role Name']); 
+        'name.required'=> 'Input permission Name',
+        'group.required'=> 'Input Group Name'
+    ]); 
 
-        Permission::create(['name' => $request->name]);
+        Permission::create(['name' => $request->name,
+                            'group' => $request->group,
+                            ]);
 
         $notification = array(
             'message'=> 'Permission Inserted Successfully',
@@ -44,6 +49,7 @@ class PermissionsController extends Controller
 
         Permission::findOrFail($permission_id)->update([
             'name'=>$request->name,
+            'group'=>$request->group,
         ]);
 
         $notification = array(

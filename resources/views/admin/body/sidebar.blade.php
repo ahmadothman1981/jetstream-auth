@@ -313,14 +313,14 @@ $route = Route::current()->getName();
            <li class="treeview {{ ($prefix == '/Adminall')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
-                  <span> All Admins</span>
+                  <span>  Admin Manager</span>
                   <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
               </a>
               <ul class="treeview-menu">
 
-                  <li class="{{ ($route == 'all-admin')? 'active' : '' }}"><a href="{{ route('all-admin') }}"><i class="ti-more"></i>All Admins</a></li>
+                  <li class="{{ ($route == 'all-admin')? 'active' : '' }}"><a href="{{ route('all-admin') }}"><i class="ti-more"></i>Admins List</a></li>
 
                    <li class="{{ ($route == 'roles')? 'active' : '' }}"><a href="{{ route('roles') }}"><i class="ti-more"></i>Admin Roles</a></li>
 
