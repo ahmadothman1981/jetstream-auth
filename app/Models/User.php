@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Cache;
+use Spatie\Permission\Traits\HasRoles;
 
 
 
@@ -19,7 +20,9 @@ class User extends Authenticatable
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
+    use TwoFactorAuthenticatable
+    use HasRoles;
+;
     
     /**
      * The attributes that are mass assignable.
@@ -73,5 +76,5 @@ class User extends Authenticatable
         return Cache::has('user-is-online' . $this->id);
     }
 
-    
+    protected $guard_name = 'web';
 }

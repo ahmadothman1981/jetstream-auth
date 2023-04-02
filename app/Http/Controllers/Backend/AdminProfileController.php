@@ -126,7 +126,7 @@ public function AdminStore(Request $request, Role $role)
       $image = $request->file('profile_photo_path');
       $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
       Image::make($image)->resize(225,225)->save('upload/admin_images/'.$name_gen);
-      $save_url = 'upload/admin_images/'.$name_gen;
+      $save_url = $name_gen;
 
       $admin_id = Admin::insertGetId([
         'name'=>$request->name,
@@ -138,7 +138,8 @@ public function AdminStore(Request $request, Role $role)
       ]);
      $admin_data = Admin::find($admin_id);
      $role_name = $request->role_name;
-     $admin_data->assignRole($role_name);
+     $role = Role::where('name',$role_name)->first();
+     $admin_data->syncRoles($role);
 
          $notification = array(
             'message'=> 'Admin Created Successfully',

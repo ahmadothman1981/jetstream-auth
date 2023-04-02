@@ -22,6 +22,9 @@ class Admin extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
 
+
+
+ protected $guard_name = 'web';
     /**
      * The attributes that are mass assignable.
      *
@@ -62,4 +65,6 @@ class Admin extends Authenticatable
     {
         return Cache::has('admin-is-online' . $this->id);
     }
+      
+    
 }
