@@ -6,13 +6,10 @@
 @php
 	$date = date('d-m-y');
 	$today = App\Models\Order::where('order_date',$date)->sum('amount');
-
 	$month = date('F');
 	$month = App\Models\Order::where('order_month',$month)->sum('amount');
-
 	$year = date('Y');
 	$year = App\Models\Order::where('order_year',$year)->sum('amount');
-
 	$pending = App\Models\Order::where('status','Pending')->get();
 @endphp
 <div class="container-full">

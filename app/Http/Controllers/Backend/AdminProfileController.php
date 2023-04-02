@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
+use Image;
+use Carbon\Carbon;
 
 
 
@@ -19,8 +21,8 @@ class AdminProfileController extends Controller
     public function AdminProfile()
     {
         $id = Auth::user()->id;
+
         $adminData = Admin::find($id);
-        
         return view('admin.admin_profile_view',compact('adminData'));
 
     }//End Method 
@@ -100,6 +102,52 @@ class AdminProfileController extends Controller
 
         return view('admin.admin_all',compact('admins'));
     }//End Method
+
+public function AddAdmin()
+{
+    $roles = Role::latest()->get();
+    
+   
+    return view('admin.admin_create',compact('roles'));
+}//End Method
+
+public function AdminStore(Request $request, Role $role)
+{
+    $request->validate([
+        'name'=> 'required',
+        'email'=> 'required',
+        'password'=> 'required',
+      ],[
+        'name.required'=> 'Name Required',
+        'email.required'=> ' Email Required',
+      ]); 
+     
+
+      $image = $request->file('profile_photo_path');
+      $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+      Image::make($image)->resize(225,225)->save('upload/admin_images/'.$name_gen);
+      $save_url = 'upload/admin_images/'.$name_gen;
+
+      $admin_id = Admin::insertGetId([
+        'name'=>$request->name,
+        'email'=>$request->email,
+        'password'=>Hash::make($request->password),
+        'profile_photo_path'=>$save_url,
+        'created_at'=>Carbon::now(),
+
+      ]);
+     $admin_data = Admin::find($admin_id);
+     $role_name = $request->role_name;
+     $admin_data->assignRole($role_name);
+
+         $notification = array(
+            'message'=> 'Admin Created Successfully',
+            'alert-type' => 'success',
+        );
+
+         return view('admin.admin_all')->with( $notification);
+}//End Method
+
 
 
 }

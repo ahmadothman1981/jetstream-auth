@@ -352,6 +352,8 @@ Route::prefix('alluser')->group(function(){
 /////Admin All Admins Routes////////////
 Route::prefix('Adminall')->group(function(){
      Route::get('/view',[AdminProfileController::class,'AllAdmins'])->name('all-admin');
+     Route::get('/add',[AdminProfileController::class,'AddAdmin'])->name('add.admin');
+     Route::post('/add',[AdminProfileController::class,'AdminStore'])->name('admin.user.store');
      ////Admin All Roles Routes////////////
      Route::get('/roles',[RoleController::class,'AllRoles'])->name('roles');
      Route::get('/roles/add',[RoleController::class,'AddView'])->name('role.add');

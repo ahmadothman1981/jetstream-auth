@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
+use App\Models\Admin;
 
 class RoleController extends Controller
 {
@@ -20,6 +21,7 @@ class RoleController extends Controller
 
     public function AddView()
     {
+
       $permissions = Permission::latest()->get();
 
       $permissions_group = Permission::latest()->get()->unique('group');
@@ -54,6 +56,7 @@ class RoleController extends Controller
 
     public function RoleEdit($id)
       {
+     
         $role = Role::findOrFail($id);
         $permissions = Permission::latest()->get();
       $permissions_group = Permission::latest()->get()->unique('group');
