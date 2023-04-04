@@ -149,6 +149,88 @@ public function AdminStore(Request $request, Role $role)
          return view('admin.admin_all')->with( $notification);
 }//End Method
 
+public function EditAdmin($id)
+{
+    $admin = Admin::findOrFail($id);
+    $roles = Role::latest()->get();
+    
+    return view('admin.admin_edit',compact('admin','roles'));
+}//End Method
+
+public function AdminUpdate(Request $request, Role $role)
+{
+    
+       $admin_id = $request->id;
+        $old_image = $request->old_image;
+   
+        if($request->file('profile_photo_path'))
+        {
+            unlink('upload/admin_images/'.$old_image);
+          $image = $request->file('profile_photo_path');
+          $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+          Image::make($image)->resize(225,225)->save('upload/admin_images/'.$name_gen);
+           $save_url = $name_gen;
+
+        
+        Admin::findOrFail($admin_id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password),
+            'profile_photo_path'=>$save_url,
+            'updated_at'=>Carbon::now(),
+        ]);
+
+
+        $data = Admin::find($admin_id);
+        $role_name = $request->role_name;
+        $role = Role::where('name',$role_name)->first();
+        $data->syncRoles($role);
+
+        $notification = array(
+            'message'=> 'Admin  Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return view('admin.admin_all')->with( $notification);
+
+        }else{
+        Admin::findOrFail($admin_id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'updated_at'=>Carbon::now(),
+        ]);
+
+
+        $data = Admin::find($admin_id);
+        $role_name = $request->role_name;
+        $role = Role::where('name',$role_name)->first();
+        $data->syncRoles($role);
+
+        $notification = array(
+            'message'=> 'Admin  Updated Successfully',
+            'alert-type' => 'info',
+        );
+
+        return view('admin.admin_all')->with( $notification);
+    }
+}//End Method
+
+
+ public function AdminDelete($id)
+      {
+        $admin = Admin::findOrFail($id);
+        $img = $admin->profile_photo_path;
+        unlink('upload/admin_images/'.$img);
+        Admin::findOrFail($id)->delete();
+          $notification = array(
+                'message'=> 'Admin Deleted Successfully',
+                'alert-type' => 'info',
+            );
+
+             return redirect()->back()->with( $notification); 
+      }//End Method
+
+
 
 
 }

@@ -61,8 +61,8 @@
 								</td>
 								
 								<td>
-									<a href="" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-									<a href="" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+									<a href="{{ route('edit.admin',$admin->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<a href="{{ route('admin.delete',$admin->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
 								
 							</tr>
