@@ -12,6 +12,7 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
+				@if(Auth::guard('admin')->user()->can('Admin_edit'))
 			  <div class="row">
 				<div class="col">
 					<form action="{{ route('admin.profile.store') }}"  method="post" enctype="multipart/form-data">
@@ -69,6 +70,7 @@
 				</div>
 				<!-- /.col -->
 			  </div>
+			  @endif
 			  <!-- /.row -->
 			</div>
 </div>

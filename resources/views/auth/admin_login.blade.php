@@ -119,7 +119,7 @@
     <script src="{{asset('../assets/icons/feather-icons/feather.min.js')}}"></script>	
 
 </body>
-
+<!-- 
 <script>
 function myFunction() {
   var x = document.getElementById("password");
@@ -190,4 +190,5 @@ myInput.onkeyup = function() {
   }
 }
 </script>
+Vendor JS -->
 </html>

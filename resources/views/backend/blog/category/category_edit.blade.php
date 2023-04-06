@@ -15,7 +15,7 @@
 
 			
 			
-
+@if(Auth::guard('admin')->user()->can('Blog_edit'))
 			
 			<!-- /.col -->
 			<! Add Blog Category-->
@@ -80,6 +80,7 @@
 
 
 		  </div>
+		  @endif
 		  <!-- /.row -->
 		</section>
 		<!-- /.content -->

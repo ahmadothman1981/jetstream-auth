@@ -18,10 +18,12 @@ use Carbon\Carbon;
 
 class AdminProfileController extends Controller
 {
+     
+
     public function AdminProfile()
     {
         $id = Auth::user()->id;
-
+       // dd(Auth::user()->roles);
         $adminData = Admin::find($id);
         return view('admin.admin_profile_view',compact('adminData'));
 
@@ -99,7 +101,8 @@ class AdminProfileController extends Controller
      public function AllAdmins()
     {
         $admins = Admin::latest()->get();
-
+       
+      // dd(Auth::guard('admin')->user()->roles); 
         return view('admin.admin_all',compact('admins'));
     }//End Method
 

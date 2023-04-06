@@ -47,10 +47,11 @@
 								<td>{{ $item->post_title_en  }}</td>
 								<td>{{ $item->post_title_ar  }}</td>
 								
+				@if(Auth::guard('admin')->user()->can('Users_edit'))
 									<td width="20%"><a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('blog.category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
-								
+				@endif	
 							</tr>
 							@endforeach
 						</tbody>

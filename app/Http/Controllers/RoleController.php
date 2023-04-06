@@ -11,6 +11,8 @@ use App\Models\Admin;
 
 class RoleController extends Controller
 {
+
+
      public function AllRoles()
     {
 

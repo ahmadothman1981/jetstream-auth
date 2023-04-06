@@ -50,8 +50,7 @@ $route = Route::current()->getName();
         @endphp
 
 
-
-        
+       
         <li class="treeview {{ ($prefix == '/brand')? 'active' : '' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -329,7 +328,6 @@ $route = Route::current()->getName();
               </ul>
              
           </li>
-
 
 
         

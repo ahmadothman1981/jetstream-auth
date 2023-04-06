@@ -4,6 +4,7 @@
 <div class="container-full">
 <section class="content">
 
+@if(Auth::guard('admin')->user()->can('Admin_edit'))
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
@@ -116,5 +117,5 @@
 		});
 	});
 </script>
-
+@endif
 @endsection
