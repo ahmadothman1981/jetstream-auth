@@ -29,25 +29,7 @@ $route = Route::current()->getName();
           </a>
         </li>
 
-        @php
-          $brand = (auth()->guard('admin')->user()->brand == 1);
-          $category = (auth()->guard('admin')->user()->category == 1);
-          $product = (auth()->guard('admin')->user()->product == 1);
-          $slider = (auth()->guard('admin')->user()->slider == 1);
-          $coupons = (auth()->guard('admin')->user()->coupons == 1);
-          $shipping = (auth()->guard('admin')->user()->shipping == 1);
-          $blog = (auth()->guard('admin')->user()->blog == 1);
-          $setting = (auth()->guard('admin')->user()->setting == 1);
-          $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
-          $review = (auth()->guard('admin')->user()->review == 1);
-          $orders = (auth()->guard('admin')->user()->orders == 1);
-          $stock = (auth()->guard('admin')->user()->stock == 1);
-          $reports = (auth()->guard('admin')->user()->reports == 1);
-          $alluser = (auth()->guard('admin')->user()->alluser == 1);
-          $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
-
-          
-        @endphp
+        
 
 
        
@@ -96,11 +78,13 @@ $route = Route::current()->getName();
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
+          @if(Auth::guard('admin')->user()->can('Product_create'))
           <ul class="treeview-menu">
             <li class="{{ ($route == 'add-product')? 'active' : '' }}"><a href="{{ route('add-product') }}"><i class="ti-more"></i>Add Product </a></li>
             <li class="{{ ($route == 'manage-product')? 'active' : '' }}"><a href="{{ route('manage-product') }}"><i class="ti-more"></i>Manage Product</a></li>
 
           </ul>
+          @endif
         </li>
         
 
@@ -193,11 +177,12 @@ $route = Route::current()->getName();
             </span>
               </a>
               <ul class="treeview-menu">
-
+@if(Auth::guard('admin')->user()->can('site_setting'))
                   <li class="{{ ($route == 'site.setting')? 'active' : '' }}"><a href="{{ route('site.setting') }}"><i class="ti-more"></i>Site Setting</a></li>
-
+@endif
+@if(Auth::guard('admin')->user()->can('seo_setting'))
                   <li class="{{ ($route == 'seo.setting')? 'active' : '' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>SEO Setting</a></li>
-
+@endif
                   
                   </ul>
                 </li>

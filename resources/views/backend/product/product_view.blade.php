@@ -72,7 +72,7 @@
 									<span class="badge badge-pill badge-danger">InActive</span>
 									@endif
 								</td>
-								
+	@if(Auth::guard('admin')->user()->can('Product_delete'))							
 	<td width="40%"><a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i></a>
 		<a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 	<a href="{{ route('product.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
@@ -83,7 +83,7 @@
 <a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i></a>
 @endif
 								</td>
-								
+@endif								
 							</tr>
 							@endforeach
 						</tbody>

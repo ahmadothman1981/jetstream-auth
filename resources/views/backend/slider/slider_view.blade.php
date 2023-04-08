@@ -65,6 +65,7 @@
 								</td>
 
 <td width="30%">
+	@if(Auth::guard('admin')->user()->can('Slider_delete'))
 	<a href="{{ route('slider.edit',$item->id) }}" class="btn btn-info btn-sm" title="Edit Data"><i class="fa fa-pencil"></i></a>
 	<a href="{{ route('slider.delete',$item->id) }}" id="delete" class="btn btn-danger btn-sm" title="Delete Data"> <i class="fa fa-trash"></i></a>
 
@@ -72,6 +73,7 @@
 <a href="{{ route('slider.inactive',$item->id) }}" class="btn btn-danger btn-sm" title="InActive Now"><i class="fa fa-arrow-down"></i></a>
 @else
 <a href="{{ route('slider.active',$item->id) }}" class="btn btn-success btn-sm" title="Active Now"><i class="fa fa-arrow-up"></i></a>
+	@endif
 	@endif
 </td>
 								
@@ -91,6 +93,7 @@
 			</div>
 			<!-- /.col -->
 			<! Add Slider-->
+				@if(Auth::guard('admin')->user()->can('Slider_create'))
 				<div class="col-4">
 
 			 <div class="box">
@@ -154,6 +157,8 @@
 			  
 			  <!-- /.box -->          
 			</div>
+
+			@endif
 		  </div>
 		  <!-- /.row -->
 		</section>

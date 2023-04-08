@@ -10,7 +10,7 @@
 		<!-- Main content -->
 		<section class="content">
 
-			@if(Auth::guard('admin')->user()->can('Brand_edit'))
+		
 
 		  <div class="row">
 			  
@@ -92,7 +92,7 @@
 			</div>
 		  </div>
 		  <!-- /.row -->
-		  @endif
+		
 		</section>
 		<!-- /.content -->
 	  

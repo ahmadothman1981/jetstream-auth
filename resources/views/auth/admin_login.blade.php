@@ -117,9 +117,6 @@
 	<!-- Vendor JS -->
 	<script src="{{asset('backend/js/vendors.min.js')}}"></script>
     <script src="{{asset('../assets/icons/feather-icons/feather.min.js')}}"></script>	
-
-</body>
-<!-- 
 <script>
 function myFunction() {
   var x = document.getElementById("password");
@@ -190,5 +187,8 @@ myInput.onkeyup = function() {
   }
 }
 </script>
-Vendor JS -->
+
+</body>
+
+
 </html>

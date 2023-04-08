@@ -42,12 +42,14 @@
 								<td>{{ $permission->id }}</td>
 								<td>{{ $permission->name }}</td>
 								<td>{{ $permission->group }}</td>
-								
+				
 								<td>
+						@if(Auth::guard('admin')->user()->can('Admin_delete'))	
 									<a href="{{ route('permissions.edit',$permission->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('permissions.delete',$permission->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+						@endif
 								</td>
-								
+						
 							</tr>
 							@endforeach
 						</tbody>
@@ -63,6 +65,7 @@
 			  <!-- /.box -->          
 			</div>
 			<! Add Permission-->
+			@if(Auth::guard('admin')->user()->can('Admin_create'))
 				<div class="col-4">
 
 			 <div class="box">
@@ -115,6 +118,8 @@
 			  <!-- /.box -->          
 			</div>
 			<!-- /.col -->
+
+		@endif
 		  </div>
 		  <!-- /.row -->
 		</section>

@@ -9,7 +9,7 @@
 
 		<!-- Main content -->
 		<section class="content">
-			@if(Auth::guard('admin')->user()->can('Category_edit'))
+		
 		  <div class="row">
 			  			
 			
@@ -92,7 +92,7 @@
 
 		  </div>
 		  <!-- /.row -->
-		  @endif
+		
 		</section>
 		<!-- /.content -->
 	  

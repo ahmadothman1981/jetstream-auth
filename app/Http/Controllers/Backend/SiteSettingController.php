@@ -21,6 +21,11 @@ class SiteSettingController extends Controller
 
     public function SiteSettingUpdate(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('site_setting'))
+    {
+        abort(403);
+    }
       $setting_id = $request->id;
        
         if($request->file('logo'))
@@ -84,6 +89,11 @@ class SiteSettingController extends Controller
 
     public function SeoSettingUpdate(Request $request)
     {
+        
+          if(!Auth::guard('admin')->user()->can('seo_setting'))
+    {
+        abort(403);
+    }
 
         $seo_id = $request->id;
 

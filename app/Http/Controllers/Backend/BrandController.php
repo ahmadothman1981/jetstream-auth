@@ -20,6 +20,10 @@ class BrandController extends Controller
 
     public function BrandStore(Request $request)
     {
+          if(!Auth::guard('admin')->user()->can('Brand_create'))
+    {
+        abort(403);
+    }
       $request->validate([
         'brand_name_en'=> 'required',
         'brand_name_ar'=> 'required',
@@ -58,6 +62,10 @@ class BrandController extends Controller
 
       public function BrandEdit($id)
       {
+          if(!Auth::guard('admin')->user()->can('Brand_edit'))
+    {
+        abort(403);
+    }
         $brand = Brand::findOrFail($id);
          return view('backend.brand.brand_edit',compact('brand'));
       }//End Method
@@ -65,6 +73,10 @@ class BrandController extends Controller
 
       public function BrandUpdate(Request $request)
       {
+          if(!Auth::guard('admin')->user()->can('Brand_edit'))
+    {
+        abort(403);
+    }
         $brand_id = $request->id;
 
         $old_image = $request->old_image;
@@ -111,6 +123,10 @@ class BrandController extends Controller
 
       public function BrandDelete($id)
       {
+          if(!Auth::guard('admin')->user()->can('Brand_delete'))
+    {
+        abort(403);
+    }
         $brand = Brand::findOrFail($id);
         $img = $brand->brand_image;
         unlink($img);

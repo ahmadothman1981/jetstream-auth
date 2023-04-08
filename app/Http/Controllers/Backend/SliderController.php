@@ -23,6 +23,10 @@ class SliderController extends Controller
     public function SliderStore(Request $request)
     {
 
+          if(!Auth::guard('admin')->user()->can('Slider_create'))
+    {
+        abort(403);
+    }
          $request->validate([
        
         'slider_img'=> 'required',
@@ -56,6 +60,11 @@ class SliderController extends Controller
 
     public function SliderEdit($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Slider_edit'))
+    {
+        abort(403);
+    }
          $sliders = Slider::findOrFail($id);
 
         return view('backend.slider.slider_edit',compact('sliders'));
@@ -64,6 +73,11 @@ class SliderController extends Controller
 
     public function SliderUpdate(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('Slider_edit'))
+    {
+        abort(403);
+    }
          $slider_id = $request->id;
         $old_slider = $request->old_image;
         if($request->file('slider_img'))
@@ -104,6 +118,11 @@ class SliderController extends Controller
 
     public function SliderDelete($id)
       {
+
+          if(!Auth::guard('admin')->user()->can('Slider_delete'))
+    {
+        abort(403);
+    }
         $slid = Slider::findOrFail($id);
         $img = $slid->slider_img;
         unlink($img);
@@ -119,6 +138,11 @@ class SliderController extends Controller
 
       public function SliderInactive($id)
       {
+
+          if(!Auth::guard('admin')->user()->can('Slider_delete'))
+    {
+        abort(403);
+    }
         Slider::findOrFail($id)->update([
             'status'=> 0,
         ]);
@@ -134,6 +158,11 @@ class SliderController extends Controller
 
       public function SliderActive($id)
       {
+        
+          if(!Auth::guard('admin')->user()->can('Slider_delete'))
+    {
+        abort(403);
+    }
         Slider::findOrFail($id)->update([
             'status'=> 1,
         ]);

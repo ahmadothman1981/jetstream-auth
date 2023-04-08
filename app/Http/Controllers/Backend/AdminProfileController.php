@@ -108,6 +108,10 @@ class AdminProfileController extends Controller
 
 public function AddAdmin()
 {
+    if(!Auth::guard('admin')->user()->can('Admin_create'))
+    {
+        abort(403);
+    }
     $roles = Role::latest()->get();
     
    
@@ -154,6 +158,10 @@ public function AdminStore(Request $request, Role $role)
 
 public function EditAdmin($id)
 {
+    if(!Auth::guard('admin')->user()->can('Admin_edit'))
+    {
+        abort(403);
+    }
     $admin = Admin::findOrFail($id);
     $roles = Role::latest()->get();
     
@@ -162,6 +170,10 @@ public function EditAdmin($id)
 
 public function AdminUpdate(Request $request, Role $role)
 {
+      if(!Auth::guard('admin')->user()->can('Admin_delete'))
+    {
+        abort(403);
+    }
     
        $admin_id = $request->id;
         $old_image = $request->old_image;
@@ -221,6 +233,11 @@ public function AdminUpdate(Request $request, Role $role)
 
  public function AdminDelete($id)
       {
+        
+      if(!Auth::guard('admin')->user()->can('Admin_delete'))
+    {
+        abort(403);
+    }
         $admin = Admin::findOrFail($id);
         $img = $admin->profile_photo_path;
         unlink('upload/admin_images/'.$img);

@@ -25,6 +25,10 @@ class CouponController extends Controller
     {
 
        
+          if(!Auth::guard('admin')->user()->can('Coupon_create'))
+    {
+        abort(403);
+    }
         
         $request->validate([
             'coupon_name' => 'required',
@@ -58,6 +62,11 @@ class CouponController extends Controller
 
     public function CouponEdit($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Coupon_edit'))
+    {
+        abort(403);
+    }
       $coupons = Coupon::findOrFail($id);
 
         return view('backend.coupon.edit_coupon',compact('coupons'));
@@ -66,6 +75,11 @@ class CouponController extends Controller
 
     public function CouponUpdate(Request $request, $id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Coupon_edit'))
+    {
+        abort(403);
+    }
        Coupon::findOrFail($id)->update([
         'coupon_name' => strtoupper($request->coupon_name),
         'coupon_discount' => $request->coupon_discount,
@@ -86,6 +100,11 @@ class CouponController extends Controller
 
     public function CouponDelete($id)
     {
+        
+          if(!Auth::guard('admin')->user()->can('Coupon_delete'))
+    {
+        abort(403);
+    }
       Coupon::findOrFail($id)->delete();
       
         $notification = array(

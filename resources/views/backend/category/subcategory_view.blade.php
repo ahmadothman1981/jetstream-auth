@@ -41,12 +41,12 @@
 								<td>{{ $item['category']['category_name_en']}}</td>
 								<td>{{ $item->subcategory_name_en  }}</td>
 								<td>{{ $item->subcategory_name_ar }}</td>
-								
+				@if(Auth::guard('admin')->user()->can('Category_delete'))
 									<td width="30%">
 									<a href="{{ route('subcategory.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('subcategory.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
-								
+				@endif
 							</tr>
 							@endforeach
 						</tbody>
@@ -63,6 +63,7 @@
 			</div>
 			<!-- /.col -->
 			<! Add Category-->
+	@if(Auth::guard('admin')->user()->can('Category_create'))
 				  <div class="col-3">
 
 			 <div class="box">
@@ -134,7 +135,7 @@
 			  <!-- /.box --> 
 			</div>
 
- 
+ 	@endif
 
 
 		  </div>

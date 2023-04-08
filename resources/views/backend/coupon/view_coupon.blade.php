@@ -64,9 +64,14 @@
 									<span class="badge badge-pill badge-danger">Invalid</span>
 									@endif
 								</td>
-								<td width="35%"><a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+							
+								<td width="35%">
+	@if(Auth::guard('admin')->user()->can('Coupon_delete'))
+									<a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('coupon.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+									@endif
 								</td>
+
 								
 							</tr>
 						@endforeach
@@ -84,6 +89,7 @@
 			</div>
 			<!-- /.col -->
 			<! Add Category-->
+		@if(Auth::guard('admin')->user()->can('Coupon_create'))		
 				  <div class="col-4">
 
 			 <div class="box">
@@ -180,7 +186,7 @@
 			  <!-- /.box --> 
 			</div>
 
- 
+ @endif
 
 
 		  </div>

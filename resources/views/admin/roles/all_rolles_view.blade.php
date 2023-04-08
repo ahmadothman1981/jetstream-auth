@@ -21,7 +21,9 @@
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title"> Roles<span class="badge badge-pill badge-danger">{{ count($roles) }}</span></h3>
+				@if(Auth::guard('admin')->user()->can('Admin_delete'))			  
 				   <a href="{{route('role.add')}}" class="btn  btn btn-success " >Add New Role</a>
+				   @endif
 				</div>
 
 				<!-- /.box-header -->
@@ -33,7 +35,7 @@
 								<th>ID</th>
 								<th>Name</th>
 								
-								<th>Group</th>
+								
 								<th>Action</th>
 								
 							</tr>
@@ -44,12 +46,13 @@
 								<td>{{ $role->id }}</td>
 								<td>{{ $role->name }}</td>
 								
-								<td></td>
+							
 								
 								<td>
-									<a href="{{ route('role.edit',$role->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+				@if(Auth::guard('admin')->user()->can('Admin_delete'))
+							<a href="{{ route('role.edit',$role->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('role.delete',$role->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
-								</td>
+		@endif					</td>
 								
 							</tr>
 							@endforeach

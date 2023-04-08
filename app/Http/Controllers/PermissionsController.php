@@ -18,6 +18,11 @@ class PermissionsController extends Controller
 
      public function AddPermission(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('Admin_create'))
+    {
+        abort(403);
+    }
       $request->validate([
         'name'=> 'required',
         'group'=> 'required',
@@ -39,12 +44,22 @@ class PermissionsController extends Controller
     }//End Method
     public function PermissionEdit($id)
       {
+
+          if(!Auth::guard('admin')->user()->can('Admin_edit'))
+    {
+        abort(403);
+    }
         $permission = Permission::findOrFail($id);
          return view('admin.permissions.permissions_edit',compact('permission'));
       }//End Method
 
        public function UpdatePermission(Request $request)
       {
+
+          if(!Auth::guard('admin')->user()->can('Admin_edit'))
+    {
+        abort(403);
+    }
         $permission_id = $request->id;
 
         Permission::findOrFail($permission_id)->update([
@@ -62,6 +77,11 @@ class PermissionsController extends Controller
 
        public function PermissionDelete($id)
     {
+      
+          if(!Auth::guard('admin')->user()->can('Admin_delete'))
+    {
+        abort(403);
+    }
           Permission::findOrFail($id)->delete();
           $notification = array(
                 'message'=> 'Permission Deleted Successfully',

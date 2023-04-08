@@ -20,6 +20,10 @@ class BlogController extends Controller
 
     public function BlogCategoryStore(Request $request)
     {
+        if(!Auth::guard('admin')->user()->can('Blog_create'))
+    {
+        abort(403);
+    }
       $request->validate([
             'blog_category_name_en' => 'required',
             'blog_category_name_ar' => 'required',
@@ -50,6 +54,10 @@ class BlogController extends Controller
 
     public function BlogCategoryEdit($id)
     {
+        if(!Auth::guard('admin')->user()->can('Blog_edit'))
+    {
+        abort(403);
+    }
           $blogcategory = BlogPostCategory::findOrFail($id);
 
         return view('backend.blog.category.category_edit',compact('blogcategory'));
@@ -58,6 +66,10 @@ class BlogController extends Controller
 
     public function BlogCategoryUpdate(Request $request)
     {
+        if(!Auth::guard('admin')->user()->can('Blog_edit'))
+    {
+        abort(403);
+    }
         $blogcat_id =$request->id;
         
 
@@ -83,6 +95,10 @@ class BlogController extends Controller
 
     public function BlogCategoryDelete($id)
     {
+        if(!Auth::guard('admin')->user()->can('Blog_delete'))
+    {
+        abort(403);
+    }
       BlogPostCategory::findOrFail($id)->delete(); 
       
        $notification = array(

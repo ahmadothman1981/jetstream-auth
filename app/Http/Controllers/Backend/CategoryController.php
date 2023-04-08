@@ -17,6 +17,11 @@ class CategoryController extends Controller
 
     public function CategoryStore(Request $request){
 
+          if(!Auth::guard('admin')->user()->can('Category_create'))
+    {
+        abort(403);
+    }
+
        $request->validate([
             'category_name_en' => 'required',
             'category_name_ar' => 'required',
@@ -48,6 +53,10 @@ class CategoryController extends Controller
 
     public function CategoryEdit($id)
     {
+          if(!Auth::guard('admin')->user()->can('Category_edit'))
+    {
+        abort(403);
+    }
         $category = Category::findOrFail($id);
          return view('backend.category.category_edit',compact('category'));
 
@@ -55,6 +64,10 @@ class CategoryController extends Controller
 
     public function CategoryUpdate(Request $request)
     {
+          if(!Auth::guard('admin')->user()->can('Category_edit'))
+    {
+        abort(403);
+    }
         $category_id = $request->id;
 
         Category::findOrFail($category_id)->update([
@@ -75,6 +88,10 @@ class CategoryController extends Controller
 
     public function CategoryDelete($id)
     {
+          if(!Auth::guard('admin')->user()->can('Category_delete'))
+    {
+        abort(403);
+    }
           Category::findOrFail($id)->delete();
           $notification = array(
                 'message'=> 'Category Deleted Successfully',

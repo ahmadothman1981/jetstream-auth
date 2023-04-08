@@ -58,8 +58,10 @@
 								</td>
 								
 								<td>
+							@if(Auth::guard('admin')->user()->can('Users_delete'))		
 									<a href="" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+							@endif
 								</td>
 								
 							</tr>

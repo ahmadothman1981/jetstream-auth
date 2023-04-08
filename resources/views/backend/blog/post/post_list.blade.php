@@ -21,7 +21,9 @@
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title"> Blog Post List <span class="badge badge-pill badge-danger">{{ count($blogpost) }}</span></h3>
+				  @if(Auth::guard('admin')->user()->can('Blog_create'))
 				  <a href="{{ route('add.post') }}"  class="btn btn-success" style="float: right;"> Add Post</a>
+				  @endif
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -47,11 +49,14 @@
 								<td>{{ $item->post_title_en  }}</td>
 								<td>{{ $item->post_title_ar  }}</td>
 								
-				@if(Auth::guard('admin')->user()->can('Users_edit'))
-									<td width="20%"><a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+				
+									<td width="20%">
+@if(Auth::guard('admin')->user()->can('Blog_delete'))
+										<a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('blog.category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
+									@endif	
 								</td>
-				@endif	
+				
 							</tr>
 							@endforeach
 						</tbody>

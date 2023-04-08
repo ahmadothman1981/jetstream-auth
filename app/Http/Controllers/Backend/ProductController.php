@@ -30,6 +30,11 @@ class ProductController extends Controller
     public function StoreProduct(Request $request)
     {
 
+          if(!Auth::guard('admin')->user()->can('Product_create'))
+    {
+        abort(403);
+    }
+
         $request->validate([
             'file'=> 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
 
@@ -123,6 +128,11 @@ $notification = array(
 
     public function EditProduct($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Product_edit'))
+    {
+        abort(403);
+    }
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         $subcategories = SubCategory::latest()->get();
@@ -134,6 +144,11 @@ $notification = array(
 
     public function ProductDataUpdate(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('Product_edit'))
+    {
+        abort(403);
+    }
         $product_id = $request->id;
 
         Product::findOrFail($product_id)->update([
@@ -181,6 +196,11 @@ $notification = array(
 /////////Multiple image update//////////
     public function MultiImageUpdate(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('Product_edit'))
+    {
+        abort(403);
+    }
         $imgs = $request->multi_image;
 
         foreach($imgs as $id => $img)
@@ -211,6 +231,11 @@ $notification = array(
 /////////////Product Main Thambnail Image////////////////////
     public function ThambnailImageUpdate(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('Product_edit'))
+    {
+        abort(403);
+    }
         $pro_id = $request->id;
         $old_image = $request->old_img;
         unlink($old_image);
@@ -240,6 +265,11 @@ $notification = array(
 
     public function MultiImageDelete($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Product_delete'))
+    {
+        abort(403);
+    }
        $oldImg = MultiImg::findOrFail($id);
        
        unlink($oldImg->photo_name);
@@ -256,6 +286,11 @@ $notification = array(
 
     public function ProductInactive($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Product_delete'))
+    {
+        abort(403);
+    }
         Product::findOrFail($id)->update([
             'status'=> 0,
         ]);
@@ -272,6 +307,11 @@ $notification = array(
      public function ProductActive($id)
     {
 
+          if(!Auth::guard('admin')->user()->can('Product_delete'))
+    {
+        abort(403);
+    }
+
       Product::findOrFail($id)->update([
             'status'=> 1,
         ]);
@@ -286,6 +326,11 @@ $notification = array(
 
     public function ProductDelete($id)
     {
+        
+          if(!Auth::guard('admin')->user()->can('Product_delete'))
+    {
+        abort(403);
+    }
         $product = Product::findOrFail($id);
         unlink($product->product_thambnail);
         Product::findOrFail($id)->delete();

@@ -23,7 +23,9 @@
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title"> Total Admin <span class="badge badge-pill badge-danger">{{ count($admins)}}</span></h3>
+			@if(Auth::guard('admin')->user()->can('Admin_create'))	  
 				  <a href="{{ route('add.admin') }}" class=" btn btn-danger" style="float: right;">Add Admin User</a>
+				  @endif
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">

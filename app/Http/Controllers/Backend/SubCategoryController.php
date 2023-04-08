@@ -20,6 +20,11 @@ class SubCategoryController extends Controller
 
     public function SubCategoryStore(Request $request){
 
+
+          if(!Auth::guard('admin')->user()->can('Category_create'))
+    {
+        abort(403);
+    }
        $request->validate([
             'category_id' => 'required',
             'subcategory_name_en' => 'required',
@@ -53,6 +58,11 @@ class SubCategoryController extends Controller
 
     public function SubCategoryEdit($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Category_edit'))
+    {
+        abort(403);
+    }
        $categories = Category::orderBy('category_name_en','ASC')->get();
         $subcategory = SubCategory::findOrFail($id);
 
@@ -62,6 +72,11 @@ class SubCategoryController extends Controller
 
     public function SubCategoryUpdate(Request $request)
     {
+
+          if(!Auth::guard('admin')->user()->can('Category_edit'))
+    {
+        abort(403);
+    }
       $subcat_id = $request->id; 
        SubCategory::findOrFail($subcat_id)->update([
         'category_id' => $request->category_id,
@@ -85,6 +100,11 @@ class SubCategoryController extends Controller
 
     public function SubCategoryDelete($id)
     {
+
+          if(!Auth::guard('admin')->user()->can('Category_delete'))
+    {
+        abort(403);
+    }
         SubCategory::findOrFail($id)->delete();
 
          $notification = array(
@@ -125,6 +145,11 @@ class SubCategoryController extends Controller
 
      public function SubSubCategoryStore(Request $request)
      {
+
+          if(!Auth::guard('admin')->user()->can('Category_create'))
+    {
+        abort(403);
+    }
         $request->validate([
             'category_id' => 'required',
             'subcategory_id' => 'required',
@@ -160,6 +185,11 @@ class SubCategoryController extends Controller
 
      public function SubSubCategoryEdit($id)
      {
+
+          if(!Auth::guard('admin')->user()->can('Category_edit'))
+    {
+        abort(403);
+    }
          $categories = Category::orderBy('category_name_en','ASC')->get();
          $subcategories = SubCategory::orderBy('subcategory_name_en','ASC')->get();
           $subsubcategories = SubSubCategory::findOrFail($id);
@@ -169,6 +199,11 @@ class SubCategoryController extends Controller
 
      public function SubSubCategoryUpdate(Request $request)
      {
+
+          if(!Auth::guard('admin')->user()->can('Category_edit'))
+    {
+        abort(403);
+    }
          $subsubcat_id = $request->id;
 
          $request->validate([
@@ -205,6 +240,11 @@ class SubCategoryController extends Controller
 
      public function SubSubCategoryDelete($id)
      {
+        
+          if(!Auth::guard('admin')->user()->can('Category_delete'))
+    {
+        abort(403);
+    }
          SubSubCategory::findOrFail($id)->delete();
 
           $notification = array(

@@ -41,11 +41,12 @@
 								<td>{{ $item->brand_name_en }}</td>
 								<td>{{ $item->brand_name_ar }}</td>
 								<td><img src="{{ asset($item->brand_image) }}" style="width: 70px;height: 40px;"></td>
+					@if(Auth::guard('admin')->user()->can('Brand_delete'))
 								<td>
 									<a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('brand.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
 								</td>
-								
+					@endif
 							</tr>
 							@endforeach
 						</tbody>
@@ -62,9 +63,11 @@
 			</div>
 			<!-- /.col -->
 			<! Add Brand-->
+					@if(Auth::guard('admin')->user()->can('Brand_create'))
 				<div class="col-4">
 
 			 <div class="box">
+
 				<div class="box-header with-border">
 				  <h3 class="box-title">Brand List</h3>
 				</div>
@@ -129,6 +132,7 @@
 			  
 			  <!-- /.box -->          
 			</div>
+			@endif
 		  </div>
 		  <!-- /.row -->
 		</section>

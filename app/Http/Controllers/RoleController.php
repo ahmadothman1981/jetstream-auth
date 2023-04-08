@@ -34,6 +34,11 @@ class RoleController extends Controller
     public function AddRoles(Request $request)
     {
 
+          if(!Auth::guard('admin')->user()->can('Admin_create'))
+    {
+        abort(403);
+    }
+
       $request->validate([
         'name'=> 'required',
       ],[
@@ -58,6 +63,11 @@ class RoleController extends Controller
 
     public function RoleEdit($id)
       {
+
+          if(!Auth::guard('admin')->user()->can('Admin_edit'))
+    {
+        abort(403);
+    }
      
         $role = Role::findOrFail($id);
         $permissions = Permission::latest()->get();
@@ -70,6 +80,11 @@ class RoleController extends Controller
 
       public function UpdateRoles(Request $request , Role $role)
       {
+
+          if(!Auth::guard('admin')->user()->can('Admin_edit'))
+    {
+        abort(403);
+    }
         $role_id = $request->id;
  
 
@@ -92,6 +107,11 @@ class RoleController extends Controller
 
        public function RoleDelete($id)
     {
+      
+          if(!Auth::guard('admin')->user()->can('Admin_delete'))
+    {
+        abort(403);
+    }
           Role::findOrFail($id)->delete();
           $notification = array(
                 'message'=> 'Role Deleted Successfully',

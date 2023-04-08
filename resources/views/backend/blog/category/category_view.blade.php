@@ -42,12 +42,14 @@
 								<td>{{ $item->blog_category_name_en  }}</td>
 								<td>{{ $item->blog_category_name_ar  }}</td>
 
-								@if(Auth::guard('admin')->user()->can('Blog_edit'))
+								
 
-									<td><a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<td>
+@if(Auth::guard('admin')->user()->can('Blog_edit'))
+										<a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
 									<a href="{{ route('blog.category.delete',$item->id) }}" id="delete" class="btn btn-danger" title="Delete Data"> <i class="fa fa-trash"></i></a>
-
-									@endif
+@endif
+									
 								</td>
 								
 							</tr>
@@ -66,6 +68,8 @@
 			</div>
 			<!-- /.col -->
 			<! Add Blog Category-->
+
+				@if(Auth::guard('admin')->user()->can('Brand_create'))
 				  <div class="col-4">
 
 			 <div class="box">
@@ -122,7 +126,7 @@
 			  <!-- /.box --> 
 			</div>
 
- 
+ @endif
 
 
 		  </div>
