@@ -75,7 +75,7 @@
               <li><a href="#" title="Blog">{{ __('translation.Blog') }}</a></li>
               <li><a href="#" title="Company">{{ __('translation.Company') }}</a></li>
               <li><a href="#" title="Investor Relations">{{ __('translation.Investor Relations') }}</a></li>
-              <li class=" last"><a href="contact-us.html" title="Suppliers">{{ __('translation.Contact Us') }}</a></li>
+              <li class=" last"><a href="{{ route('view.contact') }}" title="Suppliers">{{ __('translation.Contact Us') }}</a></li>
             </ul>
           </div>
 

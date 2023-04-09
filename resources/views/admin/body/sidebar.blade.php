@@ -288,6 +288,8 @@ $route = Route::current()->getName();
               <ul class="treeview-menu">
 
                   <li class="{{ ($route == 'all-users')? 'active' : '' }}"><a href="{{ route('all-users') }}"><i class="ti-more"></i>All Users</a></li>
+
+                   <li class="{{ ($route == 'contact.view')? 'active' : '' }}"><a href="{{ route('contact.view') }}"><i class="ti-more"></i>Contact Users</a></li>
                   
               </ul>
              

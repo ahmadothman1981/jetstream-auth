@@ -31,6 +31,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Models\User;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\Backend\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -484,5 +485,15 @@ Route::post('/shop/filter',[ShopController::class,'ShopFilter'])->name('shop.fil
 Route::get('product/color/{color}',[IndexController::class,'ColorProduct'])->name('color.product');
 /////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('product/manufacures/{manufac}',[IndexController::class,'ManufacuresProduct'])->name('manufactures.product');
+////////////////CONTACT-US ALL ROUTES//////////////////////////////
+Route::prefix('contact')->group(function(){
+
+    Route::get('/view',[ContactUsController::class,'ContactView'])->name('contact.view');
+    Route::get('/delete/{id}',[ContactUsController::class,'ContactDelete'])->name('contact.delete');
+
+});
+
+Route::get('/contact',[ContactUsController::class,'ViewContact'])->name('view.contact');
+Route::post('/contact/store',[ContactUsController::class,'ContactStore'])->name('contact.store');
 
 
