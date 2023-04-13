@@ -11,6 +11,8 @@ $user = App\Models\User::find($id);
     <a href="{{ route('my.orders') }}" class="btn btn-primary btn-sm btn-block">{{ __('translation.My Orders') }}</a>
     <a href="{{ route('return.orders.list') }}" class="btn btn-primary btn-sm btn-block">{{ __('translation.Return Orders') }}</a>
     <a href="{{ route('cancel.order') }}" class="btn btn-primary btn-sm btn-block">{{ __('translation.Cancel Orders') }}</a>
+    <a href="{{ route('apply-ticket') }}" class="btn btn-danger btn-sm btn-block"> Ticket To Admin</a>
     <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">{{ __('translation.LogOut') }}</a>
+
                 </ul>
             </div><!--end col-md-2-->

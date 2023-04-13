@@ -290,6 +290,7 @@ $route = Route::current()->getName();
                   <li class="{{ ($route == 'all-users')? 'active' : '' }}"><a href="{{ route('all-users') }}"><i class="ti-more"></i>All Users</a></li>
 
                    <li class="{{ ($route == 'contact.view')? 'active' : '' }}"><a href="{{ route('contact.view') }}"><i class="ti-more"></i>Contact Users</a></li>
+                     <li class="{{ ($route == 'view.News')? 'active' : '' }}"><a href="{{ route('view.News') }}"><i class="ti-more"></i>NewsLetters</a></li>
                   
               </ul>
              
@@ -347,7 +348,27 @@ $route = Route::current()->getName();
                     <li class="{{ ($route == 'cancel-orders')? 'active' : '' }}"><a href="{{ route('cancel-orders') }}"><i class="ti-more"></i>Cancel Orders</a></li>
               </ul>
 
+
+ <li class="treeview {{ ($prefix == '/Tickets')? 'active' : '' }}">
+              <a href="#">
+                  <i data-feather="file"></i>
+                  <span> Tickets</span>
+                  <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+              </a>
+              <ul class="treeview-menu">
+
+                  <li class="{{ ($route == 'all-tickets')? 'active' : '' }}"><a href="{{ route('all-tickets') }}"><i class="ti-more"></i>All Tickets</a></li>
+
+                   
+                  
               </ul>
+             
+          </li>
+              </ul>
+
+
           </li>
 
          

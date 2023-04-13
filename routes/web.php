@@ -32,6 +32,8 @@ use App\Models\User;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\Backend\ContactUsController;
+use App\Http\Controllers\Frontend\NewsLetterController;
+use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -487,13 +489,21 @@ Route::get('product/color/{color}',[IndexController::class,'ColorProduct'])->nam
 Route::get('product/manufacures/{manufac}',[IndexController::class,'ManufacuresProduct'])->name('manufactures.product');
 ////////////////CONTACT-US ALL ROUTES//////////////////////////////
 Route::prefix('contact')->group(function(){
-
     Route::get('/view',[ContactUsController::class,'ContactView'])->name('contact.view');
     Route::get('/delete/{id}',[ContactUsController::class,'ContactDelete'])->name('contact.delete');
-
 });
-
 Route::get('/contact',[ContactUsController::class,'ViewContact'])->name('view.contact');
 Route::post('/contact/store',[ContactUsController::class,'ContactStore'])->name('contact.store');
+////////////////////////NEWSLETTER /////////////////////////////
+Route::get('/news',[NewsLetterController::class,'ViewNews'])->name('view.News');
+Route::post('/newx/store',[NewsLetterController::class,'NewsLettertStore'])->name('News.store');
+ Route::get('/delete/{id}',[NewsLetterController::class,'NewsDelete'])->name('news.delete');
+//////////////////////////Admin Manage Tickets////////////////////////////////
+Route::prefix('Tickets')->group(function(){
 
+     Route::get('/all',[TicketsController::class,'ViewTickets'])->name('all-tickets');
 
+     Route::get('/apply',[TicketsController::class,'ApplyTickets'])->name('apply-ticket');
+
+     Route::post('/store',[TicketsController::class,'StoreTickets'])->name('store-ticket');
+});

@@ -77,4 +77,14 @@ class User extends Authenticatable
     }
 
     protected $guard_name = 'web';
+
+
+        public function comments()
+    {
+        return $this->hasMany(comment::class);
+    }
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }

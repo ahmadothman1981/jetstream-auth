@@ -131,13 +131,16 @@ Easy Online Shop
           <h3 class="section-title">{{ __('translation.Newsletters') }}</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <p>{{ __('translation.Sign Up for Our Newsletter!') }}</p>
-            <form>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputEmail1">{{ __('translation.Email address') }}</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{ __('translation.Subscribe to our newsletter') }}">
-              </div>
+
+            <form id="news-form" method="POST" action="{{ route('News.store') }}">
+            @csrf
+               <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" required>
+         </div>
               <button class="btn btn-primary">{{ __('translation.Subscribe') }}</button>
             </form>
+            
           </div>
           <!-- /.sidebar-widget-body --> 
         </div>
@@ -1088,4 +1091,32 @@ Easy Online Shop
   </div>
   <!-- /.container --> 
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#news-form').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(response) {
+                $('#news-form')[0].reset();
+                $('#success-message').removeClass('d-none').html(response.success);
+                $('#error-message').addClass('d-none');
+            },
+            error: function(xhr) {
+                var errors = xhr.responseJSON.errors;
+                var errorMessage = '';
+                $.each(errors, function(key, value) {
+                    errorMessage += value[0] + '<br>';
+                });
+                $('#success-message').addClass('d-none');
+                $('#error-message').removeClass('d-none').html(errorMessage);
+            }
+        });
+    });
+});
+
+</script>
 @endsection

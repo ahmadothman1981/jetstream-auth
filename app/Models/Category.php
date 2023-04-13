@@ -16,4 +16,9 @@ class Category extends Model
         'category_slug_ar',
         'category_icon',
    ];
+
+       public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }
