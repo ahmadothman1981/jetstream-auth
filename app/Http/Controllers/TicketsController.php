@@ -65,43 +65,41 @@ class TicketsController extends Controller
     public function ReplayTickets($id)
     {
         $ticket = Ticket::findOrFail($id);
-
-        return view('backend.ticket.edit_ticket',compact('ticket'));
+        $comments = comment::where('ticket_id',$ticket->id)->orderBy('created_at','ASC')->get();
+        //dd($comments);
+        return view('backend.ticket.edit_ticket',compact('ticket','comments'));
     }//end method
 
      public function AdminReplay()
     {
        $comments = comment::orderBy('id','DESC')->get();
-
+//dd($comments);
 
     return view('frontend.ticket.ticket_admin_comment',compact('comments'));
     }//end method
 
     public function ViewAdminReplay($id)
     {
-       $comment = comment::findOrFail($id);
-        
-      // dd($comment);
+      // $comment = comment::findOrFail($id);
+       $ticket = Ticket::findOrFail($id);
+       $comments = comment::where('ticket_id',$ticket->id)->orderBy('created_at','ASC')->get(); 
+      
 
 
-       return view('frontend.ticket.view_admin_comment',compact('comment'));
+       return view('frontend.ticket.view_admin_comment',compact('ticket','comments'));
     }//end method
 
     public function ReplayToAdmin(Request $request)
     {
 
-     //  dd($request->input('title'));
+      
        $this->validate($request, [
-            'message' => 'required'
+            'comment' => 'required'
         ]);
-    $replay = Ticket::create([
+    $replay = comment::create([
         'ticket_id'=>$request->input('ticket_id'),
-        'user_id'=>$request->input('user_id'),
-        'title'=>$request->input('title'),
-        'picture'=>$request->input('picture'),
-        'category_id'=>$request->input('category_id'),
-        'message'=>$request->message,
-        'status'=>"1",
+        'user_id'=>Auth::id(),
+        'comment'=>$request->comment,
         'created_at'=>Carbon::now(),
 
     ]);
@@ -111,7 +109,7 @@ class TicketsController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all-tickets')->with($notification);
+        return redirect()->back()->with($notification);
    
     }//end method
 

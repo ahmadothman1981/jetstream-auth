@@ -30,10 +30,19 @@
 					<div class="table-responsive">
 
  <div class="form-group">
-		<h6> Ticket Number:{{ $ticket->ticket_id  }}  <span class="text-danger">*</span></h6>
-		<h6> Ticket Title: {{ $ticket->title  }} <span class="text-danger">*</span></h6>
-		<h6> Ticket User Name: {{ $ticket->user->name }}  <span class="text-danger">*</span></h6>
-		<p style="font-weight: bold; color: blue;">Message:</p><p>{{ $ticket->message }}</p>
+		<h6 ><span style="font-weight: bold; color: seagreen;">Ticket Number:</span> {{ $ticket->ticket_id  }}  <span class="text-danger">*</span></h6>
+		<h6><span style="font-weight: bold; color: seagreen;">Ticket Title:</span>{{ $ticket->title  }} <span class="text-danger">*</span></h6>
+		<h6><span style="font-weight: bold; color: seagreen;"> Ticket User Name: </span>{{ $ticket->user->name }}  <span class="text-danger">*</span></h6>
+		<p ><span style="font-weight: bold; color: seagreen;">Ticket Original Message:</span>{{ $ticket->message }}</p>
+		@foreach($comments as $comment)
+
+		@if(Auth::guard('admin')->user()->id == $comment->user_id)
+			<p><span style="font-weight: bold; color: seagreen;"> Admin Message:</span>{{ $comment->comment }}</p>
+		@else
+			<p><span style="font-weight: bold; color: seagreen;"> User Message:</span>{{ $comment->comment }}</p>
+		
+		@endif
+		@endforeach
 	</div>
 
  <form method="post" action="{{ route('add-comment') }}" >

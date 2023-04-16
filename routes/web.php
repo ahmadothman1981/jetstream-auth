@@ -500,7 +500,7 @@ Route::get('/news',[NewsLetterController::class,'ViewNews'])->name('view.News');
 Route::post('/newx/store',[NewsLetterController::class,'NewsLettertStore'])->name('News.store');
  Route::get('/delete/{id}',[NewsLetterController::class,'NewsDelete'])->name('news.delete');
 //////////////////////////Admin Manage Tickets////////////////////////////////
-Route::prefix('Tickets')->group(function(){
+Route::prefix('tickets')->group(function(){
 
      Route::get('/all',[TicketsController::class,'ViewTickets'])->name('all-tickets');
 

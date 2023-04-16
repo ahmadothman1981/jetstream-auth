@@ -19,7 +19,7 @@ class CommentController extends Controller
         ]);
     $comment = comment::create([
         'ticket_id'=>$request->input('ticket_id'),
-        'user_id'=>$request->input('user_id'),
+        'user_id'=>Auth::guard('admin')->user()->id,
         'comment'=>$request->comment,
 
     ]);

@@ -349,7 +349,7 @@ $route = Route::current()->getName();
               </ul>
 
 
- <li class="treeview {{ ($prefix == '/Tickets')? 'active' : '' }}">
+ <li class="treeview {{ ($prefix == '/tickets')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
                   <span> Tickets</span>

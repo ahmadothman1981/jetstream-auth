@@ -38,7 +38,7 @@
                             </td>
 
                             <td class="col-md-3">
-                                <label for="">{{ $comment->ticket->title}}</label>
+                                <label for="">{{$comment->ticket->title}}</label>
                             </td>
 
                             <td class="col-md-2">
