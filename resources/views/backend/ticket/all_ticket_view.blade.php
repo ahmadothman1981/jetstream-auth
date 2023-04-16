@@ -31,10 +31,10 @@
 								<th>Ticket Number</th>
 								<td>Image</td>
 								<th>Title</th>
-								<th>Message</th>
+								
 								<th>Category</th>
 								<th>User Name</th>
-								<th>Status</th>
+								<th>Date</th>
 								<th>Action</th>
 								
 								
@@ -48,15 +48,16 @@
 								<td>{{ $ticket->ticket_id  }}</td>
 								<td><img src="{{ asset($ticket->picture ) }}"></td>
 								<td>{{ $ticket->title  }}</td>
-								<td>{{ $ticket->message }}</td>
-								<td >{{ $ticket->category->category_name_en}}</td>
+								
+								<td >{{$ticket->category->category_name_en}}</td>
 								<td >{{ $ticket->user->name}}</td>
-								<td >{{ $ticket->status}}</td>
+								<td >{{ $ticket->created_at}}</td>
 								
 									
 								
-								<td width="35%">
-									<a href="" class="btn btn-danger"></a>
+								<td width="30%">
+			<a href="{{ route('replay-ticket',$ticket->id) }}" class="btn btn-primary">Replay</a>
+									<a href="" class="btn btn-danger">Delete</a>
 								</td>
 								
 							</tr>

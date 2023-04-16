@@ -34,6 +34,7 @@ use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Frontend\NewsLetterController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\Backend\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -504,6 +505,11 @@ Route::prefix('Tickets')->group(function(){
      Route::get('/all',[TicketsController::class,'ViewTickets'])->name('all-tickets');
 
      Route::get('/apply',[TicketsController::class,'ApplyTickets'])->name('apply-ticket');
-
+     Route::get('/admin-replay',[TicketsController::class,'AdminReplay'])->name('admin-replay');
+     Route::get('/admin-replay/view/{id}',[TicketsController::class,'ViewAdminReplay'])->name('viewadmin-replay');
+     Route::post('/replay-to-adminstore',[TicketsController::class,'ReplayToAdmin'])->name('replay-to-admin');
      Route::post('/store',[TicketsController::class,'StoreTickets'])->name('store-ticket');
+     Route::get('/replay/{id}',[TicketsController::class,'ReplayTickets'])->name('replay-ticket');
+
+     Route::post('/comment/store',[CommentController::class,'AddComment'])->name('add-comment');
 });

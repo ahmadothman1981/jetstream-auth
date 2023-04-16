@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use Carbon\Carbon;
 use Image;
-
+use Auth;
 
 class SliderController extends Controller
 {

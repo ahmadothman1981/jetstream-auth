@@ -4,7 +4,7 @@
 <div class="body-content outer-top-bd">
 	<div class="container">
 		<div class="x-page inner-bottom-sm">
-            <h4><span class="text-danger">*</span>Apply Ticket<span class="text-danger">*</span></h4>
+            <h4 style="font-weight: bold; text-decoration: underline; color: red;"><span class="text-danger">*</span>Apply Ticket<span class="text-danger">*</span></h4>
 			<div class="row">
 
 				<div class="col-md-6 x-text ">
