@@ -23,7 +23,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Ticket Replay </h3>
+				  <h3 class="box-title"> Archeived Ticket ID :{{ $ticket->ticket_id  }}   </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -52,33 +52,7 @@
 		@endforeach
 	</div>
 
- <form method="post" action="{{ route('add-comment') }}" >
-	 	@csrf
-			
-			<input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-			<input type="hidden" name="user_id" value="{{ $ticket->user_id }}">		   
-
-
-
-	<div class="form-group">
-	<h5> Replay  <span class="text-danger">*</span></h5>	
-		<div class="controls">
-
-	 <textarea name="comment" class="form-control" rows="5" required></textarea>
-	 @error('comment ') 
-	 <span class="text-danger">{{ $comment }}</span>
-	 @enderror 
-	</div>
-	</div>
-
-
-	
-					 
-
-			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Replay">					 
-						</div>
-					</form>
+ 
 
 
 

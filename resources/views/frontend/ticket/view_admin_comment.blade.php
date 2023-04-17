@@ -33,7 +33,7 @@
                               <tr>
                                 <th>Ticket Message</th>
                                 <th>{{ $ticket->message }}</th>
-                            </tr>
+                          </tr>
 @foreach($comments as $comment)
 
 @if(Auth::id()==$comment->user_id)
@@ -60,12 +60,16 @@
 
              
         </div><!--end row-->
+        @if($ticket->status == 0)
+
+        @else
+         @isset($comment)
         <form method="post" action="{{ route('replay-to-admin') }}" style="margin-left: 230px;">
         @csrf
-            
+           
             <input type="hidden" name="ticket_id" value="{{ $comment->ticket_id }}">
            
-
+          
 
 
 
@@ -88,6 +92,11 @@
     <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Replay" style="margin-bottom: 20px;">
     </div>
     </form>
+      @endisset
+    @endif
 </div>
+</div>
+
+
 
 @endsection

@@ -512,4 +512,8 @@ Route::prefix('tickets')->group(function(){
      Route::get('/replay/{id}',[TicketsController::class,'ReplayTickets'])->name('replay-ticket');
 
      Route::post('/comment/store',[CommentController::class,'AddComment'])->name('add-comment');
+
+     Route::get('/close/{id}',[TicketsController::class,'CloseTicket'])->name('close.ticket');
+      Route::get('/view-archeived/{id}',[TicketsController::class,'ViewArcheivedTickets'])->name('view-ticket');
+
 });

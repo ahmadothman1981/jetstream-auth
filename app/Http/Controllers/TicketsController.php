@@ -72,10 +72,10 @@ class TicketsController extends Controller
 
      public function AdminReplay()
     {
-       $comments = comment::orderBy('id','DESC')->get();
+       $tickets = Ticket::orderBy('id','DESC')->get();
 //dd($comments);
 
-    return view('frontend.ticket.ticket_admin_comment',compact('comments'));
+    return view('frontend.ticket.ticket_admin_comment',compact('tickets'));
     }//end method
 
     public function ViewAdminReplay($id)
@@ -111,6 +111,30 @@ class TicketsController extends Controller
 
         return redirect()->back()->with($notification);
    
+    }//end method
+
+    public function CloseTicket($id)
+    {
+         Ticket::findOrFail($id)->update([
+            'status'=> 0,
+         ]);
+
+          $notification = array(
+            'message' => 'Ticket has been archeived',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+
+    }//end method
+
+    public function ViewArcheivedTickets($id)
+    {
+         $ticket = Ticket::findOrFail($id);
+        $comments = comment::where('ticket_id',$ticket->id)->orderBy('created_at','ASC')->get();
+        //dd($comments);
+        return view('backend.ticket.archeived_ticket',compact('ticket','comments'));
     }//end method
 
 

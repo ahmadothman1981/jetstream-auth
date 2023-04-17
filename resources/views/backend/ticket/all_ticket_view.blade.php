@@ -35,8 +35,8 @@
 								<th>Category</th>
 								<th>User Name</th>
 								<th>Date</th>
-								<th>Action</th>
-								
+								<th>Replay</th>
+								<th>Close</th>
 								
 								
 							</tr>
@@ -54,13 +54,19 @@
 								<td >{{ $ticket->created_at}}</td>
 								
 									
-								
-								<td width="30%">
-			<a href="{{ route('replay-ticket',$ticket->id) }}" class="btn btn-primary">Replay</a>
-									<a href="" class="btn btn-danger">Delete</a>
-								</td>
-								
+			@if($ticket->status == 0)
+			<td><a href="{{ route('view-ticket',$ticket->id) }}" class="btn btn-danger">view</a></td>	
+			<td>Archeived Ticket</td>					
+											
 							</tr>
+			@else					
+								<td width="30%">
+			<a href="{{ route('replay-ticket',$ticket->id) }}" class="btn btn-primary">Replay</a></td>
+									
+								
+			<td><a href="{{ route('close.ticket',$ticket->id) }}" class="btn btn-danger">Close</a></td>					
+							</tr>
+			@endif
 						@endforeach
 						</tbody>
 						
