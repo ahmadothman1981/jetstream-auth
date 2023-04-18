@@ -94,15 +94,38 @@ class TicketsController extends Controller
 
       
        $this->validate($request, [
-            'comment' => 'required'
+            'comment' => 'required',
+            'ticket_id'=>[
+                'numeric',
+                'exists:App\Models\Ticket,id',
+            ]
         ]);
-    $replay = comment::create([
+       if($request->file('picture'))
+       {
+        $image = $request->file('picture');
+      $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+      Image::make($image)->resize(225,225)->save('upload/tickets/comments/'.$name_gen);
+      $save_url = 'upload/tickets/comments/'.$name_gen; 
+
+      $replay = comment::create([
+        'ticket_id'=>$request->input('ticket_id'),
+        'user_id'=>Auth::id(),
+        'comment'=>$request->comment,
+        'picture'=>$save_url
+        'created_at'=>Carbon::now(),
+
+    ]);
+       }else{
+        $replay = comment::create([
         'ticket_id'=>$request->input('ticket_id'),
         'user_id'=>Auth::id(),
         'comment'=>$request->comment,
         'created_at'=>Carbon::now(),
+       }
+       
 
-    ]);
+
+    
 
      $notification = array(
             'message' => 'Your Repaly Placed  Successfully',

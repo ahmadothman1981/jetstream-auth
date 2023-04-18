@@ -45,14 +45,22 @@
 
 		@if(Auth::guard('admin')->user()->id == $comment->user_id)
 			<p><span style="font-weight: bold; color: seagreen;"> Admin Message:</span>{{ $comment->comment }}</p>
+			@if($comment->picture == null)
+			@else
+			<a  target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+			@endif
 		@else
 			<p><span style="font-weight: bold; color: seagreen;"> User Message:</span>{{ $comment->comment }}</p>
+			@if($comment->picture == null)
+			@else
+			<a  target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+			@endif
 		
 		@endif
 		@endforeach
 	</div>
 
- <form method="post" action="{{ route('add-comment') }}" >
+ <form method="post" action="{{ route('add-comment') }}" enctype="multipart/form-data" >
 	 	@csrf
 			
 			<input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
@@ -70,7 +78,20 @@
 	 @enderror 
 	</div>
 	</div>
+<div class="row">
+	<div class="col-md-4">
+<div class="form-group" >
+    <h5 style="font-weight: bold;"> Insert Image  <span class="text-danger">*</span></h5>    
+        <div class="controls">
 
+      <input type="file" name="picture" class="form-control" onchange="mainThamUrl(this)" >
+                    @error('picture') 
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror<img src="" id="mainThamb">
+    </div>
+    </div>
+</div>
+</div>
 
 	
 					 
@@ -103,6 +124,21 @@
 	  </div>
   
 
+<script type="text/javascript">
+        function mainThamUrl(input)
+        {
+            if(input.files && input.files[0])
+            {
+                var reader = new FileReader();
+                reader.onload = function(e)
+                {
+                    $('#mainThamb').attr('src',e.target.result).width(50).height(50);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+
+    </script>
 
 
 @endsection

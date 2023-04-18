@@ -39,12 +39,22 @@
 @if(Auth::id()==$comment->user_id)
                             <tr>
                                 <th>User Message</th>
-                                <th>{{ $comment->comment }}</th>
+        <th>{{ $comment->comment }}
+            @if($comment->picture == null)
+            @else
+            <a style="margin-left: 100px" target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+            @endif
+        </th>
                                  </tr>
 @else
                                 <tr>
                                 <th>Admin Message</th>
-                                <th>{{ $comment->comment }}</th>
+                                <th>{{ $comment->comment }}
+            @if($comment->picture == null)
+            @else
+            <a style="margin-left: 100px" target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+            @endif
+                                </th>
                                  </tr>
 @endif
 @endforeach
@@ -64,7 +74,7 @@
 
         @else
          @isset($comment)
-        <form method="post" action="{{ route('replay-to-admin') }}" style="margin-left: 230px;">
+        <form method="post" action="{{ route('replay-to-admin') }}" style="margin-left: 230px;" enctype="multipart/form-data">
         @csrf
            
             <input type="hidden" name="ticket_id" value="{{ $comment->ticket_id }}">
@@ -84,6 +94,17 @@
     </div>
     </div>
 
+     <div class="form-group" >
+    <h5 style="font-weight: bold;"> Insert Image  <span class="text-danger">*</span></h5>    
+        <div class="controls">
+
+      <input type="file" name="picture" class="form-control" onchange="mainThamUrl(this)" >
+                    @error('picture') 
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror<img src="" id="mainThamb">
+    </div>
+    </div>
+
 
     
                      
@@ -97,6 +118,21 @@
 </div>
 </div>
 
+<script type="text/javascript">
+        function mainThamUrl(input)
+        {
+            if(input.files && input.files[0])
+            {
+                var reader = new FileReader();
+                reader.onload = function(e)
+                {
+                    $('#mainThamb').attr('src',e.target.result).width(50).height(50);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+
+    </script>
 
 
 @endsection
