@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 04:11 PM
+-- Generation Time: Apr 18, 2023 at 07:44 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$TQdrB2MG/I/cR8GyHPkRJuN1KxMDzTey/wGyRwNTSFBZk3wfPoXbC', 'AFp4CnevkuuAFq1E0Yl7MuvjfPR40mn7vqvOuqRI9i7DSLQRz0ZA0yM5cbNq', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2023-04-04 11:52:32'),
+(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$TQdrB2MG/I/cR8GyHPkRJuN1KxMDzTey/wGyRwNTSFBZk3wfPoXbC', 'WqOi9A9I7fVNhkFvXCeiCp1tz38GeSwQKjX7ckDaNKNE9mVFmxfHM3UPPryv', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2023-04-04 11:52:32'),
 (2, 'aisha', 'aisha@mail.com', NULL, '$2y$10$BVG0PKKnRj1vNncXvEvEfeXxxpp5cazIWHNye1X6Y3km59JGItPki', NULL, NULL, '1756754727256945.png', '2023-02-04 09:42:34', '2023-02-04 09:42:34'),
 (3, 'othman', 'othman@mail.com', NULL, '$2y$10$L91cKqF9yrwf1eIdcZPEkeXq9KBykPvAgT3YnI3ky3/hDAlWV0FMS', NULL, NULL, '1756842870326300.png', '2023-02-03 18:25:23', '2023-04-06 09:09:56'),
 (5, 'dini', 'dini@mail.com', NULL, '$2y$10$newh4b.uYkq0KvGWJ3hHSeA2IcrFDebDYQUXpa/eyd/Jmskzfm/zC', NULL, NULL, '2023031215571750025384838230.jpg', '2023-03-12 13:56:38', '2023-04-06 09:06:45');
@@ -169,6 +169,65 @@ INSERT INTO `categories` (`id`, `category_name_en`, `category_name_ar`, `categor
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ticket_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `ticket_id`, `user_id`, `comment`, `created_at`, `updated_at`, `picture`) VALUES
+(1, '1', '11', 'test that', '2023-04-16 09:33:13', '2023-04-16 09:33:13', ''),
+(4, '1', '11', 'this is test', '2023-04-16 17:58:48', '2023-04-16 17:58:48', ''),
+(5, '1', '11', 'are you sure', '2023-04-16 18:13:15', '2023-04-16 18:13:15', ''),
+(6, '1', '11', 'are youy sure', '2023-04-16 18:15:35', '2023-04-16 18:15:35', ''),
+(7, '1', '1', 'this is auth user admin', '2023-04-16 18:40:23', '2023-04-16 18:40:23', ''),
+(8, '1', '11', 'i am user', '2023-04-16 18:49:37', '2023-04-16 18:49:37', ''),
+(9, '1', '1', 'i am admin', '2023-04-16 18:49:51', '2023-04-16 18:49:51', ''),
+(10, '14', '1', 'hi there usere good phone', '2023-04-17 18:51:08', '2023-04-17 18:51:08', ''),
+(11, '15', '1', 'this is a good pic at all all all', '2023-04-18 12:31:45', '2023-04-18 12:31:45', 'upload/tickets/comments/1763524797161639.jpg'),
+(12, '16', '1', 'are you sure', '2023-04-18 12:35:09', '2023-04-18 12:35:09', 'upload/tickets/comments/1763525010866940.jpg'),
+(13, '14', '11', 'i am not sure', '2023-04-18 12:41:41', '2023-04-18 12:41:41', 'upload/tickets/comments/1763525422220115.jpg'),
+(14, '14', '1', 'i am not sure sure sure sure sure', '2023-04-18 13:05:08', '2023-04-18 13:05:08', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `comment`, `created_at`, `updated_at`) VALUES
+(3, 'new_admin', 'ahmadothmanshoap@yahoo.com', '012345789', 'test test test test test test test', '2023-04-09 19:23:34', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `coupons`
 --
 
@@ -224,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -267,7 +326,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (37, '2023_03_19_153316_add_couponid_to_orders', 26),
 (39, '2023_03_21_145328_create_permission_tables', 27),
 (41, '2023_03_28_135436_add_group_to_permissions', 28),
-(42, '2023_04_01_093931_add_role_to_admins', 29);
+(42, '2023_04_01_093931_add_role_to_admins', 29),
+(43, '2023_04_09_201523_create_contacts_table', 30),
+(45, '2023_04_11_111003_create_newsletters_table', 31),
+(48, '2023_04_13_115700_create_tickets_table', 32),
+(49, '2023_04_13_120450_create_comments_table', 32),
+(50, '2023_04_13_135623_add_picture_to_tickets', 33),
+(51, '2023_04_18_140845_add_image_to_comments', 34);
 
 -- --------------------------------------------------------
 
@@ -361,6 +426,28 @@ INSERT INTO `multi_imgs` (`id`, `product_id`, `photo_name`, `created_at`, `updat
 (31, 21, 'upload/products/multi-images/1757541717580546.jpeg', '2023-02-11 11:33:16', NULL),
 (32, 21, 'upload/products/multi-images/1757541717721838.jpeg', '2023-02-11 11:33:16', NULL),
 (33, 21, 'upload/products/multi-images/1757541717863494.jpeg', '2023-02-11 11:33:16', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletters`
+--
+
+CREATE TABLE IF NOT EXISTS `newsletters` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `newsletters`
+--
+
+INSERT INTO `newsletters` (`id`, `email`, `created_at`, `updated_at`) VALUES
+(4, 'test@mail.com', '2023-04-11 10:27:37', NULL),
+(5, 'test2@mail.com', '2023-04-11 10:28:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -915,7 +1002,9 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('tx8c68RGqZuRoQii3GTN69rHz8r1yWZj7oFPQZsF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieEhOeWg0UGVoZ3FhZjJCZXpRMmY1U1ZFVURjdWh4YU44Qm5DajdMbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1680790200);
+('HkeBc65dolNI6lXlZfas8wqzjg7Xdwwt6MBSTls4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRXFPYjJlUkN1a2FWbWpteWIzOTlTMzk1eUM1a1ljOGtoZnl5c2gzbCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1681830764),
+('MTKedkiNmmRrm5ShTT2TiI34SUntrhGawbw25O4v', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoia0l0TWplMExsZ1VVVjVxWlFFTHA0amdPTHNEOXlNZHdsejBWN0ZtMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90aWNrZXRzL3JlcGxheS8xNCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1681829459),
+('uFTWE9rXblgpshUjH8WbkHZ5i7BsaYrCWEAEUIzV', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQ3VqV3MxeUVnTEFUNG1Fb0Y1aUpvcldjT0hRcENvdGZtbUNJM3hyTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJFlUbTg1Z1hvZUkuckl5MUlVbi41YnVtRGFoTXJ6YVljZ1pDVWFHZm55ZTBaS3RrMDVCZkRLIjt9', 1681830758);
 
 -- --------------------------------------------------------
 
@@ -1162,6 +1251,36 @@ INSERT INTO `sub_sub_categories` (`id`, `category_id`, `subcategory_id`, `subsub
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tickets`
+--
+
+CREATE TABLE IF NOT EXISTS `tickets` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ticket_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `ticket_id`, `category_id`, `user_id`, `title`, `message`, `status`, `created_at`, `updated_at`, `picture`) VALUES
+(1, '715', '10', '11', 'test', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '0', '2023-04-13 19:54:19', '2023-04-17 19:46:10', 'upload/tickets/1763099655686230.jpg'),
+(14, '795', '9', '11', 'new phone', 'this is a text after new design', '1', '2023-04-17 18:27:15', NULL, 'upload/tickets/1763456566432534.jpg'),
+(15, '332', '9', '11', 'test', 'projector', '1', '2023-04-17 20:17:25', NULL, 'upload/tickets/1763463497238541.jpg'),
+(16, '965', '9', '11', 'new test', 'projector', '1', '2023-04-17 20:18:44', NULL, 'upload/tickets/1763463580056699.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -1200,7 +1319,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verifie
 (8, 'Shawn McClure II', 'maryam45@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'ZTIKpPVxdQ', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
 (9, 'user laravel', 'user@example.com', '0111111111', '2023-02-04 12:33:23', '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, '8pAeVbo7YuoN2rW5DKDBeXfvK2KCkQslrEBxYTNziLNCnP9LQ0UPqBm6Ajn6', NULL, 'profile-photos/XxjFuG2kDo8Y54Pzy83YLenDg7RCiK7fDEQGFZF7.jpg', '2022-11-01 16:45:46', '2023-02-04 10:33:23'),
 (10, 'Orlando Eichmann DVM', 'lkrajcik@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'QmJTsl7o96', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-03-20 07:33:49', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-03-20 05:33:49'),
+(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-04-18 14:54:45', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-04-18 12:54:45'),
 (12, 'othmanaisha', 'othman@aisha.com', '0123456789', '2023-02-09 19:11:53', NULL, '$2y$10$VlT8Dj.nef1QYoAGCkrZpebN.MMocIA9ldMdznSq7yARSqShfKqnO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:11:13', '2023-02-09 17:11:53'),
 (13, 'dini', 'dini@ahmad.com', '0123456789', NULL, NULL, '$2y$10$A2cSHIbeVt34URt0azpf2.XeJqRBAj/ZJJmxiqSFKy0ENxkKNVCmO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:20:04', '2023-02-09 17:20:04'),
 (14, 'aishaahmad', 'aishaahmad@mail.com', '012345678', '2023-02-09 19:21:00', NULL, '$2y$10$QxCtscDTm3ZCwU7NySKVleDc0Vrg1pmqB5w1J6LvqKuMZMuEDSw5m', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:20:58', '2023-02-09 17:21:00'),
