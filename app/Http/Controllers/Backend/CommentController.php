@@ -10,6 +10,9 @@ use Auth;
 use Carbon\Carbon;
 use Image;
 use Illuminate\Validation\Rule;
+use File;
+use Response;
+
 
 class CommentController extends Controller
 {
@@ -58,5 +61,7 @@ class CommentController extends Controller
         );
 
         return redirect()->back()->with($notification);
-   }
+   }//End Method
+
+  
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
@@ -11,6 +11,8 @@ use App\Models\comment;
 use Carbon\Carbon;
 use Image;
 use Auth;
+use Response;
+use File;
 
 class TicketsController extends Controller
 {
@@ -66,9 +68,11 @@ class TicketsController extends Controller
     {
         $ticket = Ticket::findOrFail($id);
         $comments = comment::where('ticket_id',$ticket->id)->orderBy('created_at','ASC')->get();
-        //dd($comments);
+       // dd($comments);
+        //$this->downloadFunction($comments);
         return view('backend.ticket.edit_ticket',compact('ticket','comments'));
     }//end method
+
 
      public function AdminReplay()
     {
@@ -111,7 +115,7 @@ class TicketsController extends Controller
         'ticket_id'=>$request->input('ticket_id'),
         'user_id'=>Auth::id(),
         'comment'=>$request->comment,
-        'picture'=>$save_url
+        'picture'=>$save_url,
         'created_at'=>Carbon::now(),
 
     ]);
@@ -121,6 +125,7 @@ class TicketsController extends Controller
         'user_id'=>Auth::id(),
         'comment'=>$request->comment,
         'created_at'=>Carbon::now(),
+        ]);
        }
        
 
@@ -154,11 +159,22 @@ class TicketsController extends Controller
 
     public function ViewArcheivedTickets($id)
     {
-         $ticket = Ticket::findOrFail($id);
+        $ticket = Ticket::findOrFail($id);
         $comments = comment::where('ticket_id',$ticket->id)->orderBy('created_at','ASC')->get();
         //dd($comments);
         return view('backend.ticket.archeived_ticket',compact('ticket','comments'));
     }//end method
+
+     public function downloadfile($pic_id)
+    {
+        $image = comment::where('id',$pic_id)->get('picture');
+        foreach($image as $item){
+        $filepath = $item->picture;
+        }
+       // $filepath = public_path($pic_name);
+        
+        return Response::download($filepath); 
+    }
 
 
 

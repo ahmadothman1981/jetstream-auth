@@ -47,13 +47,14 @@
 			<p><span style="font-weight: bold; color: seagreen;"> Admin Message:</span>{{ $comment->comment }}</p>
 			@if($comment->picture == null)
 			@else
-			<a  target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+			<a  target="_blank" href="{{route('picture.download',$comment->id) }}" >download<img src="{{ asset($comment->picture) }}" width="100px"></a>
 			@endif
 		@else
 			<p><span style="font-weight: bold; color: seagreen;"> User Message:</span>{{ $comment->comment }}</p>
 			@if($comment->picture == null)
 			@else
-			<a  target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+			<a  target="_blank" href="{{route('picture.download',$comment->id) }}" >download<img src="{{ asset($comment->picture) }}" width="100px"></a>
+			
 			@endif
 		
 		@endif

@@ -4,6 +4,7 @@
  <div class="body-content">
     <div class="container">
         <div class="row">
+
             @include('frontend.common.user_sidebar')
           
             <style type="text/css">
@@ -135,8 +136,9 @@ h2{
         text-align: center;
     }
 }</style>
-
+ 
  <div class="col-md-8">
+
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -163,9 +165,15 @@ h2{
         
         <tbody>
     </table>
-</div>     
-  </div><!--end col-md-8-->
+</div> 
 
+  </div><!--end col-md-8-->
+  
+
+            <div class="col-l-4" style="margin-top: 30px;">
+       <a href="{{ route('apply-ticket') }}" class=" btn btn-danger btn-lg">Create Ticket</a>
+  </div>
+     
 
            
 
@@ -183,6 +191,7 @@ h2{
 
              
         </div><!--end row-->
+       
     </div>
     
 </div>

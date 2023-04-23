@@ -5,9 +5,20 @@
     <div class="container">
         <div class="row">
             @include('frontend.common.user_sidebar')
-            <div class="col-md-1">
-                
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-4">
+                <div class="col-l-4" style="margin-top: 30px; margin-bottom: 30px;">
+       <a href="{{ route('return.orders.list') }}" class=" btn btn-danger btn-lg">{{ __('translation.Return Orders') }}</a> 
             </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-l-4" style="margin-top: 30px; margin-bottom: 30px; margin-left: 100px;">
+       <a href="{{ route('cancel.order') }}" class=" btn btn-danger btn-lg">{{ __('translation.Cancel Orders') }}</a> 
+            </div>
+            </div>
+        </div>
+
             <div class="col-md-8">
 
                 <div class="table-responsive">

@@ -42,7 +42,8 @@
         <th>{{ $comment->comment }}
             @if($comment->picture == null)
             @else
-            <a style="margin-left: 100px" target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+            
+            <a style="margin-left: 100px"  target="_blank" href="{{route('picture.download',$comment->id) }}" >download<img src="{{ asset($comment->picture) }}" width="100px"></a>
             @endif
         </th>
                                  </tr>
@@ -52,7 +53,7 @@
                                 <th>{{ $comment->comment }}
             @if($comment->picture == null)
             @else
-            <a style="margin-left: 100px" target="_blank" href="{{ asset($comment->picture) }}"><img src="{{ asset($comment->picture) }}" width="100px"></a>
+            <a style="margin-left: 100px"  target="_blank" href="{{route('picture.download',$comment->id) }}" >download<img src="{{ asset($comment->picture) }}" width="100px"></a>
             @endif
                                 </th>
                                  </tr>

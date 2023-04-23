@@ -6,12 +6,15 @@
         <div class="row">
              @include('frontend.common.user_sidebar')
              <div class="col-md-2">
-                
+              
             </div><!--end col-md-2-->
+            
              <div class="col-md-6">
                 <div class="card">
                     <h3 class="text-center"><span class="text-danger">{{ __('translation.Hi') }}...</span><strong>{{ Auth::user()->name }}</strong> {{ __('translation.Update Your Profile') }}</h3>
-
+ <div class="col-l-4" style="margin-top: 10px; float: right;">
+       <a href="{{ route('change.password') }}" class=" btn btn-danger btn-lg">{{ __('translation.Change Password') }}</a>
+  </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('user.profile.store') }}" enctype="multipart/form-data" >
                             @csrf
@@ -44,7 +47,9 @@
                     </div>
                 </div>
             </div><!--end col-md-6-->
+
         </div><!--end row-->
+         
     </div>
     
 </div>
