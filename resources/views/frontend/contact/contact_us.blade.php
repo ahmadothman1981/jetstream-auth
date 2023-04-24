@@ -41,6 +41,7 @@
 	$(document).ready(function() {
     $('#contact-form').submit(function(event) {
         event.preventDefault();
+        
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),

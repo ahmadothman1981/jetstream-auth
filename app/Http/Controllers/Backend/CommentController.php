@@ -55,12 +55,14 @@ class CommentController extends Controller
         }
     
 
-     $notification = array(
-            'message' => 'Your Repaly Placed  Successfully',
+    $notification = array(
+            'message' => 'Your Request Inserted Successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+
+       // return redirect()->back()->with($notification);
+      return response()->json(['url' => $save_url]);
    }//End Method
 
   

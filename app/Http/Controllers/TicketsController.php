@@ -34,7 +34,7 @@ class TicketsController extends Controller
     {
        
      /*   $request->validate([
-            'file'=> 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
+            'picture'=> 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
 
         ]);*/
         
@@ -167,10 +167,10 @@ class TicketsController extends Controller
 
      public function downloadfile($pic_id)
     {
-        $image = comment::where('id',$pic_id)->get('picture');
-        foreach($image as $item){
-        $filepath = $item->picture;
-        }
+        $image = comment::where('id',$pic_id)->first();
+        
+        $filepath = $image->picture;
+        
        // $filepath = public_path($pic_name);
         
         return Response::download($filepath); 
