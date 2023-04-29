@@ -509,12 +509,11 @@ Route::prefix('tickets')->group(function(){
      Route::get('/admin-replay/view/{id}',[TicketsController::class,'ViewAdminReplay'])->name('viewadmin-replay');
      Route::post('/replay-to-adminstore',[TicketsController::class,'ReplayToAdmin'])->name('replay-to-admin');
      Route::post('/store',[TicketsController::class,'StoreTickets'])->name('store-ticket');
-     Route::get('/replay/{id}',[TicketsController::class,'ReplayTickets'])->name('replay-ticket');
-        
+     Route::get('/replay/{id}',[TicketsController::class,'ReplayTickets'])->name('replay-ticket');    
      Route::get('/download-image/{pic_id}',[TicketsController::class,'downloadfile'])->name('picture.download');
-     Route::post('/comment/store',[CommentController::class,'AddComment'])->name('add-comment');
-
      Route::get('/close/{id}',[TicketsController::class,'CloseTicket'])->name('close.ticket');
      Route::get('/view-archeived/{id}',[TicketsController::class,'ViewArcheivedTickets'])->name('view-ticket');
 
 });
+
+Route::post('tickets/store',[CommentController::class,'AddComment'])->name('add-comment');

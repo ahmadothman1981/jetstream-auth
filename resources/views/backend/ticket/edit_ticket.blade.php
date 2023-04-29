@@ -62,16 +62,16 @@
 		@endif
 		@endforeach
 		<div id="new">
-			<img id="images" src="" alt="">
+		
 		</div>
 
 	</div>
 
- <form method="post" id="admin_comment" action="{{ route('add-comment') }}" enctype="multipart/form-data" >
+ <form method="post" id="admin_form" action="{{route('add-comment')}}" enctype="multipart/form-data" >
 	 	@csrf
 			
-			<input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-			<input type="hidden" name="user_id" value="{{ $ticket->user_id }}">		   
+			<input type="hidden" id="ticket_id" name="ticket_id" value="{{ $ticket->id }}">
+			<input type="hidden" id="user_id" name="user_id" value="{{ $ticket->user_id }}">		   
 
 
 
@@ -104,7 +104,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit"  class="btn btn-rounded btn-primary mb-5" value="Replay">					 
+	<input type="submit" id="submit_ticket"  class="btn btn-rounded btn-primary mb-5" value="Replay">					 
 						</div>
 					</form>
 
@@ -148,22 +148,17 @@
     </script>
 
   <script type="text/javascript">
-  	
-	$(document).ready(function(){
-		
+  	/*
+	$(document).ready(function(){		
     $('#admin_comment').submit(function(event){
         event.preventDefault();
- 
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
-           // data: $(this).serialize(),
-            data: formData,
-            success: function(response) {
+            data: $(this).serialize(),
+            success: function(response){	
             	var textarea = $('#textarea').val();
-            	$('#new').html(`<p><span style="font-weight: bold; color: seagreen;"> Admin Message:</span>${textarea}</p>`)
-            	$('<img>').attr('src', response.url).appendTo('#images');
-        
+            	$('#new').append(`<p><span style="font-weight: bold; color: seagreen;"> Admin Message:</span>${textarea}</p>`)
                 $('#admin_comment')[0].reset();
                 $('#success-message').removeClass('d-none').html(response.success);
                 $('#error-message').addClass('d-none');
@@ -184,30 +179,147 @@
      	});//submit
 	});//ready
 	
-
-</script>
-
-<script type="text/javascript">
-	/*
-	$('#input').on('change', function(){
-		
-    var formData = new FormData();
-    formData.append('input', $(this)[0].files[0]);
-   // console.log(formData);
-    $.ajax({
-        url:('/tickets/all'),
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-        	console.log(response.url);
-            $('<img>').attr('src', response.url).appendTo('#images');
-        }
-    });
-});
 */
 </script>
 
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+
+
+<script type="text/javascript">
+	
+	// $('#submit_ticket').on('click', function(event){
+	// 	//$('#admin_form').submit(function(){
+    //     event.preventDefault();
+    //     var formData = new FormData();
+    //     var files = $('#input')[0].files[0];
+    //     var textarea = $('#textarea').val();
+    //     var ticket_id = $('#ticket_id').val();
+    //     var user_id = $('#user_id').val();
+    //     formData.append('input',files);
+    //     formData.append('comment',textarea);
+    //     formData.append('ticket_id',ticket_id);
+    //     formData.append('user_id',user_id);
+    //     console.log(files);
+        
+    // $.ajax({
+    //     type: 'POST',
+    //     url:"{{ url('/apply/comment') }}",
+    //     data: formData,
+    //     contentType: false,
+    //     processData: false,
+    //     success: function(response) {
+        	
+    //         $('<img>').attr('src', response.url).appendTo('#images');
+    //     }
+  	//   });
+    // });
+//});
+//});
+// 	$('#submit_ticket').on('click', function(event){
+//   //  $('#admin_form').submit(function(event) {
+//         event.preventDefault();
+//         /* var formData = new FormData();
+//         var files = $('#input')[0].files[0];
+//         var textarea = $('#textarea').val();
+//         var ticket_id = $('#ticket_id').val();
+//         var user_id = $('#user_id').val();
+//         formData.append('input',files);
+//         formData.append('comment',textarea);
+//         formData.append('ticket_id',ticket_id);
+//         formData.append('user_id',user_id);
+// console.log(formData);*/
+       
+//         // Send an AJAX request to upload the post and picture
+//        // $.ajax({
+//        //      url:"{{route('add-comment')}}", 
+//        //      type:'POST',
+//        //      data:formData,
+//        //      dataType:"JSON",
+//        //      success: function(response) {
+//        //           Append the new comment to a div
+//        //          var postHtml = 
+//        //              '<p>' + data.comment + '</p>' +
+//        //              `<img src="'${data.picture}'"`; 
+//        //         	$('#new').append(postHtml);
+//        //         	console.log(response);
+//        //      },
+//        //      error: function(xhr, status, error) {
+//        //          // Handle errors
+//        //      }
+//        //  });
+// $.ajax({
+// 	url:'{{ url('tickets/comment/store') }}',
+// 	//data:formData,
+// 	type:'POST',
+// 	success:function(data){
+// 		console.log('hi');
+// 	}
+// });
+//     });
+
+
+</script>
+<script type="text/javascript">
+// 	$(document).ready(function() {
+//     $('#admin_form').submit(function(event) {
+//         event.preventDefault();
+
+//         // Serialize the form data
+//         var formData = new FormData($(this)[0]);
+// console.log(formData);
+//         // Send an AJAX request to upload the post and picture
+//         $.ajax({
+//             url: $(this).attr('action'),
+//             type:'POST', //$(this).attr('method'),
+//             data: formData,
+//             dataType:'json',
+//             cache: false,
+//             contentType: false,
+//             processData: false,
+//             success: function(data) {
+//             	console.log(data);
+//                 // Append the new post to a div
+//                 var postHtml = '<div class="post">' +
+//                     '<p>' + data.text + '</p>' +
+//                     '<img src="{{ asset('upload/tickets/comments/') }}/' + data.picture + '">' +
+//                     '</div>';
+//                 $('#new').append(postHtml);
+//             },
+//             error: function(xhr, status, error) {
+//                 // Handle errors
+//             }
+//         });
+//     });
+// });
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('#admin_form').submit(function(event) {
+        event.preventDefault();
+         var formData = new FormData($(this)[0]);
+	console.log(formData);
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            //data: formData,
+             success: function(response) {
+            	console.log(response);
+                // Append the new post to a div
+                
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+            }
+        });
+    });
+});
+
+</script>
 
 @endsection

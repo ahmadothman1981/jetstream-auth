@@ -66,6 +66,7 @@ class TicketsController extends Controller
 
     public function ReplayTickets($id)
     {
+        
         $ticket = Ticket::findOrFail($id);
         $comments = comment::where('ticket_id',$ticket->id)->orderBy('created_at','ASC')->get();
        // dd($comments);
@@ -174,8 +175,9 @@ class TicketsController extends Controller
        // $filepath = public_path($pic_name);
         
         return Response::download($filepath); 
-    }
+    }//End Method
 
+    
 
 
     

@@ -18,7 +18,7 @@ class CommentController extends Controller
 {
    public function AddComment(Request $request )
    {
-//dd($request->all());
+dd($request->all());
     
     $this->validate($request, [
             'comment' => 'required',
@@ -36,7 +36,7 @@ class CommentController extends Controller
       Image::make($image)->resize(225,225)->save('upload/tickets/comments/'.$name_gen);
       $save_url = 'upload/tickets/comments/'.$name_gen; 
 
-      $comment = comment::create([
+    $new_comment = $comment = comment::create([
         'ticket_id'=>$request->input('ticket_id'),
         'user_id'=>Auth::guard('admin')->user()->id,
         'comment'=>$request->comment,
@@ -45,25 +45,32 @@ class CommentController extends Controller
     ]);
         }else{
 
-             $comment = comment::create([
-        'ticket_id'=>$request->input('ticket_id'),
-        'user_id'=>Auth::guard('admin')->user()->id,
-        'comment'=>$request->comment,
+       $new_comment = $comment = comment::create([
+                 'ticket_id'=>$request->input('ticket_id'),
+                 'user_id'=>Auth::guard('admin')->user()->id,
+                 'comment'=>$request->comment,
         
 
     ]);
         }
     
 
-    $notification = array(
+   /* $notification = array(
             'message' => 'Your Request Inserted Successfully',
             'alert-type' => 'success'
-        );
+        );*/
 
 
        // return redirect()->back()->with($notification);
-      return response()->json(['url' => $save_url]);
+     return response()->json(['id'=>$new_comment->id,
+                               'comment'=>$new_comment->comment,
+                                'picture'=>$new_comment->picture,]);
    }//End Method
+
+
+
+   
+
 
   
 }
