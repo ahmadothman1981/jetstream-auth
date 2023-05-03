@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NewsLetter;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewUserNotification;
 
 class NewsLetterController extends Controller
 {
@@ -19,12 +21,17 @@ class NewsLetterController extends Controller
     public function NewsLettertStore(Request $request)
     {
 
-        NewsLetter::insert([
+      $new = NewsLetter::insert([
             
             'email'=>$request->email,
             'created_at'=>Carbon::now(),
 
         ]);
+
+        $news = NewsLetter::latest()->first();
+       
+    Notification::send($news,new NewUserNotification($news));
+
      $notification = array(
             'message' => 'Your Email Entered Successfully',
             'alert-type' => 'success'
