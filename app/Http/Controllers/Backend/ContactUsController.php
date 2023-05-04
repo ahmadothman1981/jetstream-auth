@@ -38,7 +38,7 @@ class ContactUsController extends Controller
     public function ContactStore(Request $request)
     {
 //dd($request->all());
-        Contact::insert([
+      $contact = Contact::insert([
             'name'=>$request->name,
             'email'=>$request->email,
             'phone'=>$request->phone,
@@ -46,11 +46,14 @@ class ContactUsController extends Controller
             'created_at'=>Carbon::now(),
 
         ]);
+
+      
+       
      $notification = array(
             'message' => 'Your Request Inserted Successfully',
             'alert-type' => 'success'
         );
-
+ 
         return redirect()->back()->with($notification);
     }//End Method
 

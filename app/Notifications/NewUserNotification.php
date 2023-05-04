@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Auth;
 
 class NewUserNotification extends Notification
 {
@@ -61,6 +62,7 @@ class NewUserNotification extends Notification
         return [
              'email' => $this->new->email,
             'created_at' => $this->new->created_at,
+            'title'=>Auth::user()->name,
         ];
     }
 }
