@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2023 at 07:44 PM
+-- Generation Time: May 06, 2023 at 02:08 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$TQdrB2MG/I/cR8GyHPkRJuN1KxMDzTey/wGyRwNTSFBZk3wfPoXbC', 'WqOi9A9I7fVNhkFvXCeiCp1tz38GeSwQKjX7ckDaNKNE9mVFmxfHM3UPPryv', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2023-04-04 11:52:32'),
+(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$TQdrB2MG/I/cR8GyHPkRJuN1KxMDzTey/wGyRwNTSFBZk3wfPoXbC', 'UhbGx8SqD2nmB7c05B8qIPChvAAVuaLuIOVIT2C0IB7c5CD3JnT88gtucnwi', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2023-04-04 11:52:32'),
 (2, 'aisha', 'aisha@mail.com', NULL, '$2y$10$BVG0PKKnRj1vNncXvEvEfeXxxpp5cazIWHNye1X6Y3km59JGItPki', NULL, NULL, '1756754727256945.png', '2023-02-04 09:42:34', '2023-02-04 09:42:34'),
 (3, 'othman', 'othman@mail.com', NULL, '$2y$10$L91cKqF9yrwf1eIdcZPEkeXq9KBykPvAgT3YnI3ky3/hDAlWV0FMS', NULL, NULL, '1756842870326300.png', '2023-02-03 18:25:23', '2023-04-06 09:09:56'),
 (5, 'dini', 'dini@mail.com', NULL, '$2y$10$newh4b.uYkq0KvGWJ3hHSeA2IcrFDebDYQUXpa/eyd/Jmskzfm/zC', NULL, NULL, '2023031215571750025384838230.jpg', '2023-03-12 13:56:38', '2023-04-06 09:06:45');
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `comments`
@@ -193,13 +193,7 @@ INSERT INTO `comments` (`id`, `ticket_id`, `user_id`, `comment`, `created_at`, `
 (5, '1', '11', 'are you sure', '2023-04-16 18:13:15', '2023-04-16 18:13:15', ''),
 (6, '1', '11', 'are youy sure', '2023-04-16 18:15:35', '2023-04-16 18:15:35', ''),
 (7, '1', '1', 'this is auth user admin', '2023-04-16 18:40:23', '2023-04-16 18:40:23', ''),
-(8, '1', '11', 'i am user', '2023-04-16 18:49:37', '2023-04-16 18:49:37', ''),
-(9, '1', '1', 'i am admin', '2023-04-16 18:49:51', '2023-04-16 18:49:51', ''),
-(10, '14', '1', 'hi there usere good phone', '2023-04-17 18:51:08', '2023-04-17 18:51:08', ''),
-(11, '15', '1', 'this is a good pic at all all all', '2023-04-18 12:31:45', '2023-04-18 12:31:45', 'upload/tickets/comments/1763524797161639.jpg'),
-(12, '16', '1', 'are you sure', '2023-04-18 12:35:09', '2023-04-18 12:35:09', 'upload/tickets/comments/1763525010866940.jpg'),
-(13, '14', '11', 'i am not sure', '2023-04-18 12:41:41', '2023-04-18 12:41:41', 'upload/tickets/comments/1763525422220115.jpg'),
-(14, '14', '1', 'i am not sure sure sure sure sure', '2023-04-18 13:05:08', '2023-04-18 13:05:08', NULL);
+(8, '1', '11', 'i am user', '2023-04-16 18:49:37', '2023-04-16 18:49:37', '');
 
 -- --------------------------------------------------------
 
@@ -216,14 +210,27 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `comment`, `created_at`, `updated_at`) VALUES
-(3, 'new_admin', 'ahmadothmanshoap@yahoo.com', '012345789', 'test test test test test test test', '2023-04-09 19:23:34', NULL);
+(3, 'new_admin', 'ahmadothmanshoap@yahoo.com', '012345789', 'test test test test test test test', '2023-04-09 19:23:34', NULL),
+(4, 'gdfg', 'as@mail.com', '6363563565', 'dadasdasda', '2023-04-23 12:40:13', NULL),
+(5, 'ahmad', 'othman@mail.com', '0123456789', 'this is test', '2023-05-04 12:23:24', NULL),
+(6, 'ahmad', 'othman@mail.com', '0123456789', 'this is test', '2023-05-04 12:23:53', NULL),
+(7, 'ahmad', 'ahmad@mail.com', '0123456789', 'this is a new notification test', '2023-05-05 16:12:43', NULL),
+(8, 'ahmad', 'ahmad@mail.com', '0123456789', 'this is a new notification test', '2023-05-05 16:18:56', NULL),
+(9, 'ahmad', 'ahmad@mail.com', '0123456789', 'this is a new notification test', '2023-05-05 16:20:05', NULL),
+(10, 'ahmad', 'ahmad@mail.com', '0123456789', 'this is a new notification test', '2023-05-05 16:22:32', NULL),
+(11, 'ahmad', 'ahmad@mail.com', '0123456789', 'this is a new notification test', '2023-05-05 16:22:51', NULL),
+(12, 'ahmad', 'ahmad@mail.com', '0123456789', 'this is a new notification test', '2023-05-05 16:23:16', NULL),
+(13, 'ahmad', 'email@email.com', '123456789', 'this is message', '2023-05-06 05:00:34', NULL),
+(14, 'contact', 'contact@mail.com', '123456789', 'contact', '2023-05-06 05:04:04', NULL),
+(15, 'test', 'test@mail.com', '12345678', 'route test', '2023-05-06 05:10:25', NULL),
+(16, 'ahmad', 'test@mail.com', '01234567891', 'route test', '2023-05-06 05:11:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -250,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_discount`, `coupon_validity`, `status`, `created_at`, `updated_at`, `category_id`, `coupon_type`, `counting`) VALUES
-(2, 'EID AL FETTER--', 40, '2023-06-22', 1, '2023-03-16 11:56:21', '2023-03-19 12:27:53', 9, 'PERCENTAGE', 2),
+(2, 'EID AL FETTER--', 40, '2023-06-22', 1, '2023-03-16 11:56:21', '2023-05-06 08:36:53', 9, 'PERCENTAGE', 2),
 (3, 'TEST', 12, '2023-06-05', 1, '2023-03-16 11:23:52', '2023-03-16 11:23:52', 9, 'FIXED', 0),
 (5, 'TEST_2', 25, '2023-03-30', 1, '2023-03-16 18:11:09', '2023-03-20 05:33:46', 9, 'PERCENTAGE', 2);
 
@@ -283,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -332,7 +339,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (48, '2023_04_13_115700_create_tickets_table', 32),
 (49, '2023_04_13_120450_create_comments_table', 32),
 (50, '2023_04_13_135623_add_picture_to_tickets', 33),
-(51, '2023_04_18_140845_add_image_to_comments', 34);
+(51, '2023_04_18_140845_add_image_to_comments', 34),
+(52, '2023_05_02_190315_create_notifications_table', 35);
 
 -- --------------------------------------------------------
 
@@ -439,15 +447,81 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `newsletters`
 --
 
 INSERT INTO `newsletters` (`id`, `email`, `created_at`, `updated_at`) VALUES
-(4, 'test@mail.com', '2023-04-11 10:27:37', NULL),
-(5, 'test2@mail.com', '2023-04-11 10:28:46', NULL);
+(6, 'ahmadothmanshoap@yahoo.com', '2023-04-28 12:09:28', NULL),
+(16, 'again@mail.com', '2023-05-03 09:39:52', NULL),
+(17, 'again1@mail.com', '2023-05-03 09:44:02', NULL),
+(18, 'again2@mail.com', '2023-05-03 09:47:17', NULL),
+(19, 'again3@mail.com', '2023-05-03 09:47:50', NULL),
+(20, 'test@mail.com', '2023-05-03 09:50:24', NULL),
+(21, 'test@mail.com', '2023-05-03 09:50:55', NULL),
+(22, 'test2@mail.com', '2023-05-03 17:21:45', NULL),
+(23, 'ahmadothman@outlook.com', '2023-05-04 13:01:44', NULL),
+(24, 'ahmadothman@outlook.com', '2023-05-04 13:02:32', NULL),
+(25, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:11:49', NULL),
+(26, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:12:17', NULL),
+(27, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:12:55', NULL),
+(28, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:14:29', NULL),
+(29, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:14:47', NULL),
+(30, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:17:08', NULL),
+(31, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:17:26', NULL),
+(32, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:19:27', NULL),
+(33, 'ahmadothmanshoap@yahoo.com', '2023-05-04 16:19:49', NULL),
+(34, '1ahmadothmanshoap@yahoo.com', '2023-05-04 16:20:44', NULL),
+(35, 'aa@mail.com', '2023-05-04 16:45:44', NULL),
+(36, 'dd@mail.com', '2023-05-04 16:59:03', NULL),
+(37, 'test@mail.com', '2023-05-04 17:04:08', NULL),
+(38, 'ahmadothmanshoap@yahoo.com', '2023-05-04 17:06:00', NULL),
+(39, 'TEST2@mail.com', '2023-05-04 17:06:45', NULL),
+(40, 'test@mail.com', '2023-05-06 05:15:53', NULL),
+(41, 'test@mail.com', '2023-05-06 05:17:35', NULL),
+(42, 'test@mail.com', '2023-05-06 05:17:59', NULL),
+(43, 'ahmadothmanshoap@yahoo.com', '2023-05-06 05:19:06', NULL),
+(44, 'test@mail.com', '2023-05-06 05:24:02', NULL),
+(45, 'read@mail.com', '2023-05-06 05:29:18', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('04f66c82-e0b2-4b29-82d0-36743212ee8d', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 3, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', NULL, '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
+('0514a4d6-13a9-42be-a987-7f1643758784', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 5, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
+('0f3d2c2b-e5fa-477d-9bbd-df4be12a8f81', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 2, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
+('1924c9ba-5f2f-49e0-a484-9b46cb5fe36e', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 5, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', NULL, '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
+('20d719b1-d194-4128-bfcd-0a3209b2dfe5', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 1, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', '2023-05-06 05:42:36', '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
+('44738654-832b-4e5c-a3a6-3f00d30ce8fc', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 1, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', '2023-05-06 05:41:40', '2023-05-06 05:29:18', '2023-05-06 05:29:18'),
+('74e717a3-0cbb-4066-928d-93ea86a0a373', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 1, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', '2023-05-06 08:41:40', '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
+('928b57f1-3f8d-4aa7-9f98-57f3a75bee47', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 2, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', NULL, '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
+('99ee5e59-7459-4384-89d1-fe35b3a31d2e', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 3, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
+('9eb3747a-1ce1-4dff-872c-9fce17d4998e', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 2, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:29:18', '2023-05-06 05:29:18'),
+('bacd40be-0e9a-4dc5-b984-b16a0d098227', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 3, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:29:18', '2023-05-06 05:29:18'),
+('c6ae3709-275a-4376-9af6-8e7ef3804d74', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 5, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:29:18', '2023-05-06 05:29:18');
 
 -- --------------------------------------------------------
 
@@ -491,7 +565,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `coupon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount_no_discount` double(8,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
@@ -541,7 +615,15 @@ INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`,
 (41, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS89693172', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:54:32', NULL, 'test_2', 32.00),
 (42, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS97689569', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:55:00', NULL, 'test_2', 32.00),
 (43, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS54115939', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:56:45', NULL, 'test_2', 32.00),
-(44, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 1212, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS48701183', '20 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-20 05:33:46', NULL, '5', 24990.00);
+(44, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 1212, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS48701183', '20 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-20 05:33:46', NULL, '5', 24990.00),
+(45, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 14994.00, NULL, 'MSS93448569', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:03:52', NULL, '2', 24990.00),
+(46, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 42133, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS33926700', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:11:03', NULL, '2', 14.00),
+(47, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS57698457', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:22:37', NULL, '2', 32.00),
+(48, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42122, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS93553049', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:24:09', NULL, '2', 14.00),
+(49, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS91050407', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:26:44', NULL, '2', 32.00),
+(50, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS91334658', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:30:51', NULL, '2', 14.00),
+(51, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS31489549', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:35:24', NULL, '2', 32.00),
+(52, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS11177454', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:36:53', NULL, '2', 14.00);
 
 -- --------------------------------------------------------
 
@@ -561,7 +643,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `order_items_order_id_foreign` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_items`
@@ -610,7 +692,15 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty
 (40, 41, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
 (41, 42, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
 (42, 43, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(43, 44, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL);
+(43, 44, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
+(44, 45, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
+(45, 46, 19, 'Black', 'Large', '1', 14.00, NULL, NULL),
+(46, 47, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
+(47, 48, 19, 'Black', 'Large', '1', 14.00, NULL, NULL),
+(48, 49, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
+(49, 50, 19, 'Black', 'Large', '1', 14.00, NULL, NULL),
+(50, 51, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
+(51, 52, 19, 'Black', 'Large', '1', 14.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1002,9 +1092,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('HkeBc65dolNI6lXlZfas8wqzjg7Xdwwt6MBSTls4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRXFPYjJlUkN1a2FWbWpteWIzOTlTMzk1eUM1a1ljOGtoZnl5c2gzbCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1681830764),
-('MTKedkiNmmRrm5ShTT2TiI34SUntrhGawbw25O4v', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoia0l0TWplMExsZ1VVVjVxWlFFTHA0amdPTHNEOXlNZHdsejBWN0ZtMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC90aWNrZXRzL3JlcGxheS8xNCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1681829459),
-('uFTWE9rXblgpshUjH8WbkHZ5i7BsaYrCWEAEUIzV', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQ3VqV3MxeUVnTEFUNG1Fb0Y1aUpvcldjT0hRcENvdGZtbUNJM3hyTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJFlUbTg1Z1hvZUkuckl5MUlVbi41YnVtRGFoTXJ6YVljZ1pDVWFHZm55ZTBaS3RrMDVCZkRLIjt9', 1681830758);
+('9fCGBQ3tlquiULDOwQQJVtfFf7zlr6clHPBQTtxP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSmVPUGRScWs0dm5iUVk4UnRhQlAwZk1zdkNDZm83eHhUVGdhSTBsdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJFlUbTg1Z1hvZUkuckl5MUlVbi41YnVtRGFoTXJ6YVljZ1pDVWFHZm55ZTBaS3RrMDVCZkRLIjtzOjQ6ImNhcnQiO2E6MDp7fX0=', 1683373401),
+('xkBYMtNk9LQhhDf8BZ57Wd5eZFcmmw9ScBAR9Zbg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTFVXNzQxeWZhY3Jvb3VOVnc4T3AyQ0o0aExqMGYwTmRTRGpjdEZpRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1683373346);
 
 -- --------------------------------------------------------
 
@@ -1302,7 +1391,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -1319,11 +1408,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verifie
 (8, 'Shawn McClure II', 'maryam45@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'ZTIKpPVxdQ', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
 (9, 'user laravel', 'user@example.com', '0111111111', '2023-02-04 12:33:23', '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, '8pAeVbo7YuoN2rW5DKDBeXfvK2KCkQslrEBxYTNziLNCnP9LQ0UPqBm6Ajn6', NULL, 'profile-photos/XxjFuG2kDo8Y54Pzy83YLenDg7RCiK7fDEQGFZF7.jpg', '2022-11-01 16:45:46', '2023-02-04 10:33:23'),
 (10, 'Orlando Eichmann DVM', 'lkrajcik@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'QmJTsl7o96', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-04-18 14:54:45', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-04-18 12:54:45'),
+(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-05-06 11:36:56', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-05-06 08:36:56'),
 (12, 'othmanaisha', 'othman@aisha.com', '0123456789', '2023-02-09 19:11:53', NULL, '$2y$10$VlT8Dj.nef1QYoAGCkrZpebN.MMocIA9ldMdznSq7yARSqShfKqnO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:11:13', '2023-02-09 17:11:53'),
 (13, 'dini', 'dini@ahmad.com', '0123456789', NULL, NULL, '$2y$10$A2cSHIbeVt34URt0azpf2.XeJqRBAj/ZJJmxiqSFKy0ENxkKNVCmO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:20:04', '2023-02-09 17:20:04'),
 (14, 'aishaahmad', 'aishaahmad@mail.com', '012345678', '2023-02-09 19:21:00', NULL, '$2y$10$QxCtscDTm3ZCwU7NySKVleDc0Vrg1pmqB5w1J6LvqKuMZMuEDSw5m', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:20:58', '2023-02-09 17:21:00'),
-(15, 'othman', 'othman@mail.com', '011111111', '2023-03-18 10:10:52', NULL, '$2y$10$SB5iudvMTw3FRpAC6NWd2OLlzVoPz8l0kW952k3RrOK/nubt8voHG', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-18 07:41:49', '2023-03-18 08:10:52');
+(15, 'othman', 'othman@mail.com', '011111111', '2023-03-18 10:10:52', NULL, '$2y$10$SB5iudvMTw3FRpAC6NWd2OLlzVoPz8l0kW952k3RrOK/nubt8voHG', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-18 07:41:49', '2023-03-18 08:10:52'),
+(16, 'shirbin', 'shirbin@gmail.com', '01234567891', '2023-05-03 20:21:48', NULL, '$2y$10$eRiSqOeEfWPLgRLKy1urT.paC799gy5lryriCi2qbIrJe25Z1KZbu', NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-03 03:38:43', '2023-05-03 17:21:48');
 
 -- --------------------------------------------------------
 
