@@ -6,9 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Auth;
 
-class NewUserNotification extends Notification
+class ContactUsNotification extends Notification
 {
     use Queueable;
 
@@ -17,13 +16,9 @@ class NewUserNotification extends Notification
      *
      * @return void
      */
-
-   
-
-    public function __construct($new)
+    public function __construct($contactus)
     {
-         $this->new = $new;
-       
+         $this->contactus = $contactus;
     }
 
     /**
@@ -60,10 +55,11 @@ class NewUserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'email' => $this->new->email,
-            'created_at' => $this->new->created_at,
-            'url'=>'view.News',
-            'name'=>'Newsletters',
+            'name' => $this->contactus->name,
+            'created_at' => $this->contactus->created_at,
+            'email'=>$this->contactus->email,
+            'comment'=>$this->contactus->comment,
+            'url'=>'contact.view',
         ];
     }
 }

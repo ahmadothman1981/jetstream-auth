@@ -42,7 +42,7 @@
 				<div class="p-20">
 					<div class="flexbox">
 						<div>
-<h4 class="mb-0 mt-0">Notifications({{auth()->user()->unreadNotifications->count()}})</h4>
+<h4 class="mb-0 mt-0">Notifications({{Auth::guard('admin')->user()->unreadNotifications->count()}})</h4>
 						</div>
 						<div>
 							<a href="#" class="text-danger">Clear All</a>
@@ -54,9 +54,9 @@
 			  <li>
 				<!-- inner menu: contains the actual data -->
 				<ul class="menu sm-scrol">
-					@foreach(auth()->user()->unreadNotifications  as $notification)
+					@foreach(Auth::guard('admin')->user()->unreadNotifications  as $notification)
 				  <li>
-					<a href="#">
+					<a href="{{ route('view.notification',$notification->id) }}">
 					  <i class="fa fa-users text-info"></i> {{$notification->data['email']}}**{{$notification->data['created_at']}}
 					</a>
 				  </li>

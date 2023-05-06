@@ -12,12 +12,13 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NewUserNotification;
 
+
 class NewsLetterController extends Controller
 {
     public function ViewNews()
     {
      $news = NewsLetter::orderBy('id','DESC')->get();
-     
+    // dd(Auth::guard('admin')->user());
     return view('backend.user.newsletter',compact('news'));
     }//End Method
    
@@ -31,7 +32,8 @@ class NewsLetterController extends Controller
 
         ]);
        // $id = Auth::user()->id;
-        $users = Admin::where('id','!=',auth()->user()->id)->get();
+      //  $users = Admin::where('id','!=',auth()->user()->id)->get();
+         $users = Admin::orderBy('id','DESC')->get();
         $news = NewsLetter::latest()->first();
        
     Notification::send($users,new NewUserNotification($news));

@@ -13,6 +13,8 @@ use Spatie\Permission\Models\Permission;
 use DB;
 use Image;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewUserNotification;
 
 
 
@@ -250,7 +252,19 @@ public function AdminUpdate(Request $request, Role $role)
              return redirect()->back()->with( $notification); 
       }//End Method
 
+public function Notification($id)
+{     
+$notification =DB::table('notifications')->find($id);
+//dd($notification);
+$obj =$notification->data;
+$new_obj = json_decode($obj, true);
+$url = $new_obj['url'];
+DB::table('notifications')->where('id',$notification->id)->update(['read_at'=>now()]);
 
+return view('admin.notification',compact('new_obj','url'));
+
+    
+}//End Method
 
 
 }

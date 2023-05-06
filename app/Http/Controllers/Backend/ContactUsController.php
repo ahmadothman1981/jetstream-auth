@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Carbon\Carbon;
+use App\Models\Admin;
+use Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ContactUsNotification;
 
 
 class ContactUsController extends Controller
@@ -47,8 +52,9 @@ class ContactUsController extends Controller
 
         ]);
 
-      
-       
+    $users = Admin::orderBy('id','DESC')->get();
+     $contactus = Contact::latest()->first();  
+     Notification::send($users,new ContactUsNotification($contactus));  
      $notification = array(
             'message' => 'Your Request Inserted Successfully',
             'alert-type' => 'success'
