@@ -259,8 +259,12 @@ public function Notification()
  $admin_id = Auth::guard('admin')->user()->id;
 $notifications = DB::table('notifications')->where('notifiable_id',$admin_id)->orderBy('created_at','DESC')->get();
 //dd($notifications);
-$obj =$notifications->pluck('data');
-
+$obj =$notifications->pluck('data','id');
+foreach($obj as  $key=> $value){
+    $new_value =  json_decode($value, true);
+    //dd($new_value['email'],$key);
+}
+//dd($obj);
 $obj_data = json_decode($obj, true);
 //dd($obj_data);
 $obj_id=$notifications->pluck('id');
@@ -268,7 +272,7 @@ $user_id = $notifications->pluck('notifiable_id');
 //DB::table('notifications')->where('id',$notification->id)->update(['read_at'=>now()]);
  //$notifications = DB::table('notifications')->where('notifiable_id',Auth::guard('admin')->user()->id)->get();
 // dd($notifications);*/
-return view('admin.notification',compact('obj_id','obj_data','user_id'));
+return view('admin.notification',compact('obj'));
 
     
 }//End Method

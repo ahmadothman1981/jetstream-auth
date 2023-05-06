@@ -30,8 +30,8 @@
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Notification:ID</th>
-								<th>USER:ID</th>
+								<th>Email</th>
+								
 								
 								
 								
@@ -40,24 +40,24 @@
 							</tr>
 						</thead>
 						<tbody>
-						@foreach($obj_data as $data)
+						@foreach($obj as  $key=> $value)
 								@php
-								$new_data = json_decode($data, true);
+								$new_obj = json_decode($value, true);
 								@endphp
-								@foreach($obj_id as $id)
-								@foreach($user_id as $user)
+						
+						
 							<tr>
 								
-								<td>{{ $new_data['name']  }}</td>
+								<td>{{ $new_obj['name']  }}</td>
 								
 								
 								
 								
-								<td>{{ $id  }}</td>
-								<td>{{$user }}</td>
+								<td>{{ $new_obj['email']   }}</td>
+								
 								@endforeach
-								@endforeach
-								@endforeach
+								
+								
 							
 							
 								
