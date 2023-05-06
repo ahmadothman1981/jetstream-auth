@@ -10,7 +10,10 @@ use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Auth;
+use App\Models\Admin;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewProductNotification;
 
 class CashController extends Controller
 {
@@ -85,6 +88,11 @@ class CashController extends Controller
     }
 
     Cart::destroy();
+
+     $admin = Admin::orderBy('id','DESC')->get();
+     $product = Order::latest()->first(); 
+     
+     Notification::send($admin,new NewProductNotification($product));  
 
      $notification = array(
             'message' => 'Order Placed  Successfully',

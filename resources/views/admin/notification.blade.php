@@ -20,7 +20,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Contact User</h3>
+				  <h3 class="box-title">NotificationS</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -44,7 +44,7 @@
 								<td>{{ $new_obj['email']  }}</td>
 								<td>{{ $new_obj['created_at']  }}</td>
 								
-									<td><a href="{{route($new_obj['url'])}}">{{ $new_obj['name']  }}</a></td>
+									<td><a href="{{route($new_obj['url'])}}">Notification Link</a></td>
 							
 							
 								

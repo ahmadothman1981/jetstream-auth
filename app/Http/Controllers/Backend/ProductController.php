@@ -10,7 +10,7 @@ use App\Models\SubSubCategory;
 use App\Models\MultiImg;
 use App\Models\Brand;
 use App\Models\Product;
-
+use App\Models\Admin;
 use Carbon\Carbon;
 use Image;
 
@@ -107,6 +107,8 @@ class ProductController extends Controller
         ]);
 
       }
+/////Notification
+
 
 $notification = array(
             'message' => 'Product Inserted Successfully',
