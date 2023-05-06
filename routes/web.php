@@ -518,4 +518,4 @@ Route::prefix('tickets')->group(function(){
 
 Route::post('tickets/store',[CommentController::class,'AddComment'])->name('add-comment');
 
-Route::get('/admin/notifications/{id}',[AdminProfileController::class,'Notification'])->name('view.notification');
+Route::get('/admin/notifications',[AdminProfileController::class,'Notification'])->name('view.notification');

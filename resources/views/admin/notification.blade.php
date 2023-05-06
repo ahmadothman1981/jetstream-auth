@@ -20,17 +20,19 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">NotificationS</h3>
+				  <h3 class="box-title">Notification</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">
 					  <table id="example1" class="table table-bordered table-striped">
+
 						<thead>
 							<tr>
-								<th>Email</th>
-								<th>Created_at</th>
-								<th>Info</th>
+								<th>Name</th>
+								<th>Notification:ID</th>
+								<th>USER:ID</th>
+								
 								
 								
 								
@@ -38,13 +40,24 @@
 							</tr>
 						</thead>
 						<tbody>
-						
+						@foreach($obj_data as $data)
+								@php
+								$new_data = json_decode($data, true);
+								@endphp
+								@foreach($obj_id as $id)
+								@foreach($user_id as $user)
 							<tr>
 								
-								<td>{{ $new_obj['email']  }}</td>
-								<td>{{ $new_obj['created_at']  }}</td>
+								<td>{{ $new_data['name']  }}</td>
 								
-									<td><a href="{{route($new_obj['url'])}}">Notification Link</a></td>
+								
+								
+								
+								<td>{{ $id  }}</td>
+								<td>{{$user }}</td>
+								@endforeach
+								@endforeach
+								@endforeach
 							
 							
 								

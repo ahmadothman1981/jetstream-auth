@@ -252,16 +252,23 @@ public function AdminUpdate(Request $request, Role $role)
              return redirect()->back()->with( $notification); 
       }//End Method
 
-public function Notification($id)
-{     
-$notification =DB::table('notifications')->find($id);
-//dd($notification);
-$obj =$notification->data;
-$new_obj = json_decode($obj, true);
-$url = $new_obj['url'];
-DB::table('notifications')->where('id',$notification->id)->update(['read_at'=>now()]);
 
-return view('admin.notification',compact('new_obj','url'));
+public function Notification()
+{ 
+//$notification =DB::table('notifications')->find($id);
+ $admin_id = Auth::guard('admin')->user()->id;
+$notifications = DB::table('notifications')->where('notifiable_id',$admin_id)->orderBy('created_at','DESC')->get();
+//dd($notifications);
+$obj =$notifications->pluck('data');
+
+$obj_data = json_decode($obj, true);
+//dd($obj_data);
+$obj_id=$notifications->pluck('id');
+$user_id = $notifications->pluck('notifiable_id');
+//DB::table('notifications')->where('id',$notification->id)->update(['read_at'=>now()]);
+ //$notifications = DB::table('notifications')->where('notifiable_id',Auth::guard('admin')->user()->id)->get();
+// dd($notifications);*/
+return view('admin.notification',compact('obj_id','obj_data','user_id'));
 
     
 }//End Method

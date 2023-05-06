@@ -50,22 +50,33 @@
 					</div>
 				</div>
 			  </li>
+@php
+$notifications = DB::table('notifications')->where('notifiable_id',Auth::guard('admin')->user()->id)->orderBy('created_at','DESC');
+$data = $notifications->pluck('data');
 
+foreach($data as $item){
+   $new_item = json_decode($item, true);
+}
+
+@endphp
 			  <li>
 				<!-- inner menu: contains the actual data -->
 				<ul class="menu sm-scrol">
-					@foreach(Auth::guard('admin')->user()->unreadNotifications  as $notification)
+				@foreach($data as $item)
+				@php
+          $new_item = json_decode($item, true);
+				@endphp
 				  <li>
-					<a href="{{ route('view.notification',$notification->id) }}">
-					  <i class="fa fa-users text-info"></i> {{$notification->data['email']}}**{{$notification->data['created_at']}}
+					<a href="{{ route($new_item['url']) }}">
+					  <i class="fa fa-users text-info"></i> {{$new_item['name']}}**{{$new_item['created_at']}}
 					</a>
 				  </li>
-				   @endforeach
+				  @endforeach 
 				</ul>
 			  </li>
 
 			  <li class="footer">
-				  <a href="#">View all</a>
+				  <a href="{{ route('view.notification')}}">View all</a>
 			  </li>
 			</ul>
 		  </li>	
