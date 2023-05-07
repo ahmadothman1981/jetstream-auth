@@ -55,10 +55,11 @@ class ContactUsNotification extends Notification
     public function toArray($notifiable)
     {
         return [
+            'id'=>'there is no id ',
             'name' => $this->contactus->name,
             'created_at' => $this->contactus->created_at,
             'email'=>$this->contactus->email,
-            'comment'=>$this->contactus->comment,
+            'Details'=>$this->contactus->comment,
             'url'=>'contact.view',
         ];
     }

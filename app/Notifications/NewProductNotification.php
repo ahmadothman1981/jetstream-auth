@@ -57,9 +57,10 @@ class NewProductNotification extends Notification
         return [
             'id' => $this->product->id,
             'created_at' => $this->product->created_at,
-            'url'=>'pending-orders',
+            'url'=>'pending.orders.details',
             'email'=>auth()->user()->email,
             'name'=>auth()->user()->name,
+            'Details'=>'New Order Created Click For More Details'
         ];
     }
 }

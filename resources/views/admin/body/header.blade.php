@@ -33,8 +33,8 @@
 	     
 		  <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
-			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications">
-			  <i class="ti-bell"></i>
+			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications"><span  class="badge badge-pill badge-danger">{{Auth::guard('admin')->user()->unreadNotifications->count()}}</span>
+			  <i class="ti-bell"></i> 
 			</a>
 			<ul class="dropdown-menu animated bounceIn">
 		
@@ -65,11 +65,20 @@ foreach($data as $item){
 				@foreach($data as $item)
 				@php
           $new_item = json_decode($item, true);
+          $id = $new_item['id'];
+ 					$url = $new_item['url'];
 				@endphp
 				  <li>
-					<a href="{{ route($new_item['url']) }}">
-					  <i class="fa fa-users text-info"></i> {{$new_item['name']}}**{{$new_item['created_at']}}
+					@if(is_int($id))
+			<a href="{{route($url,$id)}}">
+		<i class="fa fa-users text-info"></i> {{$new_item['name']}}**{{$new_item['created_at']}}
 					</a>
+				@else
+		<a href="{{route($url)}}">
+		<i class="fa fa-users text-info"></i> {{$new_item['name']}}**{{$new_item['created_at']}}
+					</a>
+ 				@endif
+					  
 				  </li>
 				  @endforeach 
 				</ul>

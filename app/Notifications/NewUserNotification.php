@@ -60,10 +60,12 @@ class NewUserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
+            'id'=>'there is no id ',
             'email' => $this->new->email,
             'created_at' => $this->new->created_at,
             'url'=>'view.News',
             'name'=>'Newsletters',
+            'Details'=>'There is a new Newsletter subscribtion',
         ];
     }
 }

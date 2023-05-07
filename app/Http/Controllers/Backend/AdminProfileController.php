@@ -25,7 +25,7 @@ class AdminProfileController extends Controller
     public function AdminProfile()
     {
         $id = Auth::user()->id;
-       // dd(Auth::user()->roles);
+        dd(Auth::user()->roles);
         $adminData = Admin::find($id);
         return view('admin.admin_profile_view',compact('adminData'));
 
@@ -255,16 +255,17 @@ public function AdminUpdate(Request $request, Role $role)
 
 public function Notification()
 { 
-//$notification =DB::table('notifications')->find($id);
+
  $admin_id = Auth::guard('admin')->user()->id;
 $notifications = DB::table('notifications')->where('notifiable_id',$admin_id)->orderBy('created_at','DESC')->get();
-//dd($notifications);
+$type = $notifications->pluck('type');
+
 $obj =$notifications->pluck('data','id');
 foreach($obj as  $key=> $value){
     $new_value =  json_decode($value, true);
     //dd($new_value['email'],$key);
 }
-//dd($obj);
+
 $obj_data = json_decode($obj, true);
 //dd($obj_data);
 $obj_id=$notifications->pluck('id');
@@ -272,7 +273,7 @@ $user_id = $notifications->pluck('notifiable_id');
 //DB::table('notifications')->where('id',$notification->id)->update(['read_at'=>now()]);
  //$notifications = DB::table('notifications')->where('notifiable_id',Auth::guard('admin')->user()->id)->get();
 // dd($notifications);*/
-return view('admin.notification',compact('obj'));
+return view('admin.notification',compact('obj','type'));
 
     
 }//End Method

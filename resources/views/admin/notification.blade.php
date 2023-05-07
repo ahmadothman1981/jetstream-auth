@@ -31,6 +31,7 @@
 							<tr>
 								<th>Name</th>
 								<th>Email</th>
+								<th>Details</th>
 								
 								
 								
@@ -51,9 +52,27 @@
 								<td>{{ $new_obj['name']  }}</td>
 								
 								
-								
-								
 								<td>{{ $new_obj['email']   }}</td>
+								
+								<td>{{$new_obj['Details']}}
+									
+
+
+
+ @php
+ $id = $new_obj['id'];
+ $url = $new_obj['url'];
+@endphp
+@if(is_int($id))
+<a class="btn btn-danger"href="{{route($url,$id)}}">Details</a>
+@else
+<a class="btn btn-danger"href="{{route($url)}}">Details</a>
+ @endif
+
+									
+								</td>
+								
+
 								
 								@endforeach
 								
