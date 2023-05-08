@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 02:08 PM
+-- Generation Time: May 08, 2023 at 08:35 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$TQdrB2MG/I/cR8GyHPkRJuN1KxMDzTey/wGyRwNTSFBZk3wfPoXbC', 'UhbGx8SqD2nmB7c05B8qIPChvAAVuaLuIOVIT2C0IB7c5CD3JnT88gtucnwi', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2023-04-04 11:52:32'),
+(1, 'admin', 'admin@mail.com', '2022-11-01 16:44:01', '$2y$10$TQdrB2MG/I/cR8GyHPkRJuN1KxMDzTey/wGyRwNTSFBZk3wfPoXbC', 'ylztyUu6NMtzsr5EORT8g2EaBEaD20RbucGLmL3vnYMVX2IH926MFvbOOtjD', NULL, '202211050624logo-aikido-aikikai-large.jpg', '2022-11-01 16:44:01', '2023-04-04 11:52:32'),
 (2, 'aisha', 'aisha@mail.com', NULL, '$2y$10$BVG0PKKnRj1vNncXvEvEfeXxxpp5cazIWHNye1X6Y3km59JGItPki', NULL, NULL, '1756754727256945.png', '2023-02-04 09:42:34', '2023-02-04 09:42:34'),
 (3, 'othman', 'othman@mail.com', NULL, '$2y$10$L91cKqF9yrwf1eIdcZPEkeXq9KBykPvAgT3YnI3ky3/hDAlWV0FMS', NULL, NULL, '1756842870326300.png', '2023-02-03 18:25:23', '2023-04-06 09:09:56'),
 (5, 'dini', 'dini@mail.com', NULL, '$2y$10$newh4b.uYkq0KvGWJ3hHSeA2IcrFDebDYQUXpa/eyd/Jmskzfm/zC', NULL, NULL, '2023031215571750025384838230.jpg', '2023-03-12 13:56:38', '2023-04-06 09:06:45');
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -230,7 +230,8 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `comment`, `created_at`,
 (13, 'ahmad', 'email@email.com', '123456789', 'this is message', '2023-05-06 05:00:34', NULL),
 (14, 'contact', 'contact@mail.com', '123456789', 'contact', '2023-05-06 05:04:04', NULL),
 (15, 'test', 'test@mail.com', '12345678', 'route test', '2023-05-06 05:10:25', NULL),
-(16, 'ahmad', 'test@mail.com', '01234567891', 'route test', '2023-05-06 05:11:47', NULL);
+(16, 'ahmad', 'test@mail.com', '01234567891', 'route test', '2023-05-06 05:11:47', NULL),
+(17, 'new_admin', 'tahoo@yahoo.com', '44444444', '4444444', '2023-05-06 09:55:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -257,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_discount`, `coupon_validity`, `status`, `created_at`, `updated_at`, `category_id`, `coupon_type`, `counting`) VALUES
-(2, 'EID AL FETTER--', 40, '2023-06-22', 1, '2023-03-16 11:56:21', '2023-05-06 08:36:53', 9, 'PERCENTAGE', 2),
+(2, 'EID AL FETTER--', 40, '2023-06-22', 1, '2023-03-16 11:56:21', '2023-05-07 16:18:23', 9, 'PERCENTAGE', 2),
 (3, 'TEST', 12, '2023-06-05', 1, '2023-03-16 11:23:52', '2023-03-16 11:23:52', 9, 'FIXED', 0),
 (5, 'TEST_2', 25, '2023-03-30', 1, '2023-03-16 18:11:09', '2023-03-20 05:33:46', 9, 'PERCENTAGE', 2);
 
@@ -447,7 +448,7 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `newsletters`
@@ -484,7 +485,18 @@ INSERT INTO `newsletters` (`id`, `email`, `created_at`, `updated_at`) VALUES
 (42, 'test@mail.com', '2023-05-06 05:17:59', NULL),
 (43, 'ahmadothmanshoap@yahoo.com', '2023-05-06 05:19:06', NULL),
 (44, 'test@mail.com', '2023-05-06 05:24:02', NULL),
-(45, 'read@mail.com', '2023-05-06 05:29:18', NULL);
+(45, 'read@mail.com', '2023-05-06 05:29:18', NULL),
+(46, 'ddd@yahoo.com', '2023-05-06 09:53:29', NULL),
+(47, 'fff@mail.com', '2023-05-06 09:55:03', NULL),
+(48, 'dd@mail.com', '2023-05-06 16:11:31', NULL),
+(49, 'ss@mail.com', '2023-05-06 16:23:25', NULL),
+(50, 'test@mail.com', '2023-05-06 17:19:11', NULL),
+(51, 'teet@mail.com', '2023-05-06 17:21:58', NULL),
+(52, 'hala@mail.com', '2023-05-06 17:38:15', NULL),
+(53, 'test@mail.com', '2023-05-07 11:58:29', NULL),
+(54, 'tahoo@yahoo.com', '2023-05-07 16:03:13', NULL),
+(55, 'ddd@yahoo.com', '2023-05-07 16:37:37', NULL),
+(56, 'tahoo@yahoo.com', '2023-05-07 16:58:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -510,18 +522,14 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
-('04f66c82-e0b2-4b29-82d0-36743212ee8d', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 3, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', NULL, '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
-('0514a4d6-13a9-42be-a987-7f1643758784', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 5, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
-('0f3d2c2b-e5fa-477d-9bbd-df4be12a8f81', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 2, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
-('1924c9ba-5f2f-49e0-a484-9b46cb5fe36e', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 5, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', NULL, '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
-('20d719b1-d194-4128-bfcd-0a3209b2dfe5', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 1, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', '2023-05-06 05:42:36', '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
-('44738654-832b-4e5c-a3a6-3f00d30ce8fc', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 1, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', '2023-05-06 05:41:40', '2023-05-06 05:29:18', '2023-05-06 05:29:18'),
-('74e717a3-0cbb-4066-928d-93ea86a0a373', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 1, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', '2023-05-06 08:41:40', '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
-('928b57f1-3f8d-4aa7-9f98-57f3a75bee47', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 2, '{\"id\":52,\"created_at\":\"2023-05-06T11:36:53.000000Z\",\"url\":\"pending-orders\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\"}', NULL, '2023-05-06 08:36:54', '2023-05-06 08:36:54'),
-('99ee5e59-7459-4384-89d1-fe35b3a31d2e', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 3, '{\"email\":\"test@mail.com\",\"created_at\":\"2023-05-06T08:24:02.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:24:02', '2023-05-06 05:24:02'),
-('9eb3747a-1ce1-4dff-872c-9fce17d4998e', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 2, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:29:18', '2023-05-06 05:29:18'),
-('bacd40be-0e9a-4dc5-b984-b16a0d098227', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 3, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:29:18', '2023-05-06 05:29:18'),
-('c6ae3709-275a-4376-9af6-8e7ef3804d74', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 5, '{\"email\":\"read@mail.com\",\"created_at\":\"2023-05-06T08:29:18.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\"}', NULL, '2023-05-06 05:29:18', '2023-05-06 05:29:18');
+('04f19554-f97b-4385-9caf-d38b2479d9dc', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 1, '{\"id\":\"there is no id \",\"email\":\"tahoo@yahoo.com\",\"created_at\":\"2023-05-07T19:58:33.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\",\"Details\":\"There is a new Newsletter subscribtion\"}', '2023-05-07 17:06:50', '2023-05-07 16:58:33', '2023-05-07 16:58:33'),
+('3b99528c-f673-4f0b-b285-f98385328cce', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 5, '{\"id\":\"there is no id \",\"email\":\"tahoo@yahoo.com\",\"created_at\":\"2023-05-07T19:58:33.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\",\"Details\":\"There is a new Newsletter subscribtion\"}', NULL, '2023-05-07 16:58:33', '2023-05-07 16:58:33'),
+('537dd4c8-ecc5-4ee7-99b4-0ece8e0ed175', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 3, '{\"id\":60,\"created_at\":\"2023-05-07T19:18:23.000000Z\",\"url\":\"pending.orders.details\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\",\"Details\":\"New Order Created Click For More Details\"}', NULL, '2023-05-07 16:18:23', '2023-05-07 16:18:23'),
+('9acb7a3c-9a58-408c-b500-202e7237cb5b', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 1, '{\"id\":60,\"created_at\":\"2023-05-07T19:18:23.000000Z\",\"url\":\"pending.orders.details\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\",\"Details\":\"New Order Created Click For More Details\"}', '2023-05-07 17:06:50', '2023-05-07 16:18:23', '2023-05-07 16:18:23'),
+('c1489b9f-543f-4a72-80b3-465e2e5feb6e', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 2, '{\"id\":\"there is no id \",\"email\":\"tahoo@yahoo.com\",\"created_at\":\"2023-05-07T19:58:33.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\",\"Details\":\"There is a new Newsletter subscribtion\"}', NULL, '2023-05-07 16:58:33', '2023-05-07 16:58:33'),
+('c71810d1-063b-48be-ae34-a11e001ca622', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 2, '{\"id\":60,\"created_at\":\"2023-05-07T19:18:23.000000Z\",\"url\":\"pending.orders.details\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\",\"Details\":\"New Order Created Click For More Details\"}', NULL, '2023-05-07 16:18:23', '2023-05-07 16:18:23'),
+('d3fb4082-005c-4702-8534-59691470d24d', 'App\\Notifications\\NewProductNotification', 'App\\Models\\Admin', 5, '{\"id\":60,\"created_at\":\"2023-05-07T19:18:23.000000Z\",\"url\":\"pending.orders.details\",\"email\":\"user@mail.com\",\"name\":\"ahmadothman\",\"Details\":\"New Order Created Click For More Details\"}', NULL, '2023-05-07 16:18:23', '2023-05-07 16:18:23'),
+('d6c5fe5f-0203-4e6d-a0a1-c0092bdca65e', 'App\\Notifications\\NewUserNotification', 'App\\Models\\Admin', 3, '{\"id\":\"there is no id \",\"email\":\"tahoo@yahoo.com\",\"created_at\":\"2023-05-07T19:58:33.000000Z\",\"url\":\"view.News\",\"name\":\"Newsletters\",\"Details\":\"There is a new Newsletter subscribtion\"}', NULL, '2023-05-07 16:58:33', '2023-05-07 16:58:33');
 
 -- --------------------------------------------------------
 
@@ -565,65 +573,15 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `coupon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount_no_discount` double(8,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `notes`, `post_code`, `payment_type`, `payment_method`, `trsnsition_id`, `currency`, `amount`, `order_number`, `invoice_number`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_order`, `return_reason`, `status`, `created_at`, `updated_at`, `coupon`, `amount_no_discount`) VALUES
-(1, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', 42312, 'card_1MOj5xAZSzg6tHElQxotFLTJ', 'Stripe', 'txn_3MOj5yAZSzg6tHEl3hEkU2GE', 'usd', 6103.00, '63bd7a4d5e12c', 'MSS53883355', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-01-10 12:46:39', '2023-03-14 09:35:48', '0', 0.00),
-(2, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'final', NULL, 'card_1MOj7HAZSzg6tHElXh3yyxap', 'Stripe', 'txn_3MOj7IAZSzg6tHEl0fIFLjcL', 'usd', 6103.00, '63bd7a9f3a178', 'MSS58132039', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-01-10 12:48:00', '2023-01-16 06:01:44', '0', 0.00),
-(3, 9, 1, 1, 1, 'user laravel', 'user@example.com', '0111111111', 'test', 12545, 'card_1MOjKZAZSzg6tHElZTsbdiFU', 'Stripe', 'txn_3MOjKaAZSzg6tHEl0RuAwzsw', 'usd', 58.00, '63bd7dd761c02', 'MSS30086125', '10 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'canceled', '2023-01-10 13:01:46', '2023-01-16 06:16:14', '0', 0.00),
-(4, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', NULL, 'card_1MPSiFAZSzg6tHElM5mfa2kA', 'Stripe', 'txn_3MPSiGAZSzg6tHEl260QGZjQ', 'usd', 32.00, '63c0274372df2', 'MSS67339013', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-01-12 13:29:10', '2023-01-31 11:14:58', '', 0.00),
-(5, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42132, 'card_1MPSjKAZSzg6tHElWkxxiTZD', 'Stripe', 'txn_3MPSjLAZSzg6tHEl2mVrmJHc', 'usd', 6103.00, '63c027863bd05', 'MSS70370982', '12 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-01-12 13:30:15', '2023-03-14 11:05:56', '', 0.00),
-(6, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 3532.00, '63c027863bd02', 'MSS75808009', '13 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '27 January 2023', '2', 'mistaken', 'delivered', '2023-01-13 13:27:07', '2023-01-27 13:08:43', '', 0.00),
-(7, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 6103.00, '63c027863bd09', 'MSS68111946', '25 January 2023', 'January', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '25 January 2023', '1', 'Broke', 'delivered', '2023-01-25 09:59:23', '2023-01-25 11:02:59', '', 0.00),
-(8, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'note', 42123, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 49980.00, NULL, 'MSS56290798', '11 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-02-11 11:39:29', '2023-03-14 09:42:11', '', 0.00),
-(9, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 1400.00, NULL, 'MSS40881720', '14 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2023-03-14 12:34:28', '2023-03-14 12:36:18', '', 0.00),
-(10, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'with discount', NULL, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS69806759', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:21:14', NULL, '', 0.00),
-(11, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'with discount', NULL, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 0.00, NULL, 'MSS65190347', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:22:16', NULL, '', 0.00),
-(12, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS55572286', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:44:40', NULL, '', 0.00),
-(13, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS17751435', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:45:12', NULL, '', 0.00),
-(14, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS96085889', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:45:24', NULL, '', 0.00),
-(15, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS89569422', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:45:42', NULL, '', 0.00),
-(16, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test-3', 42315, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 37485.00, NULL, 'MSS23035473', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:47:02', NULL, '', 0.00),
-(17, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42313, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 56228.00, NULL, 'MSS93481311', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 17:47:44', NULL, '', 0.00),
-(18, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42135, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 56228.00, NULL, 'MSS64413627', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:02:57', NULL, '', 0.00),
-(19, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42135, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 56228.00, NULL, 'MSS42942138', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:04:27', NULL, '', 0.00),
-(20, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42135, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 56228.00, NULL, 'MSS94067091', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:09:15', NULL, '', 0.00),
-(21, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42132, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS38583789', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:11:41', NULL, '', 0.00),
-(22, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 41232, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS43321070', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:21:32', NULL, '', 0.00),
-(23, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 41232, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS34467430', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:42:41', NULL, '', 0.00),
-(24, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42315, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS97534711', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:43:38', NULL, '', 0.00),
-(25, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42123, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS36616175', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:44:30', '0000-00-00 00:00:00', '0', 0.00),
-(26, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 41232, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS51194256', '16 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-16 18:45:52', NULL, '0', 0.00),
-(27, 15, 1, 1, 1, 'othman', 'othman@mail.com', '011111111', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS14955636', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:06:07', NULL, '5', 0.00),
-(28, 15, 1, 1, 1, 'othman', 'othman@mail.com', '011111111', 'test18', 12356, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS86212586', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:08:55', NULL, '5', 0.00),
-(29, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 123456, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS48714966', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:11:45', NULL, '5', 0.00),
-(30, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test18', 12345, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS41480834', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:15:00', NULL, '5', 0.00),
-(31, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 2123, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS50103023', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:19:22', NULL, '5', 0.00),
-(32, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 41232, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS44785195', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:51:18', NULL, '0', 0.00),
-(33, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS99592381', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:53:42', NULL, '0', 0.00),
-(34, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS21905370', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 08:56:21', NULL, '5', 0.00),
-(35, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fedfsdf', 121212, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS11831811', '18 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-18 17:59:38', NULL, 'test_2', 0.00),
-(36, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'coupon', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS49473385', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 09:59:47', NULL, 'test_2', 24990.00),
-(37, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', '123', 1212, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 14994.00, NULL, 'MSS84638864', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 12:27:53', NULL, 'EID AL FETTER--', 24990.00),
-(38, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', '4545', 12345, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS94595878', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 12:45:41', NULL, 'test_2', 32.00),
-(39, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS83271796', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:53:34', NULL, 'test_2', 32.00),
-(40, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS37317817', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:54:07', NULL, 'test_2', 32.00),
-(41, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS89693172', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:54:32', NULL, 'test_2', 32.00),
-(42, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS97689569', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:55:00', NULL, 'test_2', 32.00),
-(43, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'fdsfdsf', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 24.00, NULL, 'MSS54115939', '19 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-19 13:56:45', NULL, 'test_2', 32.00),
-(44, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 1212, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 18743.00, NULL, 'MSS48701183', '20 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-03-20 05:33:46', NULL, '5', 24990.00),
-(45, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 14994.00, NULL, 'MSS93448569', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:03:52', NULL, '2', 24990.00),
-(46, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 42133, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS33926700', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:11:03', NULL, '2', 14.00),
-(47, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS57698457', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:22:37', NULL, '2', 32.00),
-(48, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42122, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS93553049', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:24:09', NULL, '2', 14.00),
-(49, 11, 1, 1, 1, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS91050407', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:26:44', NULL, '2', 32.00),
-(50, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS91334658', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:30:51', NULL, '2', 14.00),
-(51, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS31489549', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:35:24', NULL, '2', 32.00),
-(52, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 12355, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 8.00, NULL, 'MSS11177454', '06 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-06 08:36:53', NULL, '2', 14.00);
+(59, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'notes', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS68163455', '07 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-07 15:44:16', NULL, '2', 32.00),
+(60, 11, 1, 1, 6, 'ahmadothman', 'user@mail.com', '01234567890', 'test', 42312, 'Cash On Delivery', 'Cash On Delivery', NULL, 'USD', 19.00, NULL, 'MSS68875644', '07 May 2023', 'May', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'Pending', '2023-05-07 16:18:23', NULL, '2', 32.00);
 
 -- --------------------------------------------------------
 
@@ -643,64 +601,15 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `order_items_order_id_foreign` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order_items`
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty`, `price`, `created_at`, `updated_at`) VALUES
-(1, 2, 17, 'Red', 'Large', '1', 6103.00, NULL, NULL),
-(2, 3, 20, 'Black', 'Large', '3', 32.00, NULL, NULL),
-(3, 4, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(4, 5, 17, 'Red', 'Large', '1', 6103.00, NULL, NULL),
-(5, 6, 14, 'Black', NULL, '1', 3500.00, NULL, NULL),
-(6, 6, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(7, 7, 17, 'Black', 'Large', '1', 6103.00, NULL, NULL),
-(8, 8, 21, 'Red', 'Small', '2', 24990.00, NULL, NULL),
-(9, 9, 13, 'Black', 'small', '1', 1400.00, NULL, NULL),
-(10, 10, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(11, 12, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(12, 13, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(13, 14, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(14, 15, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(15, 16, 21, 'Red', 'Small', '2', 24990.00, NULL, NULL),
-(16, 17, 21, 'Red', 'Small', '3', 24990.00, NULL, NULL),
-(17, 18, 21, 'Red', 'Small', '3', 24990.00, NULL, NULL),
-(18, 19, 21, 'Red', 'Small', '3', 24990.00, NULL, NULL),
-(19, 20, 21, 'Red', 'Small', '3', 24990.00, NULL, NULL),
-(20, 21, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(21, 22, 21, 'Black', 'Medium', '1', 24990.00, NULL, NULL),
-(22, 23, 21, 'Black', 'Medium', '1', 24990.00, NULL, NULL),
-(23, 24, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(24, 25, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(25, 26, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(26, 27, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(27, 28, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(28, 29, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(29, 30, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(30, 31, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(31, 32, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(32, 33, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(33, 34, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(34, 35, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(35, 36, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(36, 37, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(37, 38, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(38, 39, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(39, 40, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(40, 41, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(41, 42, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(42, 43, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(43, 44, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(44, 45, 21, 'Red', 'Small', '1', 24990.00, NULL, NULL),
-(45, 46, 19, 'Black', 'Large', '1', 14.00, NULL, NULL),
-(46, 47, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(47, 48, 19, 'Black', 'Large', '1', 14.00, NULL, NULL),
-(48, 49, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(49, 50, 19, 'Black', 'Large', '1', 14.00, NULL, NULL),
-(50, 51, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
-(51, 52, 19, 'Black', 'Large', '1', 14.00, NULL, NULL);
+(58, 59, 20, 'Red', 'Small', '1', 32.00, NULL, NULL),
+(59, 60, 20, 'Red', 'Small', '1', 32.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1092,8 +1001,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('9fCGBQ3tlquiULDOwQQJVtfFf7zlr6clHPBQTtxP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSmVPUGRScWs0dm5iUVk4UnRhQlAwZk1zdkNDZm83eHhUVGdhSTBsdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJFlUbTg1Z1hvZUkuckl5MUlVbi41YnVtRGFoTXJ6YVljZ1pDVWFHZm55ZTBaS3RrMDVCZkRLIjtzOjQ6ImNhcnQiO2E6MDp7fX0=', 1683373401),
-('xkBYMtNk9LQhhDf8BZ57Wd5eZFcmmw9ScBAR9Zbg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTFVXNzQxeWZhY3Jvb3VOVnc4T3AyQ0o0aExqMGYwTmRTRGpjdEZpRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1683373346);
+('jQIIA5yTUpQYJy51a8RqB1ceHOSZqdDiDNZEJmkd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieFZJT0diTTZJSU95TFR1eHNmVkU2b0Y3SnJ3U1N6RzZMdzZ3bWt0VSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1683490051),
+('oJs3dSVgAtJN7AWsX13LKEJyYSjddYCwzTi888uc', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTTJFUDBrbHI5UERNQWtUczNDVjM3MFJsU1Z4NndCMHZac29xRmp4TiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJFlUbTg1Z1hvZUkuckl5MUlVbi41YnVtRGFoTXJ6YVljZ1pDVWFHZm55ZTBaS3RrMDVCZkRLIjtzOjQ6ImNhcnQiO2E6MDp7fX0=', 1683490062);
 
 -- --------------------------------------------------------
 
@@ -1408,7 +1317,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verifie
 (8, 'Shawn McClure II', 'maryam45@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'ZTIKpPVxdQ', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
 (9, 'user laravel', 'user@example.com', '0111111111', '2023-02-04 12:33:23', '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, '8pAeVbo7YuoN2rW5DKDBeXfvK2KCkQslrEBxYTNziLNCnP9LQ0UPqBm6Ajn6', NULL, 'profile-photos/XxjFuG2kDo8Y54Pzy83YLenDg7RCiK7fDEQGFZF7.jpg', '2022-11-01 16:45:46', '2023-02-04 10:33:23'),
 (10, 'Orlando Eichmann DVM', 'lkrajcik@example.net', NULL, NULL, '2022-11-01 16:45:46', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, NULL, NULL, 'QmJTsl7o96', NULL, NULL, '2022-11-01 16:45:46', '2022-11-01 16:45:46'),
-(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-05-06 11:36:56', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-05-06 08:36:56'),
+(11, 'ahmadothman', 'user@mail.com', '01234567890', '2023-05-07 20:07:39', NULL, '$2y$10$YTm85gXoeI.rIy1IUn.5bumDahMrzaYcgZCUaGfnye0ZKtk05BfDK', NULL, NULL, NULL, NULL, NULL, '202211061855resize-1632727770173185082egyptianaikidoassociation.jpg', '2022-11-04 11:18:03', '2023-05-07 17:07:39'),
 (12, 'othmanaisha', 'othman@aisha.com', '0123456789', '2023-02-09 19:11:53', NULL, '$2y$10$VlT8Dj.nef1QYoAGCkrZpebN.MMocIA9ldMdznSq7yARSqShfKqnO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:11:13', '2023-02-09 17:11:53'),
 (13, 'dini', 'dini@ahmad.com', '0123456789', NULL, NULL, '$2y$10$A2cSHIbeVt34URt0azpf2.XeJqRBAj/ZJJmxiqSFKy0ENxkKNVCmO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:20:04', '2023-02-09 17:20:04'),
 (14, 'aishaahmad', 'aishaahmad@mail.com', '012345678', '2023-02-09 19:21:00', NULL, '$2y$10$QxCtscDTm3ZCwU7NySKVleDc0Vrg1pmqB5w1J6LvqKuMZMuEDSw5m', NULL, NULL, NULL, NULL, NULL, NULL, '2023-02-09 17:20:58', '2023-02-09 17:21:00'),

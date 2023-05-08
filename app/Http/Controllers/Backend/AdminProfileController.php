@@ -270,7 +270,7 @@ $obj_data = json_decode($obj, true);
 //dd($obj_data);
 $obj_id=$notifications->pluck('id');
 $user_id = $notifications->pluck('notifiable_id');
-//DB::table('notifications')->where('id',$notification->id)->update(['read_at'=>now()]);
+DB::table('notifications')->where('notifiable_id',$admin_id)->update(['read_at'=>now()]);
  //$notifications = DB::table('notifications')->where('notifiable_id',Auth::guard('admin')->user()->id)->get();
 // dd($notifications);*/
 return view('admin.notification',compact('obj','type'));
