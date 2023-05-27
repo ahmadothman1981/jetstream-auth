@@ -67,6 +67,14 @@ dd($request->all());
                                 'picture'=>$new_comment->picture,]);
    }//End Method
 
+   public function ajaxTest(Request $request)
+{
+    if($request->ajax()){
+        return response()->json(['success'=>'Ajax request submitted successfully']);
+    }
+}
+
+
 
 
    

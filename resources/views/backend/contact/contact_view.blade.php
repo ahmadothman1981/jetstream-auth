@@ -1,86 +1,85 @@
 @extends('admin.admin_master')
 @section('admin')
+    <div class="container-full">
 
-<!-- Content Wrapper. Contains page content -->
-  
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		
+        <!-- Main content -->
+        <section class="content">
 
-		<!-- Main content -->
-		<section class="content">
-		  <div class="row">
-			  
-			
+            <!-- Basic Forms -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h4 class="box-title">View Contact </h4>
 
-			
-			
-
-			<div class="col-12">
-
-			 <div class="box">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Contact User</h3>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<div class="table-responsive">
-					  <table id="example1" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Comment</th>
-								<th>Created Time</th>
-								<th>Action</th>
-								
-								
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($contacts as $contact)
-							<tr>
-								
-								<td>{{ $contact->name  }}</td>
-								<td>{{ $contact->email  }}</td>
-								<td>{{ $contact->phone }}</td>
-								<td >{{ $contact->comment }}</td>
-								<td >{{ $contact->created_at }}</td>
-								
-									
-								
-								<td width="35%">
-				<a href="{{ route('contact.delete',$contact->id) }}" class="btn btn-danger" id="delete">Delete</a>
-								</td>
-								
-							</tr>
-						@endforeach
-						</tbody>
-						
-					  </table>
-					</div>
-				</div>
-				<!-- /.box-body -->
-			  </div>
-			  <!-- /.box -->
-
-			  
-			  <!-- /.box -->          
-			</div>
-			<!-- /.col -->
-			
- 
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row"><!--start 2nd row-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>Name</h5>
+                                                    <div class="controls">
+                                                        <input type="text" disabled value="{{$contact->name}}" class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-md-4-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>Email</h5>
+                                                    <div class="controls">
+                                                        <input type="text" disabled value="{{$contact->email}}" class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-md-4-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>phone</h5>
+                                                    <div class="controls">
+                                                        <input type="text" disabled value="{{$contact->phone}}" class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-md-4-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>Date</h5>
+                                                    <div class="controls">
+                                                        <input type="text" disabled value="{{$contact->created_at}}" class="form-control" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-md-4-->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <h5>Comment</h5>
+                                                    <div class="controls">
+                                                        <textarea name="" id="" cols="30" disabled class="form-control" rows="10">{{$contact->comment}}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-md-4-->
 
 
-		  </div>
-		  <!-- /.row -->
-		</section>
-		<!-- /.content -->
-	  
-	  </div>
-  
+                                        </div><!--end 2nd row-->
+                                        <hr>
+                                    </div>
+                                </div>
 
+                            </form>
 
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
 
 @endsection

@@ -29,10 +29,10 @@ $route = Route::current()->getName();
           </a>
         </li>
 
+        
 
 
-
-
+       
         <li class="treeview {{ ($prefix == '/brand')? 'active' : '' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -46,11 +46,11 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+        
 
 
 
-
-
+       
         <li  class="treeview {{ ($prefix == '/category')? 'active' : '' }}">
           <a href="#">
             <i data-feather="mail"></i> <span>Category</span>
@@ -67,9 +67,9 @@ $route = Route::current()->getName();
           </ul>
         </li>
 
+       
 
-
-
+        
         <li class="treeview {{ ($prefix == '/product')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -86,10 +86,10 @@ $route = Route::current()->getName();
           </ul>
           @endif
         </li>
+        
 
 
-
-
+        
          <li class="treeview {{ ($prefix == '/slider')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -104,10 +104,10 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+         
 
 
-
-
+        
          <li class="treeview {{ ($prefix == '/coupons')? 'active' : '' }}">
           <a href="#">
             <i data-feather="file"></i>
@@ -122,10 +122,10 @@ $route = Route::current()->getName();
 
           </ul>
         </li>
+        
 
 
-
-
+        
           <li class="treeview {{ ($prefix == '/shipping')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -142,9 +142,9 @@ $route = Route::current()->getName();
 
               </ul>
           </li>
+          
 
-
-
+           
            <li class="treeview {{ ($prefix == '/blog')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -160,14 +160,14 @@ $route = Route::current()->getName();
                   <li class="{{ ($route == 'list.post')? 'active' : '' }}"><a href="{{ route('list.post') }}"><i class="ti-more"></i> List Blog Category</a></li>
 
                    <li class="{{ ($route == 'add.post')? 'active' : '' }}"><a href="{{ route('add.post') }}"><i class="ti-more"></i>Add Blog Post</a></li>
-
+                  
 
               </ul>
           </li>
+           
 
 
-
-
+            
            <li class="treeview {{ ($prefix == '/setting')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -183,12 +183,12 @@ $route = Route::current()->getName();
 @if(Auth::guard('admin')->user()->can('seo_setting'))
                   <li class="{{ ($route == 'seo.setting')? 'active' : '' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>SEO Setting</a></li>
 @endif
-
+                  
                   </ul>
                 </li>
+                
 
-
-
+          
 
           <li class="treeview {{ ($prefix == '/return')? 'active' : '' }}">
               <a href="#">
@@ -204,14 +204,14 @@ $route = Route::current()->getName();
 
                   <li class="{{ ($route == 'all.request')? 'active' : '' }}"><a href="{{ route('all.request') }}"><i class="ti-more"></i>All Requests</a></li>
 
-
-
+                  
+                  
 
               </ul>
           </li>
+        
 
-
-
+         
 
            <li class="treeview {{ ($prefix == '/review')? 'active' : '' }}">
               <a href="#">
@@ -227,18 +227,18 @@ $route = Route::current()->getName();
 
                   <li class="{{ ($route == 'publish.review')? 'active' : '' }}"><a href="{{ route('publish.review') }}"><i class="ti-more"></i>Publish Review</a></li>
 
-
-
+                  
+                  
 
               </ul>
           </li>
 
+          
 
 
+         
 
-
-
-
+        
           <li class="treeview {{ ($prefix == '/stock')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -250,14 +250,14 @@ $route = Route::current()->getName();
               <ul class="treeview-menu">
 
                   <li class="{{ ($route == 'product.stock')? 'active' : '' }}"><a href="{{ route('product.stock') }}"><i class="ti-more"></i>Product Stock</a></li>
-
-
+                  
+                  
               </ul>
-
+             
           </li>
+          
 
-
-
+          
        <li class="treeview {{ ($prefix == '/reports')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -269,14 +269,14 @@ $route = Route::current()->getName();
               <ul class="treeview-menu">
 
                   <li class="{{ ($route == 'all-reports')? 'active' : '' }}"><a href="{{ route('all-reports') }}"><i class="ti-more"></i>All Reports</a></li>
-
-
+                  
+                  
               </ul>
-
+             
           </li>
 
 
-
+         
           <li class="treeview {{ ($prefix == '/alluser')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -289,11 +289,11 @@ $route = Route::current()->getName();
 
                   <li class="{{ ($route == 'all-users')? 'active' : '' }}"><a href="{{ route('all-users') }}"><i class="ti-more"></i>All Users</a></li>
 
-                   <li class="{{ ($route == 'contact.index')? 'active' : '' }}"><a href="{{ route('contact.index') }}"><i class="ti-more"></i>Contact Users</a></li>
+                   <li class="{{ ($route == 'contact.view')? 'active' : '' }}"><a href="{{ route('contact.view') }}"><i class="ti-more"></i>Contact Users</a></li>
                      <li class="{{ ($route == 'view.News')? 'active' : '' }}"><a href="{{ route('view.News') }}"><i class="ti-more"></i>NewsLetters</a></li>
-
+                  
               </ul>
-
+             
           </li>
 
 
@@ -312,17 +312,17 @@ $route = Route::current()->getName();
                    <li class="{{ ($route == 'roles')? 'active' : '' }}"><a href="{{ route('roles') }}"><i class="ti-more"></i>Admin Roles</a></li>
 
                     <li class="{{ ($route == 'permissions')? 'active' : '' }}"><a href="{{ route('permissions') }}"><i class="ti-more"></i>Admin Permissions</a></li>
-
+                  
               </ul>
-
+             
           </li>
 
 
+        
 
+         
 
-
-
-
+          
 		<li class="treeview {{ ($prefix == '/orders')? 'active' : '' }}">
               <a href="#">
                   <i data-feather="file"></i>
@@ -334,7 +334,7 @@ $route = Route::current()->getName();
               <ul class="treeview-menu">
 
                   <li class="{{ ($route == 'pending-orders')? 'active' : '' }}"><a href="{{ route('pending-orders') }}"><i class="ti-more"></i>Pending Orders</a></li>
-
+                  
                    <li class="{{ ($route == 'confirmed-orders')? 'active' : '' }}"><a href="{{ route('confirmed-orders') }}"><i class="ti-more"></i>Confirmed Orders</a></li>
 
                    <li class="{{ ($route == 'processing-orders')? 'active' : '' }}"><a href="{{ route('processing-orders') }}"><i class="ti-more"></i>Processing Orders</a></li>
@@ -361,17 +361,17 @@ $route = Route::current()->getName();
 
                   <li class="{{ ($route == 'all-tickets')? 'active' : '' }}"><a href="{{ route('all-tickets') }}"><i class="ti-more"></i>All Tickets</a></li>
 
-
-
+                   
+                  
               </ul>
-
+             
           </li>
               </ul>
 
 
           </li>
 
-
+         
 
 
       </ul>
@@ -379,8 +379,8 @@ $route = Route::current()->getName();
 
 	<div class="sidebar-footer">
 		<!-- item-->
-
-
+		
+		
 		<!-- item-->
 		<a href="{{ route('admin.logout') }}" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
 	</div>

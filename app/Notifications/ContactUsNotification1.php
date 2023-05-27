@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewProductNotification extends Notification
+class ContactUsNotification extends Notification
 {
     use Queueable;
 
@@ -16,9 +16,9 @@ class NewProductNotification extends Notification
      *
      * @return void
      */
-    public function __construct($product)
+    public function __construct($contactus)
     {
-        $this->product = $product;
+         $this->contactus = $contactus;
     }
 
     /**
@@ -29,7 +29,7 @@ class NewProductNotification extends Notification
      */
     public function via($notifiable)
     {
-       return ['database'];
+        return ['database'];
     }
 
     /**
@@ -55,11 +55,12 @@ class NewProductNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'id' => $this->product->id,
-            'category'=>'New Order',
-            'created_at' => $this->product->created_at,
-            'url'=>route('pending.orders.details',$this->product->id),
-            'details'=>'New Order Created Click Form'.'/'.$this->product->name,
+            'id'=>'there is no id ',
+            'name' => $this->contactus->name,
+            'created_at' => $this->contactus->created_at,
+            'email'=>$this->contactus->email,
+            'Details'=>$this->contactus->comment,
+            'url'=>'contact.view',
         ];
     }
 }

@@ -11,7 +11,7 @@
 		<section class="content">
 		  <div class="row">
 			  
-			
+		<div><a href="">Export</a></div>	
 
 			
 			
@@ -21,7 +21,9 @@
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title"> Total User <span class="badge badge-pill badge-danger">{{ count($users) }}</span></h3>
+				  <a class="btn btn-danger" style="float: right;" href="{{ route('export-users') }}">Export to Excel</a>
 				</div>
+
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">

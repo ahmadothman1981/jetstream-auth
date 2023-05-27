@@ -16,18 +16,12 @@ use App\Notifications\ContactUsNotification;
 class ContactUsController extends Controller
 {
 
-    public function index()
+    public function ContactView()
     {
         $contacts = Contact::orderBy('id','DESC')->get();
-        return view('backend.contact.index',compact('contacts'));
+        return view('backend.contact.contact_view',compact('contacts'));
     }//End Method
-
-    public function view($id)
-    {
-        $contact = Contact::findOrFail($id);
-        return view('backend.contact.contact_view',compact('contact'));
-    }//End Method
-
+    
     public function ContactDelete($id)
     {
       Contact::findOrFail($id)->delete();
@@ -36,40 +30,40 @@ class ContactUsController extends Controller
                 'alert-type' => 'info',
             );
 
-             return redirect()->back()->with( $notification);
+             return redirect()->back()->with( $notification);   
     }//End Method
 
 
     public function ViewContact()
     {
-
+        
         return view('frontend.contact.contact_us');
     }//End Method
 
     public function ContactStore(Request $request)
     {
+//dd($request->all());
+      $contact = Contact::insert([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'comment'=>$request->comment,
+            'created_at'=>Carbon::now(),
 
-        /******** st new way to store Contact ********/
-        $contact = new Contact;
-        $contact->name       = $request->name;
-        $contact->email      = $request->email;
-        $contact->phone      = $request->phone;
-        $contact->comment    = $request->comment;
-        $contact->created_at = Carbon::now();
-        $contact->save();
-        /******** nd new way to store Contact ********/
+        ]);
 
     $users = Admin::orderBy('id','DESC')->get();
-     Notification::send($users,new ContactUsNotification($contact));
+     $contactus = Contact::latest()->first();  
+     Notification::send($users,new ContactUsNotification($contactus));  
      $notification = array(
             'message' => 'Your Request Inserted Successfully',
             'alert-type' => 'success'
         );
-
+ 
         return redirect()->back()->with($notification);
     }//End Method
 
-
+    
 
 
 }

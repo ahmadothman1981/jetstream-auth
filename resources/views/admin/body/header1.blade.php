@@ -13,7 +13,7 @@
 				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="Full Screen">
 					<i class="nav-link-icon mdi mdi-crop-free"></i>
 			    </a>
-			</li>
+			</li>			
 			<li class="btn-group nav-item d-none d-xl-inline-block">
 				<a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-check-box"></i>
@@ -26,18 +26,18 @@
 			</li>
 		  </ul>
 	  </div>
-
+		
       <div class="navbar-custom-menu r-side">
         <ul class="nav navbar-nav">
 		  <!-- full Screen -->
-
+	     
 		  <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications"><span  class="badge badge-pill badge-danger">{{Auth::guard('admin')->user()->unreadNotifications->count()}}</span>
-			  <i class="ti-bell"></i>
+			  <i class="ti-bell"></i> 
 			</a>
 			<ul class="dropdown-menu animated bounceIn">
-
+		
 			  <li class="header">
 				<div class="p-20">
 					<div class="flexbox">
@@ -50,36 +50,35 @@
 					</div>
 				</div>
 			  </li>
+@php
+$notifications = DB::table('notifications')->where('notifiable_id',Auth::guard('admin')->user()->id)->orderBy('created_at','DESC');
+$data = $notifications->pluck('data');
 
 
+
+@endphp
 			  <li>
 				<!-- inner menu: contains the actual data -->
 				<ul class="menu sm-scrol">
-@php
-        $allNotifications = auth()->guard('admin')->user()->notifications;
-
-        $notificationsData =[];
-        foreach($allNotifications as $notification)
-        {
-
-            $newDate = json_decode(json_encode($notification->data));
-
-            $notificationsData[]=(object)[
-                //'category'=> $newDate['category']??'',  //first way
-                'category'=> $newDate->category??'',
-                'message' => $newDate->details??'',
-                'link'    => $newDate->url??'',
-                'seen'    => $notification->read_at,
-            ];
-        }
-@endphp
-@foreach($notificationsData as $notification)
-
-				 <a style="padding-left: 20px" href="{{$notification->link}}">{{$notification->category}}<li>
-
-				  </li></a> 
-				<br>
-@endforeach
+				@foreach($data as $item)
+				@php
+          $new_item = json_decode($item, true);
+          $id = $new_item['id'];
+ 					$url = $new_item['url'];
+				@endphp
+				  <li>
+					@if(is_int($id))
+			<a href="{{route($url,$id)}}">
+		<i class="fa fa-users text-info"></i> {{$new_item['name']}}**{{$new_item['created_at']}}
+					</a>
+				@else
+		<a href="{{route($url)}}">
+		<i class="fa fa-users text-info"></i> {{$new_item['name']}}**{{$new_item['created_at']}}
+					</a>
+ 				@endif
+					  
+				  </li>
+				  @endforeach 
 				</ul>
 			  </li>
 
@@ -87,12 +86,12 @@
 				  <a href="{{ route('view.notification')}}">View all</a>
 			  </li>
 			</ul>
-		  </li>
-		  @php
+		  </li>	
+		  @php 
 		  	$adminData = DB::table('admins')->first();
 		  @endphp
 	      <!-- User Account-->
-          <li class="dropdown user user-menu">
+          <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
 				<img src="{{ (!empty($adminData->profile_photo_path))?
 				 url('upload/admin_images/'.$adminData->profile_photo_path):url('upload/no_image.jpg') }}" alt="">
@@ -106,11 +105,11 @@
 				 <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="ti-lock text-muted mr-2"></i> Logout</a>
 			  </li>
 			</ul>
-          </li>
+          </li>	
 		  <li>
-
+              
           </li>
-
+			
         </ul>
       </div>
     </nav>

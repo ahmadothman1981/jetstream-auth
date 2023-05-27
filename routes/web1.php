@@ -65,7 +65,6 @@ Route::middleware(['auth:admin'])->group(function(){
 Route::middleware([ 'auth:sanctum,admin',config('jetstream.auth_session'),'verified'
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
-//        dd(auth()->guard('admin')->user()->id);
         return view('admin.index');
     })->name('dashboard')->middleware('auth:admin');
 });
@@ -160,7 +159,7 @@ Route::prefix('product')->group(function(){
      Route::get('/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
      Route::get('/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
      Route::get('/delete/{id}',[ProductController::class,'ProductDelete'])->name('product.delete');
-
+     
 
 
 });
@@ -183,7 +182,7 @@ Route::prefix('slider')->group(function(){
 //////////////////////////////////Multi Language All Routes///////////////////////////
 Route::get('/language/{locale}',[LanguageController::class,'language'])->name('language.converter');
 //////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////Product Details Page URL
+/////////////////////////////Product Details Page URL 
 
 Route::get('product/details/{id}/{slug}',[IndexController::class,'ProdcutDetail']);
 /////////////////////////////Product Details Page TAG
@@ -334,10 +333,10 @@ Route::prefix('orders')->group(function(){
      Route::get('/shipped/delivered/{order_id}',[OrderController::class,'ShippedToDelivered'])->name('shipped.delivered');
 
      Route::get('/delivered/cancel/{order_id}',[OrderController::class,'DeliveredToCancel'])->name('delivered.cancel');
-
+     
 
      Route::get('/invoice/download/{order_id}',[OrderController::class,'AdminInvoiceDownload'])->name('invoice.download');
-
+  
 });
 //////Admin Reports Routes////////////
 Route::prefix('reports')->group(function(){
@@ -352,9 +351,7 @@ Route::prefix('reports')->group(function(){
 //////Admin All Users Routes////////////
 Route::prefix('alluser')->group(function(){
      Route::get('/view',[AdminProfileController::class,'AllUsers'])->name('all-users');
-     Route::get('/export-to-excell',[AdminProfileController::class,'ExportUsers'])->name('export-users');
-
-
+  
 });
 /////Admin All Admins Routes////////////
 Route::prefix('Adminall')->group(function(){
@@ -396,7 +393,7 @@ Route::prefix('blog')->group(function(){
 
       Route::get('/add/post',[BlogController::class,'AddBlogPost'])->name('add.post');
 
-      Route::post('/post/store',[BlogController::class,'BlogPostStore'])->name('post-store');
+      Route::post('/post/store',[BlogController::class,'BlogPostStore'])->name('post-store'); 
 
 
 });
@@ -421,7 +418,7 @@ Route::prefix('setting')->group(function(){
 
       Route::post('/seo/update',[SiteSettingController::class,'SeoSettingUpdate'])->name('update.seosetting');
 
-
+     
 
 });
 
@@ -435,8 +432,8 @@ Route::prefix('return')->group(function(){
 
      Route::get('/admin/all/request',[ReturnController::class,'ReturnAllRequest'])->name('all.request');
 
-
-
+    
+ 
 
 });
 
@@ -457,10 +454,10 @@ Route::prefix('review')->group(function(){
 
      Route::get('/delete/{id}',[ReviewController::class,'ReviewDelete'])->name('delete.review');
 
+     
 
-
-
-
+    
+ 
 
 });
 
@@ -492,9 +489,8 @@ Route::get('product/color/{color}',[IndexController::class,'ColorProduct'])->nam
 /////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('product/manufacures/{manufac}',[IndexController::class,'ManufacuresProduct'])->name('manufactures.product');
 ////////////////CONTACT-US ALL ROUTES//////////////////////////////
-Route::prefix('admin/contact')->group(function(){
-    Route::get('/all',[ContactUsController::class,'index'])->name('contact.index');
-    Route::get('/view/{id}',[ContactUsController::class,'view'])->name('contact.view');
+Route::prefix('contact')->group(function(){
+    Route::get('/view',[ContactUsController::class,'ContactView'])->name('contact.view');
     Route::get('/delete/{id}',[ContactUsController::class,'ContactDelete'])->name('contact.delete');
 });
 Route::get('/contact',[ContactUsController::class,'ViewContact'])->name('view.contact');
@@ -513,10 +509,12 @@ Route::prefix('tickets')->group(function(){
      Route::get('/admin-replay/view/{id}',[TicketsController::class,'ViewAdminReplay'])->name('viewadmin-replay');
      Route::post('/replay-to-adminstore',[TicketsController::class,'ReplayToAdmin'])->name('replay-to-admin');
      Route::post('/store',[TicketsController::class,'StoreTickets'])->name('store-ticket');
-     Route::get('/replay/{id}',[TicketsController::class,'ReplayTickets'])->name('replay-ticket');
+     Route::get('/replay/{id}',[TicketsController::class,'ReplayTickets'])->name('replay-ticket');    
      Route::get('/download-image/{pic_id}',[TicketsController::class,'downloadfile'])->name('picture.download');
      Route::get('/close/{id}',[TicketsController::class,'CloseTicket'])->name('close.ticket');
      Route::get('/view-archeived/{id}',[TicketsController::class,'ViewArcheivedTickets'])->name('view-ticket');
+     Route::post('/ajax-test',[CommentController::class,'ajaxTest']);
+
 
 });
 

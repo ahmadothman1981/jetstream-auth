@@ -2,7 +2,8 @@
 @section('admin')
 
 <!-- Content Wrapper. Contains page content -->
-  
+  <button id="ajax-button">Submit Ajax Request</button>
+
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		
@@ -321,5 +322,32 @@ $.ajaxSetup({
 });
 
 </script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#ajax-button').click(function() {
+        console.log('Ajax button clicked');
+        $.ajax({
+            url: '/ajax-test',
+            type: 'POST',
+            data: {
+                // Add any data you want to send to the server here
+            },
+            success: function(data) {
+                // Handle the successful response from the server here
+                console.log('Ajax request successful');
+                console.log(data);
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                // Handle any errors that occur during the request here
+                console.error('Error:', textStatus, errorThrown);
+            }
+        });
+    });
+});
+
+
+</script>
+
+
 
 @endsection

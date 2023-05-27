@@ -11,6 +11,7 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NewUserNotification;
+use Illuminate\Support\Facades\Validator;
 
 
 class NewsLetterController extends Controller
@@ -21,27 +22,45 @@ class NewsLetterController extends Controller
     // dd(Auth::guard('admin')->user());
     return view('backend.user.newsletter',compact('news'));
     }//End Method
-   
+
     public function NewsLettertStore(Request $request)
     {
 
-      $new = NewsLetter::insert([
-            
-            'email'=>$request->email,
-            'created_at'=>Carbon::now(),
-
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
         ]);
-       // $id = Auth::user()->id;
-      //  $users = Admin::where('id','!=',auth()->user()->id)->get();
-         $users = Admin::orderBy('id','DESC')->get();
-        $news = NewsLetter::latest()->first();
-       
-    Notification::send($users,new NewUserNotification($news));
 
-     $notification = array(
-            'message' => 'Your Email Entered Successfully',
-            'alert-type' => 'success'
-        );
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Retrieve the validated input...
+        $validated = $validator->validated();
+//        $validated = $validator->safe()->only(['email']);
+
+        /******** st old way to store NewsLetter********/
+//        $new = NewsLetter::insert([
+//            'email'=>$request->email,
+//            'created_at'=>Carbon::now(),
+//        ]);
+//        $news = NewsLetter::latest()->first();
+        /******** st old way to store NewsLetter********/
+        /******** st new way to store NewsLetter********/
+        $newsletter = new NewsLetter;
+        $newsletter->email = $validated['email'];
+        $newsletter->created_at = Carbon::now();
+        $newsletter->save();
+        /******** nd new way to store NewsLetter********/
+         $users = Admin::orderBy('id','DESC')->get();
+
+        Notification::send($users,new NewUserNotification($newsletter));
+
+         $notification = array(
+                'message' => 'Your Email Entered Successfully',
+                'alert-type' => 'success'
+            );
 
         return redirect()->back()->with($notification);
     }//End Method
@@ -59,5 +78,5 @@ class NewsLetterController extends Controller
     }
 }
 
- 
+
 
