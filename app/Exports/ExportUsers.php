@@ -3,19 +3,25 @@
 namespace App\Exports;
 
 use App\Models\User;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ExportUsers implements FromCollection, WithHeadings
+class ExportUsers implements FromArray, WithHeadings
 {
     
-    /**
-    * @return \Illuminate\Support\Collection
-    */
+    
 
-     public function collection()
+     public function array(): array
     {
-        return User::select('Name','Email','Phone')->get();
+        $userList=[];
+
+        $users = User::all();
+        foreach($users as $user)
+        {
+           $userList[] =[$user->name,$user->email,$user->phone]; 
+        }
+
+        return $userList; 
     }
 
     public function headings(): array
